@@ -85,6 +85,8 @@
 **日期：** 2025-04-16  
 **公開狀態：** 完整公開
 
+[查看完整專案說明與圖表](gpt-deenchantment-guide/)
+
 這份對照表用來整理大型語言模型常見的語氣幻覺：模型未必真正理解使用者，卻可以透過高度流暢、低摩擦、持續接住情緒的語言，使人產生「被完全理解」的感受。
 
 表格將語氣拆成四個觀察面向：
@@ -111,11 +113,11 @@
 
 相關檔案：
 
-* `gpt-deenchantment-guide/P1.jpg`
-* `gpt-deenchantment-guide/P2.jpg`
-* `gpt-deenchantment-guide/P3.jpg`
-* `gpt-deenchantment-guide/P4.jpg`
-* `gpt-deenchantment-guide/readme_on_fanpage.txt`
+* [P1.jpg](gpt-deenchantment-guide/P1.jpg)
+* [P2.jpg](gpt-deenchantment-guide/P2.jpg)
+* [P3.jpg](gpt-deenchantment-guide/P3.jpg)
+* [P4.jpg](gpt-deenchantment-guide/P4.jpg)
+* [readme_on_fanpage.txt](gpt-deenchantment-guide/readme_on_fanpage.txt)
 
 ---
 
@@ -125,6 +127,8 @@
 **補丁版本：** v2.5.7.9／v2.5.7.9a  
 **日期：** 2025-04-17  
 **公開狀態：** 完整公開
+
+[查看完整模組說明與三段式 prompt](tone-dependency-risk-module/)
 
 這個模組由《GPT 語言去魅對照表》衍生而來。
 
@@ -202,11 +206,11 @@
 
 相關檔案：
 
-* `tone-dependency-risk-module/mod_1of3.txt`
-* `tone-dependency-risk-module/mod_2of3.txt`
-* `tone-dependency-risk-module/mod_3of3.txt`
-* `tone-dependency-risk-module/readme_on_fanpage.txt`
-* `tone-dependency-risk-module/reply_on_fp.txt`
+* [mod_1of3.txt](tone-dependency-risk-module/mod_1of3.txt)
+* [mod_2of3.txt](tone-dependency-risk-module/mod_2of3.txt)
+* [mod_3of3.txt](tone-dependency-risk-module/mod_3of3.txt)
+* [readme_on_fanpage.txt](tone-dependency-risk-module/readme_on_fanpage.txt)
+* [reply_on_fp.txt](tone-dependency-risk-module/reply_on_fp.txt)
 
 ---
 

@@ -50,7 +50,7 @@
 ### 國會擴權法案條文整理
 
 * [條文整理 1](https://www.threads.com/@haru_lerrz/post/C7fxeMLPOIM)
-* [條文整理 2](https://www.threads.com/@haru_lerrz/post/C7TJWUdPHaz)
+* [條文整理 2](https://www.threads.com/@haru_lerrz/post/C7TJWAGP1rx)
 
 整理國會調查權、傳喚權、行政罰、律師陪同與國防外交機密等爭議，並比較不同版本條文差異。
 
