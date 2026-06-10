@@ -175,5 +175,5 @@ AI 與自動化工具產出的內容會再進行人工確認，包含：
 ## Navigation
 
 * [返回 Selected Works](../profile/works.md)
-* [查看 Resume Lite](../profile/resume-lite.md)
+* [查看簡歷摘要](../profile/resume-lite.md)
 * [返回根 README](../README.md)

@@ -4,7 +4,7 @@
 
 目前版本：`v0.1.5`
 
-這是從 `icpantsparti2/browser-bits` 專案中的 `firefox-v109-change-order-under-extensions-button.js` fork 出來的小改版。這個版本保留原本「直接在 Firefox Web Console 執行」的使用方式，但把偏好值寫入邏輯改得比較安全，並加入繁體中文介面與一些輕量的操作輔助。
+這是從 [icpantsparti2/browser-bits](https://github.com/icpantsparti2/browser-bits) 專案中的 [firefox-v109-change-order-under-extensions-button.js](https://github.com/icpantsparti2/browser-bits/blob/main/javascript/firefox-v109-change-order-under-extensions-button.js) fork 出來的小改版。這個版本保留原本「直接在 Firefox Web Console 執行」的使用方式，但把偏好值寫入邏輯改得比較安全，並加入繁體中文介面與一些輕量的操作輔助。
 
 ## 這個工具在做什麼
 
@@ -96,12 +96,13 @@ window.BelkaFirefoxAddonOrderHelper.restoreLastBackup()
 
 本工具 fork 自：
 
-1. `firefox-v109-change-order-under-extensions-button.js`
-2. 原始專案：`icpantsparti2/browser-bits`
-3. 原作者／copyright：`icpantsparti/icpantsparti2`
-4. 原始授權：MIT License
+1. 原始腳本：[firefox-v109-change-order-under-extensions-button.js](https://github.com/icpantsparti2/browser-bits/blob/main/javascript/firefox-v109-change-order-under-extensions-button.js)
+2. 原始專案：[icpantsparti2/browser-bits](https://github.com/icpantsparti2/browser-bits)
+3. 上游專案：[icpantsparti/browser-bits](https://github.com/icpantsparti/browser-bits)
+4. 原作者／copyright：icpantsparti／icpantsparti2
+5. 原始授權：[MIT License](https://github.com/icpantsparti2/browser-bits/blob/main/LICENSE)
 
-這個 fork 保留原本的 console hack 思路與 MIT 授權聲明，只加入少量本地使用上的便利改動。
+這個 fork 保留原本的 console hack 思路與 MIT 授權聲明，並加入繁體中文介面、較安全的偏好值處理、排序操作輔助及備份還原功能。
 
 ## 授權
 

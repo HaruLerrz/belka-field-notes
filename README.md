@@ -10,10 +10,10 @@
 
 國際認證與檢定資格方面，我已通過日本語能力試驗（JLPT）N1／N2；另取得 International Organization of Professional Cultivation and Accreditation（IOPCA）核發之 Master of Communication Professional（MCP）專業認證。
 
-這個 repo 放的是一些我過去實際做過、用過，或整理到一半覺得值得留下來的東西。
+這個 repo 放的是一些我過去實際做過、用過，或整理到一半覺得值得留下來的東西。  
 有些來自新聞與影音工作，有些來自社群經營與公共議題整理，有些是自己寫來省時間的小工具，也有一些是 prompt、語氣結構與互動敘事相關的實驗。
 
-這個 repo 主要整理以下資料：
+整體內容大致分為以下幾類：
 
 * 影音新聞與內容製作流程
 * 社群經營與公共議題整理
@@ -24,19 +24,19 @@
 
 ## Repository Sections
 
-* `profile/`
+* `profile/`  
   個人層級的入口，包含履歷摘要、作品索引與聯絡資訊。
-  
-* `case-notes/`
+
+* `case-notes/`  
   依問題、流程與結果整理的工作案例，涵蓋影音、社群、公共議題與數位原型。
-  
-* `projects/`
+
+* `projects/`  
   長期維護的網站與互動系統，記錄系統架構、專案分工、版本演進與使用者回饋。
 
-* `prompting/`
+* `prompting/`  
   工作型 prompt、語氣辨識、AI 歌曲創作工作流、模組化指令與結構化寫作流程。
-  
-* `tools/`
+
+* `tools/`  
   由我依實際需求規劃，並使用 AI 協助撰寫、測試與修正的小型工具、workflow scripts 與操作輔助程式。
 
 ## Selected Works

@@ -28,7 +28,7 @@
 
 * [醫人醫心](https://www.youtube.com/playlist?list=PLMMW3aKk2vASAYKSz-Fimm41bdip7yvW-)  
   團隊製作的醫療與人物內容。
-  
+
 ### [Media Workflow](../case-notes/media-workflow.md)
 
 整理即時V新聞、長片、靜態新車發表、轉錄、音源分離與影音上架流程。
@@ -82,7 +82,7 @@
 
 ## Social Media / Audience
 
-### 腕龍梨梨｜粉專觸及提升案例
+### Cosplayer 粉專｜觸及提升案例
 
 以接手前後的互動與追蹤數據對照，整理內容切角、貼文節奏與穩定管理對粉專成長的影響。
 
@@ -125,7 +125,7 @@ AI 互動敘事／生存模擬文字遊戲專案。遊戲規則、prompt、狀�
 
 * [Prompting / Structured Writing](../prompting/README.md)  
   整理工作 prompt、語氣分析工具、模組化指令與版本補丁。
-  
+
 * [新車發表專家](../prompting/new-car-launch-expert/)
 * [AI Song Workflow](../prompting/ai-song-workflow/)
 * [GPT 語言去魅對照表](../prompting/gpt-deenchantment-guide/)

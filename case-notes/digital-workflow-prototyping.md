@@ -199,5 +199,5 @@ AI-assisted prototyping, vibe coding, digital workflow, workflow automation, rap
 ## Navigation
 
 * [返回 Selected Works](../profile/works.md)
-* [查看 Resume Lite](../profile/resume-lite.md)
+* [查看簡歷摘要](../profile/resume-lite.md)
 * [返回根 README](../README.md)
