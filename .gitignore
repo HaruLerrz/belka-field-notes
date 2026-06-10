@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+.DS_Store
+Thumbs.db
+*.log
+tools/msi-claw-rgb-slot-gui/claw-rgb-preset.json
+tools/msi-claw-rgb-slot-gui/vendor/hidapitester.exe
