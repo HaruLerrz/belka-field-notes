@@ -30,23 +30,9 @@
 
 ## Selected Cases
 
-### YouTube Thumbnail Cropper
+### Systems and Workflow Projects
 
-路徑：  
-[`tools/youtube-thumbnail-cropper/`](../tools/youtube-thumbnail-cropper/)
-
-這個工具用來處理影音工作中的重複性素材整理。
-
-原始需求包含：
-
-* 依 YouTube 連結抓取縮圖
-* 使用影片標題命名
-* 裁切成固定尺寸
-* 減少手動另存、重新命名與裁圖的步驟
-
-這類工作單次操作並不困難，但在新聞與影音製作中反覆出現時，容易累積大量機械性時間。程式負責抓取、命名與裁切等固定步驟，剪輯與編輯判斷仍留在原有工作流程中。
-
-### Endwalker / T7C Interactive Narrative Systems
+#### Endwalker / T7C Interactive Narrative Systems
 
 說明文件：  
 [Game / Interactive Narrative Projects](../projects/)
@@ -77,7 +63,7 @@
 
 這些修改分別落在 UI、Node.js、prompt、API 與狀態管理層，依照問題實際發生的位置處理。
 
-### Prompt Module Development
+#### Prompt Module Development
 
 說明文件：  
 [`prompting/README.md`](../prompting/README.md)
@@ -94,7 +80,25 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 相關文件主要記錄任務邊界、載入順序、觸發條件、固定輸出格式、版本差異與實測後補丁。
 
-### MSI Claw RGB Slot GUI
+### Small Tools and Workflow Helpers
+
+#### YouTube Thumbnail Cropper
+
+路徑：  
+[`tools/youtube-thumbnail-cropper/`](../tools/youtube-thumbnail-cropper/)
+
+這個工具用來處理影音工作中的重複性素材整理。
+
+原始需求包含：
+
+* 依 YouTube 連結抓取縮圖
+* 使用影片標題命名
+* 裁切成固定尺寸
+* 減少手動另存、重新命名與裁圖的步驟
+
+這類工作單次操作並不困難，但在新聞與影音製作中反覆出現時，容易累積大量機械性時間。程式負責抓取、命名與裁切等固定步驟，剪輯與編輯判斷仍留在原有工作流程中。
+
+#### MSI Claw RGB Slot GUI
 
 路徑：  
 [`tools/msi-claw-rgb-slot-gui/`](../tools/msi-claw-rgb-slot-gui/)
@@ -113,7 +117,7 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 除了 GUI，這個案例也整理了硬體測試、協定推測、外部工具依賴與可重現的安裝流程。
 
-### Belka Firefox Add-on Order Helper
+#### Belka Firefox Add-on Order Helper
 
 路徑：  
 [`tools/belka-firefox-addon-order-helper/`](../tools/belka-firefox-addon-order-helper/)
@@ -132,7 +136,7 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 此工具最後保留 console hack 形式，未包裝成完整擴充套件；需求只發生在特定頁面與操作情境中，較輕量的形式也較容易維護。
 
-### Animad WSA Fullscreen Helper
+#### Animad WSA Fullscreen Helper
 
 路徑：  
 [`tools/animad-wsa-fullscreen/`](../tools/animad-wsa-fullscreen/)
