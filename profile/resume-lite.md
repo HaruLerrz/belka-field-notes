@@ -12,7 +12,7 @@
 
 ## Work Experience
 
-### 壹傳媒媒體控股股份有限公司（前「毅傳媒」）
+### 壹傳媒媒體控股股份有限公司（原毅傳媒控股股份有限公司）
 
 **攝影記者｜2022-09 ～ 2025-11**
 
@@ -40,7 +40,9 @@
 
 ### 國立陽明交通大學
 
-**傳播與科技學系碩士班｜碩士｜2021-10**
+**傳播研究所碩士班｜碩士｜2021-10**
+
+正式學位為傳播研究所碩士；入學時以傳播研究所乙組名義招生，實際於傳播與科技學系就讀。該組為現今傳播與科技學系碩士班的前身，後續停止以傳播所乙組名義代招，改由傳播與科技學系獨立招生。
 
 研究方向包含：
 
@@ -57,7 +59,7 @@
 ## Certifications
 
 * 日本語能力試驗 JLPT N1／N2 合格
-* 國際專業培訓暨認證組織 IOPCA 所核發之 502111369 (MCP) 傳播專業講師認證
+* Master of Communication Professional（MCP）專業認證｜International Organization of Professional Cultivation and Accreditation（IOPCA）
 
 ## Areas of Work
 

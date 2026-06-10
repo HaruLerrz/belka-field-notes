@@ -6,9 +6,9 @@
 
 ## About
 
-我是 Jack／HaruLerrz，政大哲學系、交大傳播所（傳科系碩士班）畢業，曾任壹傳媒（前「毅傳媒」）攝影記者，也長期投入社群內容經營、公共議題整理、互動敘事專案、prompt workflow 與小型工具實作。
+我是 Jack／HaruLerrz，政大哲學系、陽明交大傳播研究所碩士班畢業（入學時以傳播所乙組名義招生，該組為現今傳播與科技學系碩士班的前身），曾任壹傳媒（原毅傳媒）攝影記者，也長期投入社群內容經營、公共議題整理、互動敘事專案、prompt workflow 與小型工具實作。
 
-國際認證與檢定資格方面，我已通過日本語能力試驗 JLPT N1／N2 檢定；另取得國際專業培訓暨認證組織 IOPCA 所核發之 502111369 (MCP) 傳播專業講師認證。
+國際認證與檢定資格方面，我已通過日本語能力試驗（JLPT）N1／N2；另取得 International Organization of Professional Cultivation and Accreditation（IOPCA）核發之 Master of Communication Professional（MCP）專業認證。
 
 這個 repo 放的是一些我過去實際做過、用過，或整理到一半覺得值得留下來的東西。
 有些來自新聞與影音工作，有些來自社群經營與公共議題整理，有些是自己寫來省時間的小工具，也有一些是 prompt、語氣結構與互動敘事相關的實驗。
