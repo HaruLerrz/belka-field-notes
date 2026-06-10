@@ -138,20 +138,23 @@ AI 互動敘事／生存模擬文字遊戲專案。遊戲規則、prompt、狀�
 
 技術實作多半由新聞工作、內容流程、互動專案或個人使用需求延伸而來。
 
+* [Tools Index](../tools/)  
+  查看四項工具的用途、定位與閱讀順序。
+
 * [Digital Workflow Prototyping](../case-notes/digital-workflow-prototyping.md)  
   整理問題拆解、AI 輔助原型、實機測試、錯誤修正與文件化的共同流程。
 
 * [YouTube Thumbnail Cropper](../tools/youtube-thumbnail-cropper/)  
   抓取 YouTube 縮圖、依影片標題命名並裁切成固定尺寸。
 
-* [Animad WSA Fullscreen Helper](../tools/animad-wsa-fullscreen/)  
-  串接 ADB、WSA 與 Windows 視窗操作，完成動畫瘋 App 的啟動與全螢幕流程。
+* [MSI Claw RGB Slot GUI](../tools/msi-claw-rgb-slot-gui/)  
+  從 HID payload 測試、slot 對應與色彩通道確認，整理成 PowerShell GUI 與可重現的依賴安裝流程。
 
 * [Belka Firefox Add-on Order Helper](../tools/belka-firefox-addon-order-helper/)  
   調整 Firefox 擴充套件項目順序，並提供備份與還原功能。
 
-* [MSI Claw RGB Slot GUI](../tools/msi-claw-rgb-slot-gui/)  
-  從 HID payload 測試、slot 對應與色彩通道確認，整理成 PowerShell GUI 與可重現的依賴安裝流程。
+* [Animad WSA Fullscreen Helper](../tools/animad-wsa-fullscreen/)  
+  串接 ADB、WSA 與 Windows 視窗操作，完成動畫瘋 App 的啟動與全螢幕流程。
 
 ## Navigation
 
