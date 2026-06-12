@@ -153,6 +153,24 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 因此實作上將 ADB、Windows GUI automation 與等待條件串在一起，形成可重複執行的工作流程。
 
+#### Gmail 隱藏回報垃圾郵件按鈕
+
+路徑：  
+[`tools/gmail-hide-report-spam-button/`](../tools/gmail-hide-report-spam-button/)
+
+這個 userscript 源自 Gmail 郵件整理過程中的誤觸問題。對於很少使用「回報垃圾郵件」功能的操作情境，工具會透過 CSS 隱藏對應按鈕，降低誤按後改變郵件分類的風險。
+
+實作內容包含：
+
+* 使用 userscript 管理工具載入程式
+* 透過 `GM_addStyle` 注入 CSS
+* 使用 Gmail 現行 DOM 屬性定位按鈕
+* 限定 selector 只處理具有 `role="button"` 與 `act="9"` 的元素
+* 保留停用 script 後恢復原始介面的方式
+* 記錄 Gmail 改版可能造成 selector 失效的限制
+
+這個案例的程式規模很小，但呈現了從日常操作問題出發，選擇符合需求規模的實作方式，而不必為單一介面調整建立完整瀏覽器擴充套件。
+
 ---
 
 ## AI Use and Manual Validation
