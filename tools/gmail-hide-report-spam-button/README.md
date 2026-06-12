@@ -84,6 +84,13 @@ userscript 形式較容易：
 * 在 Gmail 改版後調整 selector
 * 維持小型、單一用途的工具結構
 
+## 開發沿革
+
+* **2025-03-23：** 私人使用版本開始。早期曾測試直接操作 DOM、`MutationObserver`、`requestIdleCallback` 與定時檢查等方式，處理 Gmail 動態重建按鈕的情況。
+* 後續改用 `GM_addStyle` 注入 CSS，穩定隱藏 `act="9"` 對應的按鈕；私人版本編號一度更新至 `v4.0`。
+* **2026-06-12：** 整理為公開版本，重新從 `v1.0.0` 起算，補齊 metadata、安裝說明、隱私說明與使用限制，並將 selector 收窄為 `[role="button"][act="9"]`。
+* 曾測試 Delete 鍵刪除郵件，以及在封存與刪除按鈕之間加入分隔線；這些功能未納入目前公開版本，以維持單一用途與可預期的操作方式。
+
 ## 版本紀錄
 
 ### v1.0.0
@@ -92,6 +99,10 @@ userscript 形式較容易：
 2. 使用 CSS 隱藏 Gmail 的「回報垃圾郵件」按鈕。
 3. 將 selector 限定為具有 `role="button"` 與 `act="9"` 的元素。
 4. 補充繁體中文名稱、說明與使用限制。
+
+## 授權
+
+本工具採用 MIT License。請見 [`LICENSE`](LICENSE)。
 
 ## Navigation
 

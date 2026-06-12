@@ -6,6 +6,7 @@
 // @description  Hide Gmail's report spam button to reduce accidental clicks.
 // @description:zh-TW  透過 CSS 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低誤觸機會。
 // @author       HaruLerrz
+// @license      MIT
 // @match        https://mail.google.com/*
 // @grant        GM_addStyle
 // @run-at       document-idle
