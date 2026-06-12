@@ -203,3 +203,8 @@ vendor\hidapitester.exe
 ## Notes
 
 這份工具記錄了從 HID 封包測試、slot 對應推測，到 PowerShell GUI 與依賴安裝流程的整理過程。
+
+## Navigation
+
+* [返回 Tools Index](../)
+* [返回根 README](../../README.md)

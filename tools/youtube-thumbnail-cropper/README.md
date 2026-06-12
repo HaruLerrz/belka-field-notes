@@ -49,3 +49,8 @@ pip install requests pillow yt-dlp
 * 非 1280×720 圖片的自動判斷
 * CLI arguments
 * 批次處理 playlist 或多影片清單
+
+## Navigation
+
+* [返回 Tools Index](../)
+* [返回根 README](../../README.md)

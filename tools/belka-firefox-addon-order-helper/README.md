@@ -108,7 +108,6 @@ window.BelkaFirefoxAddonOrderHelper.restoreLastBackup()
 
 MIT。請見 `LICENSE`。
 
-
 ## 版本紀錄
 
 ### v0.1.5
@@ -129,3 +128,8 @@ MIT。請見 `LICENSE`。
 ### v0.1.2
 
 1. 「輸出備份」與「套用排序」會嘗試把復原指令複製到剪貼簿。
+
+## Navigation
+
+* [返回 Tools Index](../)
+* [返回根 README](../../README.md)

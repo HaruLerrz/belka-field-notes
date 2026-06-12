@@ -75,3 +75,8 @@ Windows 視窗標題預設為：
 * WSA port 自動偵測
 * 視窗標題 fallback
 * GUI 或 tray launcher
+
+## Navigation
+
+* [返回 Tools Index](../)
+* [返回根 README](../../README.md)
