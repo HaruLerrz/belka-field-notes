@@ -305,3 +305,9 @@ v1.7 作為補丁，增加：
 ## Keywords
 
 prompt design, structured writing, instruction modules, tone analysis, dependency risk, self-monitoring workflow, modular prompting, output constraints, patch-based iteration, conversational structure
+
+## Navigation
+
+* [返回 Selected Works](../profile/works.md)
+* [查看簡歷摘要](../profile/resume-lite.md)
+* [返回根 README](../README.md)

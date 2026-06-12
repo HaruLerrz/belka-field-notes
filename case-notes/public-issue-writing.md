@@ -172,6 +172,7 @@ Q&A 結構方便讀者依問題逐項閱讀，也能避免單一長文同時塞�
 
 ## Navigation
 
+* [返回 Case Notes](README.md)
 * [返回 Selected Works](../profile/works.md)
 * [查看 Social Media Cases](social-media-cases.md)
 * [返回根 README](../README.md)

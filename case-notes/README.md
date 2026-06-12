@@ -1,0 +1,27 @@
+# Case Notes
+
+這裡依問題、工作流程與實際結果，整理影音製作、社群經營、公共議題與數位工具原型等案例。
+
+## Case Index
+
+### [Media Workflow](media-workflow.md)
+
+整理即時V新聞、長片、靜態新車發表、轉錄、音源分離與影音上架流程。
+
+### [Public Issue Writing](public-issue-writing.md)
+
+整理公共議題、法政資料、制度爭議與社群長文的資料查核及轉譯方式。
+
+### [Social Media Cases](social-media-cases.md)
+
+整理粉專經營、迷因擴散、觸及與轉換，以及公共知識內容推廣案例。
+
+### [Digital Workflow Prototyping](digital-workflow-prototyping.md)
+
+整理小型工具、AI 輔助原型、實機測試、錯誤修正與文件化流程。
+
+## Navigation
+
+* [返回 Selected Works](../profile/works.md)
+* [查看簡歷摘要](../profile/resume-lite.md)
+* [返回根 README](../README.md)

@@ -129,5 +129,6 @@
 
 ## Navigation
 
+* [返回 Case Notes](README.md)
 * [返回 Selected Works](../profile/works.md)
 * [返回根 README](../README.md)
