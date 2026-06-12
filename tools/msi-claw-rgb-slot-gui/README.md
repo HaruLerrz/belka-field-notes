@@ -32,6 +32,7 @@ tools/msi-claw-rgb-slot-gui/
 ├─ claw-rgb-slot-gui-v6.ps1
 ├─ Run-Claw-RGB-Slot-GUI-v6.cmd
 ├─ setup-hidapitester.ps1
+├─ LICENSE
 ├─ vendor/
 │  └─ .gitkeep
 └─ README.md
@@ -99,20 +100,22 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\claw-rgb-slot-gui-v6.
 
 ## Slot Notes
 
-目前 slot 對應是依照實測結果整理，並非官方文件。
+九個欄位代表 RGB profile 封包中的原始 slot。slot 與實體 LED 區域的關係依 MSI Claw A1M 控制器韌體 v1.61 實機測試整理，並非官方文件。
 
-已知結果：
+主要實測結果如下：
 
-* `slots 0-3`：右側燈環相關區域
-* `slots 4-6`：左側燈環相關區域
-* `slot 7`：按鍵燈
-* `slot 8`：保留或未明確確認用途
+* `slots 0-3`：主要影響右側燈環
+* `slots 4-6`：主要影響左側燈環
+* `slot 7`：主要影響按鍵燈
+* `slot 8`：尚未明確確認用途
 
-GUI 中的 Quick Fill 按鈕依此實測結果設計：
+上述結果適合作為操作上的便利分組。部分顏色或色彩通道可能影響不同的實體 LED 區域，因此不能視為每個 slot 與單一燈區之間的固定硬體映射。
 
-* `Fill slots 0-3`
-* `Fill slots 4-6`
-* `Fill slot 7 (btn)`
+GUI 依照這組實測結果提供以下 Quick Fill 按鈕：
+
+* `Fill slots 0-3`：快速填入主要對應右側燈環的 slot
+* `Fill slots 4-6`：快速填入主要對應左側燈環的 slot
+* `Fill slot 7 (btn)`：快速填入主要對應按鍵燈的 slot
 
 ## Color Channel Mapping
 
@@ -186,6 +189,14 @@ vendor\hidapitester.exe
 
 若該位置不存在，才會搜尋 Windows `PATH`。
 
+## Protocol Reference and Third-Party Software
+
+本工具的 MSI Claw 裝置識別資訊、RGB profile 寫入位址與 HID payload 結構，部分參考自 [HHD](https://github.com/hhd-dev/hhd) 專案中的 MSI Claw 實作，並依 MSI Claw A1M 控制器韌體 v1.61 的實機測試結果調整。
+
+HHD 採 GNU Lesser General Public License v2.1（LGPL-2.1）授權。本工具不匯入、連結或散布 HHD 的程式碼與 binary；HHD 在此作為裝置協定與封包結構的參考來源。
+
+本工具透過命令列呼叫 [hidapitester](https://github.com/todbot/hidapitester) 傳送 HID output report。hidapitester 是採 GNU General Public License v3.0（GPL-3.0）授權的獨立外部程式，其執行檔不包含於本 repo，安裝腳本會直接由官方 GitHub Release 下載。
+
 ## Current Limitations
 
 此工具依照個人實測環境撰寫，並非泛用型 RGB controller。
@@ -199,10 +210,22 @@ vendor\hidapitester.exe
 * 不支援原廠 Mystic Light effect replication
 * 不保證適用於其他韌體版本
 * 安裝腳本需要網路連線存取 GitHub API 與官方 Release asset
+* 目前的 slot 與色彩通道映射無法穩定產生真正的白色或灰色
+* 不同色彩通道可能影響不同的實體 LED 區域
+* Quick Fill 分組只代表 v1.61 實測時的便利操作範圍，不代表官方或固定的硬體映射
 
 ## Notes
 
 這份工具記錄了從 HID 封包測試、slot 對應推測，到 PowerShell GUI 與依賴安裝流程的整理過程。
+
+## License
+
+本資料夾中的 PowerShell、CMD 與相關文件由 HaruLerrz 以 [MIT License](LICENSE) 授權。
+
+第三方工具與參考專案維持各自原有的授權：
+
+* HHD：LGPL-2.1
+* hidapitester：GPL-3.0
 
 ## Navigation
 

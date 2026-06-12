@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 HaruLerrz
+#
+# MSI Claw protocol information was informed by the HHD project
+# and verified through device testing. HHD is licensed under LGPL-2.1.
+
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 

@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 HaruLerrz
+#
+# This installer downloads the separately licensed hidapitester utility
+# from its official GitHub release. hidapitester is licensed under GPL-3.0.
+
 [CmdletBinding()]
 param(
   [switch]$Force
