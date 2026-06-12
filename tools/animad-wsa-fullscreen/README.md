@@ -76,6 +76,12 @@ Windows 視窗標題預設為：
 * 視窗標題 fallback
 * GUI 或 tray launcher
 
+## License
+
+本工具採用 MIT License。請見 [`LICENSE`](LICENSE)。
+
+ADB、PyAutoGUI、pywin32 與其他外部元件仍依各自的授權條款使用。
+
 ## Navigation
 
 * [返回 Tools Index](../)

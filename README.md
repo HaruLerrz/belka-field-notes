@@ -57,7 +57,7 @@
   [Prompting / Structured Writing](prompting/)
 
 * **工具與工作流程**  
-  [Digital Workflow Prototyping](case-notes/digital-workflow-prototyping.md)
+  [Tools Index](tools/)｜[Digital Workflow Prototyping](case-notes/digital-workflow-prototyping.md)
 
 ## Reuse
 

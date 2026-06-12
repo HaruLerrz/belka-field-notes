@@ -50,6 +50,12 @@ pip install requests pillow yt-dlp
 * CLI arguments
 * 批次處理 playlist 或多影片清單
 
+## License
+
+本工具採用 MIT License。請見 [`LICENSE`](LICENSE)。
+
+第三方 Python 套件仍依各自的授權條款使用。
+
 ## Navigation
 
 * [返回 Tools Index](../)
