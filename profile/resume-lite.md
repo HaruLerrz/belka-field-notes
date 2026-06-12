@@ -1,6 +1,6 @@
 # Resume Lite
 
-本頁提供學經歷、工作範圍、工具與資格摘要。作品連結與案例另整理於 [Selected Works](works.md)。
+本頁整理學經歷、工作範圍、使用工具與資格摘要，作為 Belka Field Notes 的簡歷入口。
 
 ## Profile
 
@@ -122,17 +122,12 @@
 * 日文：JLPT N1／N2 合格，可閱讀日文新聞、社群內容與資料
 * 英文：可閱讀一般技術文件與操作說明
 
-## Links
-
-* [Selected Works](works.md)
-* [影音與新聞作品集](https://linktr.ee/jacksunexe)
-* [Media Workflow](../case-notes/media-workflow.md)
-* [Public Issue Writing](../case-notes/public-issue-writing.md)
-* [Social Media Cases](../case-notes/social-media-cases.md)
-* [Game / Interactive Narrative Projects](../projects/)
-* [Prompting / Structured Writing](../prompting/)
-* [Digital Workflow Prototyping](../case-notes/digital-workflow-prototyping.md)
-
 ## Contact
 
-**Email:** jacksunexe@gmail.com
+**Email:** [jacksunexe@gmail.com](mailto:jacksunexe@gmail.com)  
+**完整影音作品集：** [Jack Sun's Works｜Linktree](https://linktr.ee/jacksunexe)
+
+## Navigation
+
+* [查看 Selected Works](works.md)
+* [返回根 README](../README.md)
