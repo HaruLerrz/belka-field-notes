@@ -39,10 +39,10 @@
 * `tools/`  
   由我依實際需求規劃，並使用 AI 協助撰寫、測試與修正的小型工具、workflow scripts 與操作輔助程式。
 
-## Selected Works
+## Profile / Selected Works
 
-分類作品、外部連結與案例摘要：  
-[Selected Works](profile/works.md)
+* [Resume Lite](profile/resume-lite.md)：學經歷、工作範圍、工具與資格摘要。
+* [Selected Works](profile/works.md)：分類作品、外部連結與案例摘要。
 
 * **影音與新聞**  
   [完整影音作品集](https://linktr.ee/jacksunexe)，包含V新聞、長片新聞、生活消費與醫療內容。
