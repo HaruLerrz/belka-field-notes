@@ -6,6 +6,16 @@
 
 這些內容將任務拆成可重複載入的模組：先定義角色與目標，再補入分類規則、觸發條件、輸出格式與後續修正。部分專案完整公開；部分模組則只保留設計目的、版本演進與使用情境，不公開完整 prompt。
 
+## Page Guide
+
+* [Earlier Practical Prompting](#earlier-practical-prompting)
+* [Tone Module Development Lineage](#tone-module-development-lineage)
+* [Public Scope](#public-scope)
+* [GPT 語言去魅對照表](#gpt-語言去魅對照表)
+* [語氣結構辨識與依附風險提示模組](#語氣結構辨識與依附風險提示模組)
+* [Retained Modules](#retained-modules)
+* [Modular Design Notes](#modular-design-notes)
+
 ## Earlier Practical Prompting
 
 ### 新聞撰稿與標題生成工作 prompt

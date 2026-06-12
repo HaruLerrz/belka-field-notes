@@ -2,6 +2,16 @@
 
 本頁整理我做過的 AI 互動敘事／文字遊戲專案，重點放在兩個專案共用的系統架構、個別設計，以及實際使用後的迭代過程。
 
+## Page Guide
+
+* [Development Lineage](#development-lineage)
+* [Shared Architecture](#shared-architecture)
+* [犬伴求生：末日行者](#犬伴求生末日行者)
+* [七日終途 -The La7t Correction-](#七日終途--the-la7t-correction-)
+* [User Feedback / Iteration History](#user-feedback--iteration-history)
+* [Versioning and Recent Maintenance](#versioning-and-recent-maintenance)
+* [Implementation Summary](#implementation-summary)
+
 ## Development Lineage
 
 《犬伴求生：末日行者》是較早完成的合作專案；《七日終途 -The La7t Correction-》則是在前者累積的網站、Node.js 與 prompt packaging 經驗上繼續發展。
