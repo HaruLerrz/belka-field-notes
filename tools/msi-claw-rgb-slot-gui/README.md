@@ -7,10 +7,10 @@
 
 ## Background
 
-MSI Claw A1M 在控制器韌體回退至 v1.61 後，Mystic Light 對按鍵與燈環的控制可能失效。
-後續透過 HID 測試發現，裝置可由特定 usage page / usage 與 64-byte output report 寫入 RGB 設定。
+本工具專門處理 MSI Center M 維持較新版本、MSI Claw A1M 控制器韌體回退至 v1.61 後，Mystic Light 無法正常控制按鍵燈與燈環的情況。
+若控制器使用較新韌體，且 MSI Center M 可正常調整燈光，建議直接使用原廠功能。
 
-此工具即是將該測試流程包裝為可操作的 GUI。
+透過 HID 測試確認，v1.61 可由特定 usage page / usage 與 64-byte output report 寫入 RGB 設定，本工具將該流程包裝為可操作的 GUI。
 
 ## What it does
 
@@ -193,7 +193,7 @@ vendor\hidapitester.exe
 
 本工具的 MSI Claw 裝置識別資訊、RGB profile 寫入位址與 HID payload 結構，部分參考自 [HHD](https://github.com/hhd-dev/hhd) 專案中的 MSI Claw 實作，並依 MSI Claw A1M 控制器韌體 v1.61 的實機測試結果調整。
 
-HHD 採 GNU Lesser General Public License v2.1（LGPL-2.1）授權。本工具不匯入、連結或散布 HHD 的程式碼與 binary；HHD 在此作為裝置協定與封包結構的參考來源。
+HHD 採 GNU Lesser General Public License v2.1 or later（LGPL-2.1-or-later）授權。本工具不匯入、連結或散布 HHD 的程式碼與 binary；HHD 在此作為裝置協定與封包結構的參考來源。
 
 本工具透過命令列呼叫 [hidapitester](https://github.com/todbot/hidapitester) 傳送 HID output report。hidapitester 是採 GNU General Public License v3.0（GPL-3.0）授權的獨立外部程式，其執行檔不包含於本 repo，安裝腳本會直接由官方 GitHub Release 下載。
 
@@ -205,10 +205,11 @@ HHD 採 GNU Lesser General Public License v2.1（LGPL-2.1）授權。本工具�
 
 * 僅針對 MSI Claw A1M 實測
 * 依賴固定 VID / PID、usage page 與 usage
+* 固定使用控制器韌體 v1.61 實測可用的 `0x01FA` RGB 寫入路徑，不進行韌體版本偵測
+* 較新控制器韌體若可由 MSI Center M 正常控制燈光，無需使用本工具
 * slot 對應來自實測，未必完整
 * 不包含動畫效果控制
 * 不支援原廠 Mystic Light effect replication
-* 不保證適用於其他韌體版本
 * 安裝腳本需要網路連線存取 GitHub API 與官方 Release asset
 * 目前的 slot 與色彩通道映射無法穩定產生真正的白色或灰色
 * 不同色彩通道可能影響不同的實體 LED 區域
@@ -224,7 +225,7 @@ HHD 採 GNU Lesser General Public License v2.1（LGPL-2.1）授權。本工具�
 
 第三方工具與參考專案維持各自原有的授權：
 
-* HHD：LGPL-2.1
+* HHD：LGPL-2.1-or-later
 * hidapitester：GPL-3.0
 
 ## Navigation

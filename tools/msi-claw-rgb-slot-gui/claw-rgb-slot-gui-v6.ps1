@@ -2,7 +2,7 @@
 # Copyright (c) 2026 HaruLerrz
 #
 # MSI Claw protocol information was informed by the HHD project
-# and verified through device testing. HHD is licensed under LGPL-2.1.
+# and verified through device testing. HHD is licensed under LGPL-2.1-or-later.
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
@@ -49,7 +49,7 @@ $VIDPID = '0DB0:1901'
 $UPAGE  = '0xFFA0'
 $USAGE  = '0x0001'
 
-# Your known-good header for the 0x01FA-style RGB write path
+# Known-good header verified with controller firmware v1.61 and the 0x01FA RGB write path
 $Header = [int[]](15,0,0,60,33,1,1,250,32,0,1,9,3)
 $PresetPath = Join-Path $PSScriptRoot 'claw-rgb-preset.json'
 
@@ -78,7 +78,7 @@ function HexToColor([string]$hex) {
   } catch { return $null }
 }
 
-# IMPORTANT: Your device shows channel rotation:
+# IMPORTANT: Device testing showed the following channel rotation:
 # send RGB -> device displays (B, R, G)
 # Therefore to display desired RGB, send as (G, B, R).
 function AddColorBytes([System.Collections.Generic.List[int]]$pkt, [System.Drawing.Color]$c) {
@@ -92,7 +92,7 @@ function MakePacket([int]$brightness, [System.Drawing.Color[]]$slots9) {
   $pkt = New-Object System.Collections.Generic.List[int]
   $pkt.AddRange($Header)
   $pkt.Add([int]$b)
-  $pkt.Add(0)  # reserved, matches your working command
+  $pkt.Add(0)  # reserved, matches the verified v1.61 payload
 
   for ($i=0; $i -lt 9; $i++) {
     $c = $slots9[$i]
@@ -312,7 +312,7 @@ $btnFillLeft.Add_Click({
 })
 
 $btnFillButtons.Add_Click({
-  # Based on your test: slot7 controls the buttons
+  # Device testing showed that slot 7 primarily controls the button LEDs
   $c = GetQuickColor
   $j = 7
   $slots[$j] = $c
