@@ -176,6 +176,10 @@ settings: {
 URL：  
 https://endwalker.haruz.art/
 
+![犬伴求生：末日行者介面](assets/endwalker-interface.webp)
+
+*介面示例：故事輸出、角色與狗狗狀態、指令輸入，以及音樂、狀態欄與角色重置控制。*
+
 ### Project Type
 
 AI 互動敘事文字遊戲合作專案。
@@ -214,6 +218,10 @@ AI 互動敘事文字遊戲合作專案。
 
 URL：  
 https://t7c.haruz.art/
+
+![七日終途介面](assets/t7c-interface.webp)
+
+*介面示例：故事輸出、結構化角色狀態、指令輸入，以及對話清除、音樂、狀態欄與角色重置控制。*
 
 ### Project Type
 

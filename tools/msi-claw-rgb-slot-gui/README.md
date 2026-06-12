@@ -12,6 +12,12 @@
 
 透過 HID 測試確認，v1.61 可由特定 usage page / usage 與 64-byte output report 寫入 RGB 設定，本工具將該流程包裝為可操作的 GUI。
 
+## Interface
+
+![MSI Claw RGB Slot GUI interface](assets/interface.png)
+
+介面提供亮度調整、九個原始 slot、Quick Fill、preset 儲存／載入，以及 HID output report 的執行紀錄。
+
 ## What it does
 
 * 透過 `hidapitester.exe` 連接 MSI Claw 控制器 HID 裝置
@@ -29,6 +35,8 @@
 
 ```text
 tools/msi-claw-rgb-slot-gui/
+├─ assets/
+│  └─ interface.png
 ├─ claw-rgb-slot-gui-v6.ps1
 ├─ Run-Claw-RGB-Slot-GUI-v6.cmd
 ├─ setup-hidapitester.ps1

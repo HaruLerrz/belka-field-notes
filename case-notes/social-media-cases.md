@@ -16,9 +16,9 @@
 
 **角色：** 粉專管理、貼文節奏調整與宣傳建議
 
-![Cosplayer 粉專成長比較圖](../assets/social-media-cases/cosplay-page-growth.png)
+![Cosplayer 粉專成長比較圖](assets/social-media-cases/cosplay-page-growth.png)
 
-![Cosplayer 粉專 2023 年 10 月頁面規模](../assets/social-media-cases/cosplay-page-size-2023-10.png)
+![Cosplayer 粉專 2023 年 10 月頁面規模](assets/social-media-cases/cosplay-page-size-2023-10.png)
 
 本案例為一個公開 Cosplayer 粉專。角色、作品與拍攝內容由創作者本人負責；我在 2021 年接手粉專管理，協助調整貼文節奏、宣傳方式與素材呈現。粉專名稱與當時公開頁面資訊保留於附圖中。
 
@@ -49,7 +49,7 @@
 
 **角色：** 構想發起、貼文製作與活動宣傳
 
-![大港沒有門票案例圖](../assets/social-media-cases/megaport-no-ticket.png)
+![大港沒有門票案例圖](assets/social-media-cases/megaport-no-ticket.png)
 
 這個構想源自音樂祭門票與黃牛問題。我先以貼文提出想法，後續才逐步發展成較完整的企劃與募資行動。
 
@@ -75,7 +75,7 @@
 
 **角色：** 原創迷因圖製作與發布
 
-![台北拉麵肥宅案例圖](../assets/social-media-cases/taipei-ramen-fat-otaku.png)
+![台北拉麵肥宅案例圖](assets/social-media-cases/taipei-ramen-fat-otaku.png)
 
 這張圖來自我長期觀看拉麵社群後累積的印象，前後做過兩個版本。發布時沒有安排宣傳，也沒有投放廣告。
 
@@ -96,7 +96,7 @@
 
 **角色：** 原創迷因圖製作與發布
 
-![我只是想要有人能愛我案例圖](../assets/social-media-cases/i-just-want-someone-to-love-me.png)
+![我只是想要有人能愛我案例圖](assets/social-media-cases/i-just-want-someone-to-love-me.png)
 
 這張圖同樣出自日常觀察，主題集中在交友、自我嘲諷與情緒表達。
 

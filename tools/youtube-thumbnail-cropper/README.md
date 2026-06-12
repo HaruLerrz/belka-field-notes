@@ -26,6 +26,18 @@ python yt_thumb.py
 
 接著依照提示選擇儲存位置與檔案處理方式。
 
+## Example
+
+![YouTube Thumbnail Cropper execution example](assets/run-example.png)
+
+工具會從輸入網址取得影片標題與縮圖，依使用者選擇的目錄儲存裁切後圖片。
+
+![1280×720 source and 960×720 output comparison](assets/crop-size-comparison.png)
+
+比較圖依像素比例並排原始下載縮圖（`maxres2.jpg`）與裁切後的 PNG。兩者皆保留 720 px 高度；輸出寬度由 1280 px 裁為 960 px，左右各移除 160 px。
+
+*範例取自本人參與製作並已公開發布的 V 新聞作品，此處僅用於展示縮圖取得、命名與裁切流程。*
+
 ## Dependencies
 
 ```bash
