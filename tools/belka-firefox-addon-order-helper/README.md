@@ -110,10 +110,6 @@ window.BelkaFirefoxAddonOrderHelper.restoreLastBackup()
 
 這個 fork 保留原本的 console hack 思路與 MIT 授權聲明，並加入繁體中文介面、較安全的偏好值處理、排序操作輔助及備份還原功能。
 
-## License
-
-MIT。請見 [`LICENSE`](LICENSE)。
-
 ## Version History
 
 ### v0.1.5
@@ -134,6 +130,10 @@ MIT。請見 [`LICENSE`](LICENSE)。
 ### v0.1.2
 
 1. 「輸出備份」與「套用排序」會嘗試把復原指令複製到剪貼簿。
+
+## License
+
+MIT。請見 [`LICENSE`](LICENSE)。
 
 ## Navigation
 
