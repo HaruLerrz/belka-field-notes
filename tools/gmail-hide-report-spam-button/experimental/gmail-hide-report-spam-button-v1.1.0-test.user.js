@@ -2,7 +2,7 @@
 // @name         Gmail Hide Report Spam Button (Experimental)
 // @name:zh-TW   Gmail 隱藏回報垃圾郵件按鈕（實驗版：封存／刪除分隔線）
 // @namespace    https://github.com/HaruLerrz
-// @version      1.1.0
+// @version      1.1.0-test
 // @description  Experimental variant that hides Gmail's report spam button and adds a clearer separator between archive and delete.
 // @description:zh-TW  實驗版本：隱藏 Gmail 的「回報垃圾郵件」按鈕，並在封存與刪除按鈕之間加入分隔線。
 // @author       HaruLerrz
