@@ -150,6 +150,9 @@ AI 互動敘事／生存模擬文字遊戲專案。遊戲規則、prompt、狀�
 * [MSI Claw RGB Slot GUI](../tools/msi-claw-rgb-slot-gui/)  
   從 HID payload 測試、slot 對應與色彩通道確認，整理成 PowerShell GUI 與可重現的依賴安裝流程。
 
+* [MSI Claw Mode Switcher](../tools/msi-claw-mode-switcher/)  
+  由視窗強制滿版與觸控副作用的實機排查，整理成可讀取狀態、切換登錄覆蓋值與重新啟動 Explorer 的 PowerShell GUI。
+
 * [Belka Firefox Add-on Order Helper](../tools/belka-firefox-addon-order-helper/)  
   調整 Firefox 擴充套件項目順序，並提供備份與還原功能。
 

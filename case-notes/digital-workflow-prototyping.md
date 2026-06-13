@@ -117,6 +117,26 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 除了 GUI，這個案例也整理了硬體測試、協定推測、外部工具依賴與可重現的安裝流程。
 
+#### MSI Claw Mode Switcher
+
+路徑：  
+[`tools/msi-claw-mode-switcher/`](../tools/msi-claw-mode-switcher/)
+
+此工具源自 MSI Claw A1M 將傳統 Win32 小視窗或原本不支援最大化的視窗強制撐滿，以及修改裝置姿態後部分觸控操作失效的取捨問題。
+
+實作與排查包含：
+
+* 排除 Xbox Full Screen Experience、Windows Snap 與 PowerToys 等可能原因
+* 透過 `Win + ↓` 確認視窗可由 Windows shell 配置狀態還原
+* 實機驗證 `ConvertibilityEnabled = 0` 對視窗行為的影響
+* 確認刪除覆蓋值後，Windows／MSI 會恢復裝置姿態自動判定
+* 將目前狀態、登錄切換與 Explorer 重啟包裝成 PowerShell GUI
+* 加入權限提升、錯誤訊息與 Debug 啟動流程
+* 因 VBScript 引擎相容性問題移除 VBS 啟動器，改以 CMD 作為一般入口
+* 向 Microsoft Feedback Hub 提交問題回報
+
+這個案例保留兩種模式與各自副作用，重點在於將系統層問題拆成可驗證步驟，並把一次性的登錄操作整理成可逆、可讀取狀態的工具。
+
 #### Belka Firefox Add-on Order Helper
 
 路徑：  

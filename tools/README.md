@@ -16,6 +16,10 @@
 
 透過 HID payload 控制 MSI Claw A1M 的按鍵與燈環顏色，並整理成 PowerShell GUI、依賴安裝與 preset 流程。
 
+### [MSI Claw Mode Switcher](msi-claw-mode-switcher/)
+
+切換 Windows 的 `ConvertibilityEnabled` 覆蓋值，用於處理傳統小視窗被強制撐滿，並在需要時恢復原廠裝置姿態與觸控行為的自動判定。
+
 ### [Belka Firefox Add-on Order Helper](belka-firefox-addon-order-helper/)
 
 在 Firefox `about:addons` Web Console 中調整擴充套件項目順序，並提供備份與還原介面。
