@@ -110,16 +110,15 @@
 
 ## Web / Interactive Projects
 
-* [Game / Interactive Narrative Projects](../projects/)  
-  整理兩個 AI 敘事專案的共通架構、狀態管理、prompt packaging、API 串接、UI 迭代與上下文污染修正。
+### [Game / Interactive Narrative Projects](../projects/)
 
-### [犬伴求生：末日行者](https://endwalker.haruz.art/)
+整理兩個 AI 敘事專案的共通架構、狀態管理、prompt packaging、API 串接、UI 迭代與上下文污染修正。
 
-AI 互動敘事文字遊戲合作專案。友人負責世界觀架構與遊戲規則；我負責前後端、prompt 打包、API 串接、UI 與虛擬主機維護。
+* [犬伴求生：末日行者](https://endwalker.haruz.art/)  
+  AI 互動敘事文字遊戲合作專案。友人負責世界觀架構與遊戲規則；我負責前後端、prompt 打包、API 串接、UI 與虛擬主機維護。
 
-### [七日終途 -The La7t Correction-](https://t7c.haruz.art/)
-
-AI 互動敘事／生存模擬文字遊戲專案。遊戲規則、prompt、狀態管理、前後端與部署皆由我獨立完成。
+* [七日終途 -The La7t Correction-](https://t7c.haruz.art/)  
+  AI 互動敘事／生存模擬文字遊戲專案。遊戲規則、prompt、狀態管理、前後端與部署皆由我獨立完成。
 
 ### [3D Model Showcase](https://3d.haruz.art/)
 

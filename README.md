@@ -31,7 +31,7 @@
 ## Repository Map
 
 * [Case Notes](case-notes/)  
-  依問題、流程與結果整理的工作案例，涵蓋影音、社群、公共議題與數位原型。
+  依問題、流程與結果整理的工作案例，涵蓋影音、社群、公共議題、網站建置與數位原型。
 
 * [Game / Interactive Narrative Projects](projects/)  
   集中整理兩個長期維護的 AI 互動敘事網站，記錄系統架構、專案分工、版本演進與使用者回饋；其他網站作品列於 Selected Works。
