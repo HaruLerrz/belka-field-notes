@@ -2,7 +2,7 @@
 
 本頁整理部分影音、社群、公共議題、現場表達與技術實作內容。
 
-我的實作脈絡大致從新聞、攝影與內容製作出發，延伸至社群經營、公共議題整理與現場表達；後續再依工作流程、互動專案與日常使用需求，逐步發展出互動敘事系統、prompt workflow 與小型工具。
+我的實作脈絡大致從新聞、攝影與內容製作出發，延伸至社群經營、公共議題整理與現場表達；後續再依工作流程、互動專案與日常使用需求，逐步發展出網站與互動敘事系統、prompt workflow 與小型工具。
 
 ## Media / News
 
@@ -108,10 +108,10 @@
 
 更多案例整理請見：[Social Media Cases](../case-notes/social-media-cases.md)
 
-## Game / Interactive Narrative Projects
+## Web / Interactive Projects
 
 * [Game / Interactive Narrative Projects](../projects/)  
-  整理兩個專案的共通架構、狀態管理、prompt packaging、API 串接、UI 迭代與上下文污染修正。
+  整理兩個 AI 敘事專案的共通架構、狀態管理、prompt packaging、API 串接、UI 迭代與上下文污染修正。
 
 ### [犬伴求生：末日行者](https://endwalker.haruz.art/)
 
@@ -120,6 +120,12 @@ AI 互動敘事文字遊戲合作專案。友人負責世界觀架構與遊戲�
 ### [七日終途 -The La7t Correction-](https://t7c.haruz.art/)
 
 AI 互動敘事／生存模擬文字遊戲專案。遊戲規則、prompt、狀態管理、前後端與部署皆由我獨立完成。
+
+### [3D Model Showcase](https://3d.haruz.art/)
+
+可直接在瀏覽器旋轉、縮放與切換顯示方式的 3D 作品站。repo 內公開的 [Belka 3D Showcase Manager](../tools/belka-3d-showcase-manager/) 可用來架設同類型的簡易展示站，並透過 Windows 圖形化介面管理作品、預覽網站，以及輸出更新 ZIP 或完整網站部署包。
+
+完整案例：[Belka 3D Showcase](../case-notes/belka-3d-showcase.md)
 
 ## Prompting / Structured Writing
 
@@ -146,6 +152,9 @@ AI 互動敘事／生存模擬文字遊戲專案。遊戲規則、prompt、狀�
 
 * [YouTube Thumbnail Cropper](../tools/youtube-thumbnail-cropper/)  
   抓取 YouTube 縮圖、依影片標題命名並裁切成固定尺寸。
+
+* [Belka 3D Showcase Manager](../tools/belka-3d-showcase-manager/)  
+  整合靜態 3D 展示站、Windows 圖形化管理介面、本機預覽、更新 ZIP 與完整網站部署流程。
 
 * [MSI Claw RGB Slot GUI](../tools/msi-claw-rgb-slot-gui/)  
   從 HID payload 測試、slot 對應與色彩通道確認，整理成 PowerShell GUI 與可重現的依賴安裝流程。

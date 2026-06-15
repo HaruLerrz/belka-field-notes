@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0d1017" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>3D 模型展示</title>
+
+  <link rel="icon" href="../shared/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../shared/viewer.css?v=20260616002458" />
+  <link rel="modulepreload" href="../shared/viewer.bundle.min.js?v=20260616002458" />
+
+</head>
+<body>
+  <main id="app">
+    <section id="viewer-section" class="viewer-section" aria-label="3D 模型互動展示">
+      <canvas id="viewer" aria-label="3D 模型互動檢視器"></canvas>
+
+      <div id="loading-cover" class="loading-cover" aria-live="polite" aria-hidden="false">
+        <img id="loading-cover-image" alt="" decoding="async" hidden />
+        <div class="loading-cover-backdrop"></div>
+        <div class="loading-cover-content glass">
+          <span class="loading-spinner" aria-hidden="true"></span>
+          <strong id="loading-stage">讀取作品設定中…</strong>
+          <span id="loading-detail">正在準備互動式 3D 模型</span>
+          <span id="loading-percent"></span>
+        </div>
+      </div>
+
+      <header class="topbar glass">
+        <a class="home-link" href="../" title="回到作品列表" aria-label="回到作品列表">‹</a>
+
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <path d="M16 2 28 9v14l-12 7L4 23V9l12-7Zm0 4.2L8 10.8v8.4l8 4.6 8-4.6v-8.4l-8-4.6Zm0 4.1 4.5 2.6v5.2L16 20.7l-4.5-2.6v-5.2l4.5-2.6Z"/>
+          </svg>
+        </div>
+
+        <div class="title-wrap">
+          <h1 id="title">3D 模型展示</h1>
+          <p id="subtitle">滑鼠拖曳旋轉｜滾輪縮放｜右鍵平移</p>
+        </div>
+
+        <div id="status" class="status" data-state="loading">
+          <span class="status-dot"></span>
+          <span id="status-text">讀取作品設定中…</span>
+        </div>
+      </header>
+
+      <aside class="info-card glass" aria-live="polite">
+        <div class="info-row"><span>檔案</span><strong id="model-name">—</strong></div>
+        <div class="info-row"><span>頂點</span><strong id="vertex-count">—</strong></div>
+        <div class="info-row"><span>三角面</span><strong id="triangle-count">—</strong></div>
+        <div class="info-row"><span>顯示</span><strong id="display-mode">—</strong></div>
+      </aside>
+
+      <section id="empty-state" class="empty-state glass" hidden>
+        <div class="empty-icon" aria-hidden="true">◇</div>
+        <h2>尚未偵測到模型</h2>
+        <p>請確認作品設定與模型路徑。</p>
+        <button id="empty-open-local" class="primary-button" type="button">先載入本機檔案預覽</button>
+      </section>
+
+      <div class="progress-shell" id="progress-shell">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+
+      <div class="mode-switch glass" aria-label="材質顯示模式">
+        <button id="mode-original" type="button" aria-pressed="false">原始材質</button>
+        <button id="mode-clay" type="button" aria-pressed="false">灰模</button>
+        <button id="mode-normal" type="button" aria-pressed="false">法線</button>
+      </div>
+
+      <nav class="toolbar glass" aria-label="3D 檢視控制">
+        <button id="rotate-button" type="button" aria-pressed="true" title="開關自動旋轉">
+          <span class="button-icon">↻</span><span>旋轉</span>
+        </button>
+        <button id="grid-button" type="button" aria-pressed="true" title="開關地面網格">
+          <span class="button-icon">#</span><span>網格</span>
+        </button>
+        <button id="wireframe-button" type="button" aria-pressed="false" title="顯示主要稜角與自動對比外輪廓">
+          <span class="button-icon">◇</span><span>輪廓</span>
+        </button>
+        <button id="reset-button" type="button" title="重設觀看角度">
+          <span class="button-icon">⌂</span><span>重設</span>
+        </button>
+        <button id="source-button" type="button" title="向下查看原始參考圖">
+          <span class="button-icon">↓</span><span>原圖</span>
+        </button>
+        <button id="local-button" type="button" title="暫時載入本機模型">
+          <span class="button-icon">＋</span><span>本機預覽</span>
+        </button>
+        <button id="fullscreen-button" type="button" title="全螢幕">
+          <span class="button-icon">⛶</span><span>全螢幕</span>
+        </button>
+      </nav>
+
+      <input id="file-input" type="file" accept=".glb,.obj,.stl,.ply" hidden />
+      <div id="drop-hint" class="drop-hint">放開即可預覽模型</div>
+    </section>
+
+    <section id="source-section" class="source-section" aria-labelledby="source-title">
+      <div class="source-content">
+        <p class="section-kicker">SOURCE IMAGE</p>
+        <h2 id="source-title">原始參考圖</h2>
+        <p id="source-description" class="source-description"></p>
+
+        <figure class="source-figure">
+          <img id="source-image" alt="3D 模型的原始參考圖" loading="lazy" hidden />
+          <div id="source-empty" class="source-empty">
+            <strong>尚未偵測到原始圖片</strong>
+            <p>請確認 works.json 內的 image 路徑。</p>
+          </div>
+          <figcaption id="source-filename">尚未放入原圖</figcaption>
+        </figure>
+
+        <div class="source-actions">
+          <button id="back-to-model-button" class="secondary-button" type="button">↑ 回到 3D 模型</button>
+          <a class="secondary-link" href="../">回到作品列表</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <noscript>這個 3D 檢視器需要啟用 JavaScript。</noscript>
+
+  <script>
+    window.VIEWER_BOOTED = false;
+    window.setTimeout(() => {
+      if (window.VIEWER_BOOTED) return;
+      const status = document.querySelector('#status');
+      const text = document.querySelector('#status-text');
+      if (status && text) {
+        status.dataset.state = 'error';
+        text.textContent = '3D 檢視器程式載入失敗';
+      }
+    }, 7000);
+  </script>
+  <script type="module" src="../shared/viewer.bundle.min.js?v=20260616002458"></script>
+</body>
+</html>

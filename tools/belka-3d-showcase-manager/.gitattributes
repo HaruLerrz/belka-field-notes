@@ -1,0 +1,15 @@
+* text=auto
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.glb binary
+*.wasm binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.avif binary

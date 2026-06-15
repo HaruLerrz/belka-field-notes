@@ -1,0 +1,17 @@
+node_modules/
+manager-config.json
+works.json
+works/*
+!works/PUT_NEW_WORKS_HERE.txt
+logs/*
+!logs/.gitkeep
+upload-patches/*
+!upload-patches/.gitkeep
+_archive/*
+!_archive/.gitkeep
+server-packages/*
+!server-packages/.gitkeep
+*.zip
+*.7z
+.DS_Store
+Thumbs.db

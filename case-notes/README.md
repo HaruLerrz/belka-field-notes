@@ -20,6 +20,10 @@
 
 整理小型工具、AI 輔助原型、實機測試、錯誤修正與文件化流程。
 
+### [Belka 3D Showcase](belka-3d-showcase.md)
+
+整理 3D 展示站、Windows 管理工具、部署流程、載入最佳化、跨平台 ZIP 排查與開源準備。
+
 ## Navigation
 
 * [返回 Selected Works](../profile/works.md)

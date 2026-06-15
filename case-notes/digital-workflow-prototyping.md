@@ -63,6 +63,20 @@
 
 這些修改分別落在 UI、Node.js、prompt、API 與狀態管理層，依照問題實際發生的位置處理。
 
+#### Belka 3D Showcase
+
+說明文件：  
+[Belka 3D Showcase](belka-3d-showcase.md)
+
+公開網站：  
+[3D Model Showcase](https://3d.haruz.art/)
+
+這個案例起於我學習 Modly 時，想把匯出的 3D 模型放到可直接分享的網頁。展示站從一開始就是另外製作，沒有使用 Modly API 或特殊檔案格式；現行版本可處理一般 GLB、OBJ、STL 與 PLY。
+
+網站由首頁、`works.json` 作品清單、共用 3D 檢視器，以及各作品的模型與原圖資料夾組成。訪客點進作品頁後才下載對應模型；旋轉、縮放、材質切換、輪廓與模型資訊都由瀏覽器處理，因此一般靜態網站主機就能部署，不需要 Node.js 背景程序、API 或資料庫。
+
+作品數量增加後，原本的手動發布步驟另外整理成 Belka 3D Showcase Manager。管理工具在下方的 Small Tools and Workflow Helpers 另行說明；完整 Case Note 則保留網站架構、部署、載入調整與錯誤排查的整體脈絡。
+
 #### Prompt Module Development
 
 說明文件：  
@@ -97,6 +111,29 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 * 減少手動另存、重新命名與裁圖的步驟
 
 這類工作單次操作並不困難，但在新聞與影音製作中反覆出現時，容易累積大量機械性時間。程式負責抓取、命名與裁切等固定步驟，剪輯與編輯判斷仍留在原有工作流程中。
+
+#### Belka 3D Showcase Manager
+
+路徑：  
+[`tools/belka-3d-showcase-manager/`](../tools/belka-3d-showcase-manager/)
+
+這個工具承接 Belka 3D Showcase 的本機內容管理與發布流程，將原本需要手動處理的資料夾、作品清單與 ZIP 打包步驟集中到 Windows 圖形化介面。
+
+主要功能包含：
+
+* 新增、更新與重新命名作品
+* 更換模型與原始參考圖
+* 上架、下架、刪除與本機封存
+* 從公開網站同步 `works.json`
+* 產生增量更新 ZIP
+* 產生完整網站部署包
+* 啟動本機預覽
+* 修復舊 ZIP 的 Windows 路徑格式
+
+介面以 PowerShell WinForms 製作，一般使用者透過 CMD 啟動即可。工具同時保留 Viewer 可讀原始碼、固定套件版本與第三方授權文件，方便重建及公開散布。
+
+完整的網站與工具演進請見：  
+[Belka 3D Showcase](belka-3d-showcase.md)
 
 #### MSI Claw RGB Slot GUI
 
@@ -206,7 +243,7 @@ AI 主要用於：
 
 需求定義、功能取捨、實際環境測試、修改方向與後續維護則由我處理。
 
-這些案例涉及 Windows、Firefox Web Console、WSA、ADB、PowerShell、HID 裝置、Node.js、模型 API 與瀏覽器 UI。程式是否符合預期，仍需回到各自的實際環境中驗證。
+這些案例涉及 Windows、Firefox Web Console、WSA、ADB、PowerShell、HID 裝置、Node.js、模型 API、Three.js、靜態網站主機與瀏覽器 UI。程式是否符合預期，仍需回到各自的實際環境中驗證。
 
 測試過程也會進一步形成新的需求，例如：
 
@@ -215,6 +252,9 @@ AI 主要用於：
 * API 操作失敗時，前端是否會錯誤顯示成功。
 * 備份內容能否直接還原，避免只在 console 中留下輸出。
 * 不同使用者對同一功能的偏好是否需要改成可切換選項。
+* JavaScript 依賴檔案缺少時，是否會讓載入狀態與整組控制功能一起失效。
+* Windows 產生的 ZIP 能否在 Linux 主機上正確解壓縮。
+* 本機設定、模型檔案與公開網站內容是否已明確分開。
 
 ## Patterns Across These Cases
 
@@ -232,7 +272,7 @@ AI 主要用於：
 
 ## Keywords
 
-AI-assisted prototyping, vibe coding, digital workflow, workflow automation, rapid prototyping, human-in-the-loop, prompt workflow, UI iteration, state management, documentation
+AI-assisted prototyping, vibe coding, digital workflow, workflow automation, rapid prototyping, human-in-the-loop, prompt workflow, UI iteration, state management, static hosting, Three.js, 3D viewer, documentation
 
 ## Navigation
 

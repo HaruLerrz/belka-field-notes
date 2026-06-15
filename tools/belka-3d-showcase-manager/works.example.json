@@ -1,0 +1,15 @@
+{
+  "site": {
+    "title": "3D Model Showcase",
+    "subtitle": "選擇作品，進入獨立的互動式 3D 展示頁。",
+    "footer": "首頁只載入作品縮圖；進入作品頁後才會下載該模型。",
+    "defaultBackgroundColor": "#0d1017",
+    "defaultClayColor": "#8793a6",
+    "defaultEdgeColor": "#111318",
+    "defaultEdgeThreshold": 32,
+    "defaultOutlineThickness": 0.018,
+    "defaultOutlineOpacity": 0.86,
+    "maxFeatureEdgeTriangles": 1200000
+  },
+  "works": []
+}

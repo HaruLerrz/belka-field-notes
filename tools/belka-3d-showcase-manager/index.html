@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#090b10" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>3D Model Showcase</title>
+  <link rel="icon" href="./shared/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./shared/home.css?v=20260616002458" />
+</head>
+<body>
+  <main class="showcase">
+    <header class="hero">
+      <p class="eyebrow">INTERACTIVE 3D WORKS</p>
+      <h1 id="showcase-title">3D Model Showcase</h1>
+      <p id="showcase-subtitle">載入作品清單中……</p>
+    </header>
+
+    <section class="catalog-toolbar" aria-label="作品排序工具">
+      <p id="works-count" class="works-count" aria-live="polite">載入作品中……</p>
+
+      <label class="sort-control" for="works-sort">
+        <span>作品排序</span>
+        <select id="works-sort" aria-label="選擇作品排序方式">
+          <option value="newest-first">新的在前</option>
+          <option value="oldest-first">舊的在前</option>
+        </select>
+      </label>
+    </section>
+
+    <section id="works-grid" class="works-grid" aria-label="作品列表"></section>
+
+    <footer id="site-footer" class="footer"></footer>
+  </main>
+
+  <script src="./shared/home.js?v=20260616002458"></script>
+</body>
+</html>

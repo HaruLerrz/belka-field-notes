@@ -1,0 +1,13 @@
+{
+  "name": "belka-3d-showcase-manager",
+  "version": "1.0.1",
+  "private": true,
+  "description": "Self-hosted static 3D showcase site with a Windows PowerShell publishing manager.",
+  "scripts": {
+    "build:viewer": "esbuild src/viewer.js --bundle --format=esm --platform=browser --target=es2020 --minify --legal-comments=eof --outfile=shared/viewer.bundle.min.js"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1",
+    "three": "0.184.0"
+  }
+}

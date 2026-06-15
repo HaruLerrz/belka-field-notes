@@ -12,6 +12,10 @@
 
 抓取 YouTube 縮圖、依影片標題命名，並裁切成固定尺寸。這項工具直接源自影音新聞與 YouTube 作品整理流程中的重複操作。
 
+### [Belka 3D Showcase Manager](belka-3d-showcase-manager/)
+
+一套可轉發的靜態 3D 作品站與 Windows 圖形化管理工具，可在本機新增或更新作品、預覽網站，並產生增量更新 ZIP 或完整網站部署包。
+
 ### [MSI Claw RGB Slot GUI](msi-claw-rgb-slot-gui/)
 
 透過 HID payload 控制 MSI Claw A1M 的按鍵與燈環顏色，並整理成 PowerShell GUI、依賴安裝與 preset 流程。
