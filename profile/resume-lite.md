@@ -8,7 +8,7 @@
 
 過去工作內容包含新聞現場拍攝、素材整理、影片剪輯、口白腳本、YouTube 上架與內容包裝；也長期參與粉專經營、社群貼文、迷因內容、公共議題長文與現場短講。
 
-近年另將 AI 工具導入內容流程與個人實作，使用 Whisper、Ultimate Vocal Remover、Stable Diffusion、GPT-SoVITS 與大型語言模型處理轉錄、音源分離、資料整理、腳本輔助、配音測試、prompt workflow，以及小型工具與互動敘事系統的原型開發。
+近年另將 AI 工具導入內容流程與個人實作，使用 Whisper、Ultimate Vocal Remover、Stable Diffusion、Modly、GPT-SoVITS 與大型語言模型處理轉錄、音源分離、資料整理、腳本輔助、配音測試、3D 模型與材質測試、prompt workflow，以及小型工具與互動敘事系統的原型開發。
 
 ## Work Experience
 
@@ -84,6 +84,7 @@
 * Whisper 轉錄與內容整理
 * Ultimate Vocal Remover 音源分離、語音抽取與高噪音現場素材清理
 * Stable Diffusion 圖像生成
+* Modly 3D 模型生成、Hunyuan 材質管線啟用與原生擴充元件編譯
 * GPT-SoVITS 語音與配音測試
 * prompt workflow 與模組化指令
 * AI 輔助程式撰寫、除錯與文件整理
@@ -94,27 +95,50 @@
 
 ### Video / Audio
 
-* Magix Vegas Pro
+#### Video Editing / Stabilization / Subtitling
+
+* MAGIX VEGAS Pro
+* proDAD Mercalli
+* Subtitle Edit
+
+#### Audio / Speech
+
 * Audacity
 * Whisper
 * Ultimate Vocal Remover
 * GPT-SoVITS
 
+#### Streaming / Virtual Production
+
+* Streamlabs Desktop
+* VTube Studio
+
 ### Graphics / Layout
 
-* Clip Studio
-* Affinity Designer 2
+#### Image Editing / Photography
+
 * Affinity Photo 2
+* Luminar Neo
+
+#### Illustration / Design / Publishing
+
+* Clip Studio Paint
+* Affinity Designer 2
 * Affinity Publisher 2
+
+#### Character Rigging / Generative Media / 3D
+
 * Live2D Cubism
 * Stable Diffusion
+* Modly
 
 ### Scripting / Web Prototyping
 
-* Python
-* JavaScript / Node.js
 * HTML / CSS
+* JavaScript / Node.js
+* Python
 * PowerShell scripting
+* Windows CMD / batch scripting
 
 ## Languages
 

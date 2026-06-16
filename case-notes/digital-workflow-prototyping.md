@@ -77,6 +77,25 @@
 
 作品數量增加後，原本的手動發布步驟另外整理成 Belka 3D Showcase Manager。管理工具在下方的 Small Tools and Workflow Helpers 另行說明；完整 Case Note 則保留網站架構、部署、載入調整與錯誤排查的整體脈絡。
 
+#### Enabling Hunyuan Texture Generation in Modly
+
+說明文件：  
+[Enabling Hunyuan Texture Generation in Modly](enabling-hunyuan-texture-generation-in-modly.md)
+
+這個案例起於 Modly 安裝版的 Hunyuan3D Mini 介面沒有提供 Texture 選項，但擴充套件後端已包含 Hunyuan Paint 路徑。
+
+實作與排查包含：
+
+* 在 `manifest.json` 加入 `enable_texture` 參數。
+* 補齊 xatlas、GLB 處理與建置相依項。
+* 在 Windows 編譯 `custom_rasterizer` 與 `mesh_processor`。
+* 處理 Diffusers 自訂 pipeline 權限與 UNet 類別路徑不一致。
+* 保留官方 `.bin` loader，撤回不相容的 safetensors 嘗試。
+* 使用 CPU offload 讓 Hunyuan Paint 在 RTX 2080 8GB 環境完成輸出。
+* 分辨 VAE fallback 與 Turbo timestep 警告，避免把非致命訊息誤判成生成失敗。
+
+目前成果保留為版本特定的 Case Note，沒有重新散布第三方套件與模型權重。
+
 #### Prompt Module Development
 
 說明文件：  

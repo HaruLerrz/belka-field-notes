@@ -3,7 +3,7 @@
 一套可自行架設的靜態 3D 作品展示站，搭配 Windows PowerShell 圖形化發布管理器。  
 管理器可新增、更新、重新命名、上架、下架與刪除作品，並輸出可直接上傳到網站根目錄的增量 ZIP。
 
-目前版本：`v1.0.1`
+目前版本：`v1.0.2`
 
 ## 主要功能
 
@@ -319,10 +319,12 @@ http://localhost:8000/
 
 `materialMode` 可使用：
 
-- `auto`
-- `original`
-- `clay`
-- `normal`
+- `auto`：偵測到貼圖、頂點色或有效材質顏色時顯示原始材質；其他情況顯示灰模。
+- `original`：固定顯示模型原始材質。
+- `clay`：固定顯示灰模。
+- `normal`：固定顯示法線。
+
+管理器介面使用繁體中文顯示上述選項，寫入 `works.json` 時仍保存 `auto`、`original`、`clay`、`normal`，既有作品設定可以直接沿用。
 
 ### OBJ 與外部貼圖限制
 
@@ -417,6 +419,12 @@ shared/viewer.bundle.min.js
 7. 從 GitHub clone 後，絕對不要把 `.git/` 一起上傳到公開網站。
 
 ## 版本紀錄
+
+### v1.0.2
+
+1. 將管理器的預設材質選單改為繁體中文，並保留 `works.json` 原有的 `auto`、`original`、`clay`、`normal` 值。
+2. 補充 `auto` 的判斷方式：有材質時顯示原始材質，其他情況顯示灰模。
+3. 將原始參考圖改為 eager loading，避免圖片保持 `hidden` 時延遲載入，導致 `onload` 無法觸發。
 
 ### v1.0.1
 

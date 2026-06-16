@@ -34,6 +34,24 @@ function Get-IsoTime {
     return Get-Date -Format "yyyy-MM-ddTHH:mm:ssK"
 }
 
+function Get-MaterialModeLabel([string]$Value) {
+    switch ($Value.ToLower()) {
+        "original" { return "原始材質" }
+        "clay" { return "灰模" }
+        "normal" { return "法線" }
+        default { return "自動（有材質顯示原始材質，無材質顯示灰模）" }
+    }
+}
+
+function Get-MaterialModeValue([string]$Label) {
+    switch ($Label) {
+        "原始材質" { return "original" }
+        "灰模" { return "clay" }
+        "法線" { return "normal" }
+        default { return "auto" }
+    }
+}
+
 $script:Root = Split-Path -Parent $PSScriptRoot
 $script:ConfigPath = Join-Path $script:Root "manager-config.json"
 $script:ConfigExamplePath = Join-Path $script:Root "manager-config.example.json"
@@ -419,7 +437,7 @@ function Clear-Editor {
     $txtDescription.Text = ""
     $txtModel.Text = "未選擇（新增作品時必選；更新時留空代表保留）"
     $txtImage.Text = "未選擇（新增作品時必選；更新時留空代表保留）"
-    $comboMaterial.SelectedItem = "auto"
+    $comboMaterial.SelectedItem = Get-MaterialModeLabel "auto"
     $chkPublished.Checked = $true
     $lblCurrentPaths.Text = "目前路徑：—"
     $listWorks.ClearSelected()
@@ -437,7 +455,7 @@ function Load-SelectedWork {
     $txtDescription.Text = [string]$work.description
     $txtModel.Text = "未選擇（保留目前模型）"
     $txtImage.Text = "未選擇（保留目前原圖）"
-    $comboMaterial.SelectedItem = if ($work.materialMode) { [string]$work.materialMode } else { "auto" }
+    $comboMaterial.SelectedItem = Get-MaterialModeLabel $(if ($work.materialMode) { [string]$work.materialMode } else { "auto" })
     $chkPublished.Checked = $work.published -ne $false
 
     $modelPath = if ($work.model) { $work.model } elseif ($work.legacyBase) { "$($work.legacyBase)/models/model.*" } else { "—" }
@@ -485,7 +503,7 @@ function Save-NewOrUpdate {
             Set-Property $existing "legacyBase" ""
         }
 
-        Set-Property $existing "materialMode" ([string]$comboMaterial.SelectedItem)
+        Set-Property $existing "materialMode" (Get-MaterialModeValue ([string]$comboMaterial.SelectedItem))
         Set-Property $existing "published" $chkPublished.Checked
         Set-Property $existing "updatedAt" (Get-IsoTime)
         if (-not ($existing.PSObject.Properties.Name -contains "accentColor")) {
@@ -501,7 +519,7 @@ function Save-NewOrUpdate {
             legacyBase = ""
             model = $assets.Model
             image = $assets.Image
-            materialMode = [string]$comboMaterial.SelectedItem
+            materialMode = Get-MaterialModeValue ([string]$comboMaterial.SelectedItem)
             accentColor = "#9d78ff"
             published = $chkPublished.Checked
             updatedAt = (Get-IsoTime)
@@ -552,7 +570,7 @@ function Rename-SelectedWork {
     Set-Property $oldWork "legacyBase" ""
     Set-Property $oldWork "model" $assets.Model
     Set-Property $oldWork "image" $assets.Image
-    Set-Property $oldWork "materialMode" ([string]$comboMaterial.SelectedItem)
+    Set-Property $oldWork "materialMode" (Get-MaterialModeValue ([string]$comboMaterial.SelectedItem))
     Set-Property $oldWork "published" $chkPublished.Checked
     Set-Property $oldWork "updatedAt" (Get-IsoTime)
 
@@ -812,15 +830,16 @@ $panel.Controls.Add($btnImage)
 Add-Label "預設材質" 18 275 | Out-Null
 $comboMaterial = New-Object System.Windows.Forms.ComboBox
 $comboMaterial.Location = New-Object System.Drawing.Point(140, 272)
-$comboMaterial.Size = New-Object System.Drawing.Size(155, 28)
+$comboMaterial.Size = New-Object System.Drawing.Size(325, 28)
 $comboMaterial.DropDownStyle = "DropDownList"
-[void]$comboMaterial.Items.AddRange(@("auto", "original", "clay", "normal"))
-$comboMaterial.SelectedItem = "auto"
+$comboMaterial.DropDownWidth = 360
+[void]$comboMaterial.Items.AddRange(@("自動（有材質顯示原始材質，無材質顯示灰模）", "原始材質", "灰模", "法線"))
+$comboMaterial.SelectedItem = Get-MaterialModeLabel "auto"
 $panel.Controls.Add($comboMaterial)
 
 $chkPublished = New-Object System.Windows.Forms.CheckBox
 $chkPublished.Text = "在首頁顯示"
-$chkPublished.Location = New-Object System.Drawing.Point(310, 273)
+$chkPublished.Location = New-Object System.Drawing.Point(480, 273)
 $chkPublished.Size = New-Object System.Drawing.Size(120, 28)
 $chkPublished.Checked = $true
 $panel.Controls.Add($chkPublished)
