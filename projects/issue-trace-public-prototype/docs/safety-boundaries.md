@@ -1,15 +1,19 @@
 # Safety Boundaries
 
-本頁說明 Issue Trace 在公開投稿、來源搜尋、AI 查證草稿與發布判斷之間設定的產品邊界。重點放在「哪些資料可以進入下一階段」與「哪些結果需要人工檢查」，不展開正式站的維運設定。
+本頁說明 Issue Trace 在公開投稿、query planning、來源整理、AI 查證草稿與發布判斷之間設定的產品邊界。重點放在「哪些資料可以進入下一階段」與「哪些結果需要人工檢查」，不展開正式站的維運設定。
 
 ## Boundary Layers
 
 ```text
 公開投稿
         ↓
-來源整理
+AI query planning
         ↓
-AI 查證草稿
+來源整理與 source map
+        ↓
+AI final writer
+        ↓
+文章整理
         ↓
 來源驗證
         ↓
@@ -18,7 +22,7 @@ AI 查證草稿
 人工審核
 ```
 
-每一層都有自己的任務。公開投稿負責收件，來源整理負責建立可追蹤材料，AI 負責生成草稿，來源驗證負責確認引用能否回到已知來源，發布判斷負責決定是否公開。
+每一層都有自己的任務。公開投稿負責收件，query planning 負責把口語問題轉成搜尋線索，來源整理負責建立可追蹤材料，final writer 負責產生草稿，文章整理負責輸出 Markdown 與來源區塊，來源驗證負責確認引用能否回到已知來源，發布判斷負責決定是否公開。
 
 ## Public Input Boundary
 
@@ -27,6 +31,12 @@ AI 查證草稿
 使用者輸入的標題、說法、補充說明與參考連結，會成為系統開始搜尋與整理的線索。這些內容不直接形成查證結論，也不直接取得可信來源地位。
 
 這層邊界的目的，是避免單一投稿者用強烈語氣、錯誤描述或偏誤材料決定最後文章方向。
+
+## Query Planning Boundary
+
+query planner 的任務是整理待查問題與產生搜尋 query。
+
+它可以把口語化 request 轉成較適合搜尋的問題組合，也可以在規劃失敗時退回 request 原文作為 fallback。它不負責產生結論，也不負責判定真偽。
 
 ## Source Boundary
 
@@ -41,11 +51,17 @@ AI 查證草稿
 
 ## AI Draft Boundary
 
-AI 輸出定位為查證草稿。
+AI final writer 輸出定位為查證草稿。
 
-草稿需要接受來源驗證與發布判斷。若草稿看起來完整，但引用來源不足、來源代號錯誤、來源彼此衝突，系統仍應保留人工檢查狀態。
+草稿需要接受文章整理、來源驗證與發布判斷。若草稿看起來完整，但引用來源不足、來源代號錯誤、來源彼此衝突，系統仍應保留人工檢查狀態。
 
 這層邊界讓 AI 可以協助整理與表述，同時避免把模型輸出直接當成查證結果。
+
+## Article Boundary
+
+Article builder 負責將 AI 草稿、metadata、source references、原始 request 與來源表整理成公開頁面可用的 Markdown 結構。
+
+這個步驟讓文章呈現由系統控制，避免公開頁面完全依賴 AI 自行輸出的來源段落或格式。
 
 ## Publication Boundary
 
@@ -85,7 +101,7 @@ AI 輸出定位為查證草稿。
 
 ## Relation to Source Workflow
 
-[Source Workflow](source-workflow.md) 說明來源如何被收集、整理、正規化與驗證。  
+[Source Workflow](source-workflow.md) 說明來源如何被收集、整理、正規化、建立 source map、送入 final writer，並在輸出後接受驗證。  
 本頁說明每一階段的進出條件，以及哪些情況會讓結果停在草稿或人工檢查。
 
 ## Navigation

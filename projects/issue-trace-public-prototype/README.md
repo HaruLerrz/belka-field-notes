@@ -33,12 +33,13 @@
 ## What This Prototype Shows
 
 1. 將公共議題查證拆成可追蹤的 request-driven 投稿流程。
-2. 分離公開投稿、AI 查證草稿、來源搜尋、來源驗證與發布判斷。
+2. 將 AI 拆成 query planner 與 final writer 兩個角色，先整理搜尋問題，再依受控來源集合產生查證草稿。
 3. 結合使用者提供的 URL 與外部來源搜尋。
 4. 建立 source map，讓 AI 產出的引用能回到已知來源。
-5. 在來源不足、來源無法驗證或引用無法對應時，避免自動發布看似完整的文章。
-6. 修正搜尋服務 key pool 誤判：成功回應中出現一般網頁文字 `token` 時，不應把可用 key 標記為失效。
-7. 在共享主機環境下規劃可部署的 Node.js 原型，並分離程式、持久資料、上傳檔案與環境設定。
+5. 將 AI 草稿整理成 Markdown、metadata 與 source references，再交由系統進行來源驗證與發布判斷。
+6. 在來源不足、來源無法驗證或引用無法對應時，避免自動發布看似完整的文章。
+7. 修正搜尋服務 key pool 誤判：成功回應中出現一般網頁文字 `token` 時，不應把可用 key 標記為失效。
+8. 在共享主機環境下規劃可部署的 Node.js 原型，並分離程式、持久資料、上傳檔案與環境設定。
 
 ## Public Scope
 
@@ -49,23 +50,21 @@
 ## System Flow
 
 ```text
-公開投稿
+公開投稿／輸入待查說法
         ↓
-投稿檢查與 rate control
+AI query planner：整理口語問題，產生搜尋 query
         ↓
-投稿 URL 正規化
+投稿 URL 正規化與外部搜尋
         ↓
-外部搜尋服務來源搜尋
+來源去重、清理與 source map 建立
         ↓
-建立 source map
+AI final writer：依受控來源集合產生查證草稿
         ↓
-AI 查證草稿
+Article builder：整理 Markdown、metadata 與 source references
         ↓
-來源驗證
+來源驗證與發布判斷
         ↓
-發布／草稿／需要人工檢查
-        ↓
-後台審核與選擇性發布
+公開文章／草稿／需要人工檢查
 ```
 
 ## Docs
@@ -98,8 +97,11 @@ AI 查證草稿
 公開版聚焦於幾個可展示的工程面向：
 
 * 投稿狀態
+* query planning
 * 來源搜尋
 * source map
+* AI 查證草稿
+* Markdown 文章整理
 * 來源驗證
 * 發布判斷
 * 後台審核

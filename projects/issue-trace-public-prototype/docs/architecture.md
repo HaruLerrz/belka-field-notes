@@ -1,6 +1,6 @@
 # Architecture
 
-議題溯源追蹤器公開原型是一套 request-driven 的公共議題查證系統。它將一則待查說法拆成投稿、來源蒐集、AI 草稿、來源驗證與人工審核流程。
+議題溯源追蹤器公開原型是一套 request-driven 的公共議題查證系統。它將一則待查說法拆成投稿、query planning、來源蒐集、source map、AI 草稿、文章整理、來源驗證與人工審核流程。
 
 ## Component Responsibilities
 
@@ -11,14 +11,26 @@
 Request store
   保存投稿狀態、可見性與佇列狀態。
 
+AI query planner
+  將使用者的口語 request 整理成可搜尋 query，必要時保留原文作為 fallback。
+
+投稿 URL 正規化
+  清理使用者提供的 URL，保留可用來源線索。
+
 來源搜尋
-  正規化投稿 URL，並搜尋相關公開來源。
+  依 query 與投稿 URL 搜尋相關公開來源。
+
+來源正規化
+  清理追蹤參數、UI 雜訊、重複來源與低資訊內容。
 
 Source map
-  對來源去重，並分配穩定來源 ID。
+  對來源去重，分配穩定來源 ID，保存完整 URL 與來源 metadata。
 
-AI 查證草稿
-  接收受限的來源集合，產生結構化分析草稿。
+AI final writer
+  接收受控來源集合，產生結構化查證草稿。
+
+Article builder
+  將查證草稿整理成 Markdown、metadata、source references 與公開頁面可用內容。
 
 來源驗證
   檢查草稿引用的來源是否能回到投稿或搜尋取得的來源。
@@ -27,7 +39,25 @@ AI 查證草稿
   依來源數量、驗證狀態、verdict 與 review flags 決定輸出狀態。
 
 後台審核
-  讓人工檢查草稿、log、來源與發布狀態。
+  讓人工檢查草稿、log、來源、發布狀態與必要的重新調查。
+```
+
+## Pipeline View
+
+```text
+request
+        ↓
+query planning / claim normalization
+        ↓
+source discovery
+        ↓
+source normalization / source map
+        ↓
+final AI draft
+        ↓
+Markdown / metadata / source references
+        ↓
+source validation / publication decision
 ```
 
 ## State Flow
@@ -36,6 +66,8 @@ AI 查證草稿
 received
         ↓
 queued
+        ↓
+planning
         ↓
 researching
         ↓
@@ -51,16 +83,24 @@ published / needs_review / insufficient_sources
 | 資料 | 負責層 |
 |---|---|
 | 使用者投稿的待查說法 | Request record |
+| 搜尋 query | Query planner |
 | 投稿 URL | Request record 與 source map |
 | 搜尋結果 | Source discovery layer |
+| Source map | Source normalization layer |
 | AI 草稿 | Research layer |
+| Markdown 文章與 metadata | Article builder |
 | 已驗證來源 | Source validation layer |
 | 發布狀態 | Publication decision layer |
 | 人工修改 | Admin review layer |
 
 ## AI Boundary
 
-AI 步驟只負責草稿與綜整，不被當成事實來源。系統仍需要 source map、驗證規則與發布門檻，避免草稿在來源不足時直接變成公開內容。
+AI 在這個原型裡分成兩個角色：
+
+* query planner：整理口語 request，產生搜尋 query。
+* final writer：依受控來源集合產生查證草稿。
+
+這兩個角色都不被當成事實來源。系統仍需要 source map、驗證規則、文章整理與發布門檻，避免草稿在來源不足時直接變成公開內容。
 
 ## Shared-hosting Constraints
 
