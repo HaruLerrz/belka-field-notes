@@ -63,6 +63,28 @@
 
 這些修改分別落在 UI、Node.js、prompt、API 與狀態管理層，依照問題實際發生的位置處理。
 
+#### Issue Trace Public Prototype
+
+說明文件：  
+[Issue Trace Public Prototype](../projects/issue-trace-public-prototype/)
+
+公開網站：  
+[如果有這種議題追蹤器就好了](https://myth.haruz.art/)
+
+這個專案整理公共議題查證與來源追蹤流程的 Web 原型，將 request-driven 投稿、來源搜尋、source map、AI 查證草稿、來源驗證、發布判斷與後台審核拆成可維護的模組。
+
+實作重點包含：
+
+* request-driven 投稿與狀態流轉。
+* 外部預搜尋與多組 query 合併。
+* 投稿 URL、系統搜尋來源與 AI 回傳來源的 source map。
+* 來源數量、來源有效性與 verdict 的發布判斷。
+* 搜尋服務 key pool 誤判修正，避免成功內容中的 `token` 字樣燒掉 key。
+* 後台審核、重新調查、解除冷卻與 request 控制。
+* DirectAdmin Node.js App 環境下的部署與保留資料夾規劃。
+
+公開版本只保留架構文件、範例資料與安全化程式片段，不包含正式站 production code、資料庫、密鑰、完整後台路由或完整 prompt。
+
 #### Belka 3D Showcase
 
 說明文件：  

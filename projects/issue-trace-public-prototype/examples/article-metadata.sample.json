@@ -1,0 +1,13 @@
+{
+  "slug": "example-issue-trace",
+  "title": "範例公共議題查證草稿",
+  "verdict": "needs_review",
+  "source_count": 2,
+  "valid_source_count": 2,
+  "publish_decision": "draft",
+  "reason": "來源數低於自動發布門檻，保留後台人工檢查。",
+  "source_ids": [
+    "S01",
+    "S02"
+  ]
+}

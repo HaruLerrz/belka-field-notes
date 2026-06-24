@@ -17,7 +17,7 @@
 
 * 影音新聞與內容製作流程
 * 社群經營與公共議題整理
-* 網站、遊戲與互動敘事專案
+* 網站、AI 系統與互動敘事專案
 * prompt 設計與結構化寫作模組
 * 小型工具、workflow scripts 與 AI 輔助原型
 * 其他問題拆解、流程整理與文件化紀錄
@@ -33,8 +33,8 @@
 * [Case Notes](case-notes/)  
   依問題、流程與結果整理的工作案例，涵蓋影音、社群、公共議題、網站建置與數位原型。
 
-* [Game / Interactive Narrative Projects](projects/)  
-  集中整理兩個長期維護的 AI 互動敘事網站，記錄系統架構、專案分工、版本演進與使用者回饋；其他網站作品列於 Selected Works。
+* [Web / AI System Projects](projects/)  
+  整理 AI 互動敘事網站、公共議題查證原型、Node.js 後端、prompt packaging、來源流程、狀態管理與部署紀錄。
 
 * [Prompting / Structured Writing](prompting/)  
   工作型 prompt、語氣辨識、AI 歌曲創作工作流、模組化指令與結構化寫作流程。
@@ -50,4 +50,4 @@
 
 ## Keywords
 
-media workflow, civic documentation, social analysis, web projects, interactive narrative, 3D viewer, static hosting, prompt design, AI-assisted prototyping, state management, UI iteration, workflow automation, Node.js, Python utilities, tool-assisted workflow
+media workflow, civic documentation, social analysis, web projects, AI system prototypes, issue tracing, source verification, interactive narrative, 3D viewer, static hosting, prompt design, AI-assisted prototyping, state management, UI iteration, workflow automation, Node.js, Python utilities, tool-assisted workflow

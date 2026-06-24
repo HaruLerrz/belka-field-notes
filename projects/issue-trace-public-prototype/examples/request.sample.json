@@ -1,0 +1,12 @@
+{
+  "id": "REQ-EXAMPLE-001",
+  "title": "範例：某項公共說法是否有來源",
+  "claim": "社群貼文宣稱某政策已經造成特定結果。",
+  "description": "需要確認原始說法、官方資料與可靠新聞是否支持該敘述。",
+  "submitted_urls": [
+    "https://example.org/news/original-report",
+    "https://example.gov.tw/official/document"
+  ],
+  "visibility": "public_summary",
+  "status": "queued"
+}

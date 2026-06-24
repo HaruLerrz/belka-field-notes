@@ -1,0 +1,27 @@
+{
+  "request_id": "REQ-EXAMPLE-001",
+  "sources": [
+    {
+      "source_id": "S01",
+      "origin": "submitted_url",
+      "title": "範例官方資料",
+      "url": "https://example.gov.tw/official/document",
+      "publisher": "example.gov.tw",
+      "source_type": "official",
+      "published_at": "2026-06-01",
+      "reliability": 4,
+      "note": "投稿者提供的官方文件。"
+    },
+    {
+      "source_id": "S02",
+      "origin": "discovery",
+      "title": "範例新聞報導",
+      "url": "https://example.org/news/original-report",
+      "publisher": "example.org",
+      "source_type": "news",
+      "published_at": "2026-06-02",
+      "reliability": 3,
+      "note": "系統搜尋取得的相關報導。"
+    }
+  ]
+}
