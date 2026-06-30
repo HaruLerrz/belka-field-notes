@@ -133,6 +133,17 @@
 
 完整案例：[Belka 3D Showcase](../case-notes/belka-3d-showcase.md)
 
+## Open Source Contributions
+
+### [Legacy Notepad Traditional Chinese UI and Word Wrap Persistence](../case-notes/legacy-notepad-upstream-pr.md)
+
+首次向既有開源專案提交 pull request。這次貢獻針對 C++ / Win32 輕量文字編輯器，新增正體中文介面支援，並讓自動換行設定能在重新啟動後保留。
+
+工作內容包含 fork upstream repo、建立 feature branch、閱讀既有語言與設定模組、補上 zh-TW 第三語言、調整對話框版面與本地化字串、修正 Redo 指令行為，並以 GitHub Desktop / Git / Visual Studio Build Tools 完成編譯測試與 PR 發布。
+
+PR：[forloopcodes/legacy-notepad#33](https://github.com/forloopcodes/legacy-notepad/pull/33)  
+狀態：PR opened，等待 upstream review。
+
 ## Prompting / Structured Writing
 
 * [Prompting / Structured Writing](../prompting/README.md)  

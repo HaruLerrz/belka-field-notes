@@ -1,6 +1,6 @@
 # Case Notes
 
-這裡依問題、工作流程與實際結果，整理影音製作、社群經營、公共議題、網站建置與數位工具原型等案例。
+這裡依問題、工作流程與實際結果，整理影音製作、社群經營、公共議題、網站建置、開源貢獻與數位工具原型等案例。
 
 ## Case Index
 
@@ -19,6 +19,10 @@
 ### [Digital Workflow Prototyping](digital-workflow-prototyping.md)
 
 整理小型工具、AI 輔助原型、實機測試、錯誤修正與文件化流程。
+
+### [Legacy Notepad Upstream PR](legacy-notepad-upstream-pr.md)
+
+整理從 Windows Notepad 使用痛點出發，fork 既有 C++ / Win32 開源專案、補上正體中文介面、自動換行保存、編譯測試並提交 upstream PR 的流程。
 
 ### [Belka 3D Showcase](belka-3d-showcase.md)
 
