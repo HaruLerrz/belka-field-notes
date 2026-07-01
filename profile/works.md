@@ -188,6 +188,9 @@ PR：[forloopcodes/legacy-notepad#33](https://github.com/forloopcodes/legacy-not
 * [Gmail 隱藏回報垃圾郵件按鈕](../tools/gmail-hide-report-spam-button/)  
   透過 userscript 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低郵件整理過程中的誤觸。
 
+* [ChatGPT Codex Promo Hider](../tools/chatgpt-codex-promo-hider/)  
+  透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的 Codex 提示卡，並保留安全容器排除、完整外框選取、MutationObserver 與緊急停用流程。
+
 ## Navigation
 
 * [返回根 README](../README.md)

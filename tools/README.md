@@ -36,6 +36,10 @@
 
 透過 userscript 與 CSS 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低整理郵件時誤觸的機會。
 
+### [ChatGPT Codex Promo Hider](chatgpt-codex-promo-hider/)
+
+透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的 Codex 提示卡，並保留安全容器排除、完整外框選取、MutationObserver 與緊急停用流程。
+
 ## Navigation
 
 * [返回 Selected Works](../profile/works.md)
