@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         ChatGPT Hide Codex Promo Card SAFE
+// @name         ChatGPT Hide Promo Cards SAFE
 // @namespace    https://haruz.art/
-// @version      0.3.0
-// @description  Hide the full "認識 Codex" promo card in ChatGPT web UI.
+// @version      0.5.1
+// @description  Hide Codex and Pro promo cards in ChatGPT web UI.
 // @match        https://chatgpt.com/*
 // @match        https://chat.openai.com/*
 // @run-at       document-idle
@@ -12,7 +12,7 @@
 (() => {
   'use strict';
 
-  const DISABLE_KEY = 'haruz_codex_promo_hider_disabled';
+  const DISABLE_KEY = 'belka_chatgpt_promo_hider_disabled';
 
   // 緊急停止：Ctrl + Alt + C
   window.addEventListener('keydown', (e) => {
@@ -24,16 +24,77 @@
 
   if (localStorage.getItem(DISABLE_KEY) === '1') return;
 
-  const TITLE = '認識 Codex';
-
-  const EXTRA_KEYWORDS = [
-    'Codex 幫你找出問題',
-    '下載應用程式',
-    '深入瞭解'
+  const PROMOS = [
+    {
+      name: 'codex',
+      anchors: [
+        '認識 Codex',
+        '重要工作，試試 Codex',
+        '重要工作，試用 Codex',
+        '試試 Codex',
+        '試用 Codex',
+        'Codex'
+      ],
+      requiredAny: [
+        'Codex'
+      ],
+      supporting: [
+        'Codex 幫你找出問題',
+        'Codex 能將一次性任務',
+        '工作流程',
+        '精修過的輸出',
+        '幫助你推進真正的工作',
+        '已包含在你的方案中',
+        '下載應用程式',
+        '深入瞭解',
+        '試用 Codex'
+      ],
+      minSupportingHits: 1
+    },
+    {
+      name: 'pro',
+      anchors: [
+        '提升複雜程式碼編寫的準確性',
+        '取得 Pro',
+        '升級您的方案'
+      ],
+      requiredAny: [
+        '提升複雜程式碼編寫的準確性',
+        '取得 Pro',
+        '升級您的方案'
+      ],
+      supporting: [
+        '使用最先進的 Pro 推理模型',
+        '更深入的驗證',
+        '偵錯複雜系統',
+        '升級您的方案',
+        '取得 Pro'
+      ],
+      minSupportingHits: 1
+    }
   ];
 
   function getText(el) {
     return (el?.innerText || el?.textContent || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function hasAny(text, keywords) {
+    return keywords.some((keyword) => text.includes(keyword));
+  }
+
+  function countHits(text, keywords) {
+    return keywords.filter((keyword) => text.includes(keyword)).length;
+  }
+
+  function matchesAnyPromoText(text) {
+    return PROMOS.some((promo) => {
+      if (!hasAny(text, promo.requiredAny)) return false;
+      return countHits(text, promo.supporting) >= promo.minSupportingHits;
+    });
+  }
+
+  function textNodeLooksRelevant(text) {
+    return PROMOS.some((promo) => hasAny(text, promo.anchors));
   }
 
   function isDangerousElement(el) {
@@ -57,6 +118,7 @@
       return true;
     }
 
+    // 避免誤砍輸入區、整個 composer、或包含可編輯區的大外框
     if (
       el.querySelector('textarea') ||
       el.querySelector('[contenteditable="true"]') ||
@@ -72,16 +134,17 @@
     if (isDangerousElement(el)) return false;
 
     const text = getText(el);
-    if (!text.includes(TITLE)) return false;
-
-    const hitCount = EXTRA_KEYWORDS.filter((k) => text.includes(k)).length;
-    if (hitCount < 2) return false;
+    if (!matchesAnyPromoText(text)) return false;
 
     const rect = el.getBoundingClientRect();
 
-    // 放寬高度，讓它能抓到完整外框；仍避開整個對話區
-    if (rect.width < 280 || rect.width > 1000) return false;
-    if (rect.height < 50 || rect.height > 260) return false;
+    // 這裡排除你剛剛抓到的 1536px 主容器
+    // 也排除過小的單一文字節點外框
+    if (rect.width < 300 || rect.width > 1150) return false;
+    if (rect.height < 45 || rect.height > 260) return false;
+
+    // 防止吃到整頁或一大段對話
+    if (text.length < 8 || text.length > 520) return false;
 
     return true;
   }
@@ -90,7 +153,7 @@
     let el = textNode.parentElement;
     const candidates = [];
 
-    for (let depth = 0; el && depth < 12; depth += 1, el = el.parentElement) {
+    for (let depth = 0; el && depth < 16; depth += 1, el = el.parentElement) {
       if (looksLikePromoCard(el)) {
         candidates.push(el);
       }
@@ -98,7 +161,7 @@
 
     if (candidates.length === 0) return false;
 
-    // 這次選最大的安全候選，避免只藏內容層、留下白色外框
+    // 選最大的安全候選，避免只藏內容層、留下白色外框
     candidates.sort((a, b) => {
       const ar = a.getBoundingClientRect();
       const br = b.getBoundingClientRect();
@@ -107,7 +170,7 @@
 
     const card = candidates[0];
 
-    card.setAttribute('data-haruz-hidden-codex-promo', 'true');
+    card.setAttribute('data-belka-hidden-chatgpt-promo', 'true');
     card.style.setProperty('display', 'none', 'important');
     card.style.setProperty('visibility', 'hidden', 'important');
     card.style.setProperty('height', '0', 'important');
@@ -119,7 +182,7 @@
     return true;
   }
 
-  function hideCodexPromo() {
+  function hidePromos() {
     if (!document.body) return;
 
     const walker = document.createTreeWalker(
@@ -127,7 +190,8 @@
       NodeFilter.SHOW_TEXT,
       {
         acceptNode(node) {
-          return node.nodeValue && node.nodeValue.includes(TITLE)
+          const value = node.nodeValue || '';
+          return textNodeLooksRelevant(value)
             ? NodeFilter.FILTER_ACCEPT
             : NodeFilter.FILTER_REJECT;
         }
@@ -137,7 +201,7 @@
     let node;
     let hiddenCount = 0;
 
-    while ((node = walker.nextNode()) && hiddenCount < 5) {
+    while ((node = walker.nextNode()) && hiddenCount < 10) {
       if (hideCardFromTextNode(node)) {
         hiddenCount += 1;
       }
@@ -153,18 +217,19 @@
 
     requestAnimationFrame(() => {
       scheduled = false;
-      hideCodexPromo();
+      hidePromos();
     });
   }
 
-  hideCodexPromo();
+  hidePromos();
 
   const observer = new MutationObserver(scheduleHide);
 
   observer.observe(document.body, {
     childList: true,
-    subtree: true
+    subtree: true,
+    characterData: true
   });
 
-  setInterval(hideCodexPromo, 1500);
+  setInterval(hidePromos, 1200);
 })();
