@@ -189,7 +189,7 @@ PR：[forloopcodes/legacy-notepad#33](https://github.com/forloopcodes/legacy-not
   透過 userscript 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低郵件整理過程中的誤觸。
 
 * [ChatGPT Promo Cards Hider](../tools/chatgpt-codex-promo-hider/)  
-  透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的 Codex 與 Pro 推廣提示卡，並以分組文字線索、容器尺寸與安全排除條件降低誤藏主要介面的風險。
+  透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的 Codex、Pro 與外掛程式資訊提示卡，並將反覆變動的介面文案整理成可擴充的分組規則，搭配容器尺寸與安全排除條件降低誤藏主要介面的風險。
 
 ## Navigation
 

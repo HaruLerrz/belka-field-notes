@@ -38,7 +38,7 @@
 
 ### [ChatGPT Promo Cards Hider](chatgpt-codex-promo-hider/)
 
-透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的 Codex 與 Pro 推廣提示卡，並以文字線索、容器尺寸、安全排除、MutationObserver 與緊急停用機制降低誤藏風險。
+透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的 Codex、Pro 與外掛程式資訊提示卡，並以分組文字線索、容器尺寸、安全排除、MutationObserver 與緊急停用機制降低誤藏風險。
 
 ## Navigation
 

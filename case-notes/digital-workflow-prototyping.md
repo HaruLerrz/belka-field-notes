@@ -269,6 +269,24 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 這個案例的程式規模很小，但呈現了從日常操作問題出發，選擇符合需求規模的實作方式，而不必為單一介面調整建立完整瀏覽器擴充套件。
 
+#### ChatGPT Promo Cards Hider
+
+路徑：  
+[`tools/chatgpt-codex-promo-hider/`](../tools/chatgpt-codex-promo-hider/)
+
+這個 userscript 用來隱藏 ChatGPT 回覆後動態插入的 Codex、Pro 與外掛程式資訊提示卡。
+
+開發過程包含：
+
+* 初版依提示卡文字往上尋找容器，曾選到過大的上層元素並造成整頁空白。
+* 加入 `html`、`body`、`main`、輸入區與 contenteditable 等危險容器排除。
+* 改為選取最大的安全候選，解決只隱藏內層內容後留下空白外框的問題。
+* 將 Codex、Pro 與外掛程式資訊卡整理成獨立 `PROMOS` 規則，每組分別設定 anchors、必要文字、輔助文字與最低命中數。
+* 使用容器尺寸與文字長度限制，排除整頁結構及過小的單一文字節點。
+* 加入 `MutationObserver`、interval fallback、緊急停用快捷鍵與 console 驗證標記。
+
+這個案例顯示介面自動化需要持續確認實際 DOM 邊界。提示卡文案改變時，只更新對應規則即可保留原有的安全檢查與隱藏流程。
+
 ---
 
 ## AI Use and Manual Validation

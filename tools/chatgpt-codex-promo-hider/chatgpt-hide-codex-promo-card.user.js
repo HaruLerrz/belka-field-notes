@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         ChatGPT Hide Promo Cards SAFE
 // @namespace    https://haruz.art/
-// @version      0.5.1
-// @description  Hide Codex and Pro promo cards in ChatGPT web UI.
+// @version      0.5.2
+// @description  Hide Codex, Pro, and plugin information promo cards in ChatGPT web UI.
 // @match        https://chatgpt.com/*
 // @match        https://chat.openai.com/*
 // @run-at       document-idle
@@ -71,6 +71,25 @@
         '取得 Pro'
       ],
       minSupportingHits: 1
+    },
+    {
+      name: 'plugins-info',
+      anchors: [
+        '外掛程式提供更有幫助的結果',
+        '你可以選擇 ChatGPT 何時要徵求使用外掛程式的權限'
+      ],
+      requiredAny: [
+        '外掛程式提供更有幫助的結果'
+      ],
+      supporting: [
+        '使用外掛程式時，ChatGPT 現在可以提供你對話和記憶中的相關詳細資訊',
+        '協助處理你的要求',
+        '你可以選擇 ChatGPT 何時要徵求使用外掛程式的權限',
+        '了解更多',
+        '知道了',
+        '管理'
+      ],
+      minSupportingHits: 2
     }
   ];
 
