@@ -30,7 +30,7 @@
 
 ### [Enabling Hunyuan Texture Generation in Modly](enabling-hunyuan-texture-generation-in-modly.md)
 
-整理 Hunyuan3D Mini 介面未提供的 Texture 流程、相依套件、Windows 原生元件編譯、Diffusers 相容性、8GB VRAM offload 與成功輸出紀錄。
+整理 Hunyuan3D Mini 介面未提供的 Texture 流程、相依套件、Windows 原生元件編譯、Diffusers 相容性、8GB VRAM offload、runtime 匯入路徑驗證與成功輸出紀錄。
 
 ## Navigation
 

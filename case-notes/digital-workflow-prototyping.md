@@ -111,6 +111,8 @@
 * 在 `manifest.json` 加入 `enable_texture` 參數。
 * 補齊 xatlas、GLB 處理與建置相依項。
 * 在 Windows 編譯 `custom_rasterizer` 與 `mesh_processor`。
+* 以 `module.__file__` 檢查 runtime 匯入路徑，發現套件內相對匯入仍選到慢速 `mesh_processor.py` fallback。
+* 將編譯後的 `mesh_processor` `.pyd` 放進實際 package 目錄，使貼圖補洞階段改用 C++ extension 並大幅縮短處理時間。
 * 處理 Diffusers 自訂 pipeline 權限與 UNet 類別路徑不一致。
 * 保留官方 `.bin` loader，撤回不相容的 safetensors 嘗試。
 * 使用 CPU offload 讓 Hunyuan Paint 在 RTX 2080 8GB 環境完成輸出。

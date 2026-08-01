@@ -169,6 +169,52 @@ self.pipeline = pipeline
 
 這會增加模型元件在系統記憶體與 GPU 之間搬移的時間，也可能產生很長的無文字進度區間；本次實測最後仍成功完成材質生成。
 
+## Step 8: Verify the Compiled Mesh Processor Is Actually Loaded
+
+`mesh_processor` 成功編譯與安裝後，Hunyuan Paint 的貼圖補洞階段仍然異常緩慢。檢查編譯成果可找到：
+
+```text
+C:\Modly\extensions\hunyuan3d-mini\venv\Lib\site-packages\
+mesh_processor.cp311-win_amd64.pyd
+```
+
+但從 Hunyuan 套件路徑匯入後，`module.__file__` 實際指向：
+
+```text
+...\hy3dgen\texgen\differentiable_renderer\mesh_processor.py
+```
+
+`differentiable_renderer` 使用套件內的相對匯入，因此同資料夾的 Python／NumPy fallback 先被選中；放在 venv `site-packages` 的編譯模組沒有投入實際流程。這也說明編譯成功、`pip install` 成功與 runtime 真正使用編譯成果是三件需要分別驗證的事情。
+
+先確認安裝於 `site-packages` 的 `.pyd` 可以正常載入，並具有 Hunyuan 需要的函式：
+
+```cmd
+"C:\Modly\extensions\hunyuan3d-mini\venv\Scripts\python.exe" -c "import mesh_processor; print(mesh_processor.__file__); print('meshVerticeInpaint:', hasattr(mesh_processor, 'meshVerticeInpaint'))"
+```
+
+接著將編譯後的 extension module 複製到實際 package 目錄：
+
+```cmd
+copy /y "C:\Modly\extensions\hunyuan3d-mini\venv\Lib\site-packages\mesh_processor.cp311-win_amd64.pyd" "C:\Modly\models\hunyuan3d-mini\generate\_hy3dgen\hy3dgen\texgen\differentiable_renderer\mesh_processor.cp311-win_amd64.pyd"
+```
+
+原有的 `mesh_processor.py` 可以保留。相容的 extension module 與 Python 檔案同名並位於同一 package 目錄時，Python 會選用 `.pyd`；`.py` 則繼續作為 fallback。
+
+最後從 Hunyuan 的完整 package path 驗證：
+
+```cmd
+"C:\Modly\extensions\hunyuan3d-mini\venv\Scripts\python.exe" -c "import sys; sys.path.insert(0,r'C:\Modly\models\hunyuan3d-mini\generate\_hy3dgen'); import hy3dgen.texgen.differentiable_renderer.mesh_processor as m; print(m.__file__); print('meshVerticeInpaint:', hasattr(m, 'meshVerticeInpaint'))"
+```
+
+正確結果應指向：
+
+```text
+...\differentiable_renderer\mesh_processor.cp311-win_amd64.pyd
+meshVerticeInpaint: True
+```
+
+重新執行相同工作後，原本由 `mesh_processor.py` 執行、可能耗費十幾分鐘或更久的 `uv_inpaint`／頂點補洞階段迅速完成。這項實測確認效能瓶頸來自載入慢速 Python fallback，將 `.pyd` 放進實際 package 目錄後才真正使用已編譯的 C++ 實作。
+
 ## Warnings That Did Not Stop Generation
 
 ### VAE safetensors fallback
@@ -195,6 +241,7 @@ Hunyuan Paint Turbo 會使用自己的 timestep 排程，新版 Diffusers 可能
 2. 啟動 Hunyuan Paint 材質流程。
 3. 根據參考圖片為模型產生材質。
 4. 輸出帶材質的模型。
+5. 在貼圖補洞階段實際載入編譯後的 `mesh_processor` C++ extension，避開慢速 Python fallback。
 
 第一次成功結果的品質仍有限，但已將問題從「功能無法執行」推進到「可進一步比較輸入、mesh、材質解析度與生成品質」。
 
@@ -202,7 +249,7 @@ Hunyuan Paint Turbo 會使用自己的 timestep 排程，新版 Diffusers 可能
 
 * 目前 Texture 仍接在同一次 Hunyuan mesh 生成後方。
 * CPU offload 讓 8GB VRAM 環境可以完成流程，速度會明顯變慢。
-* Repair、更新 extension、重新下載模型程式或重裝 Modly，可能覆蓋手動修改。
+* Repair、更新 extension、重新下載模型程式或重裝 Modly，可能覆蓋手動修改與放入 package 目錄的 `mesh_processor` `.pyd`。
 * 此頁記錄排查與修改方向，沒有重新散布 Modly 或 Hunyuan 的第三方程式碼及模型權重。
 * 不同 Modly、Diffusers、PyTorch 與 Hunyuan 版本可能需要不同修正。
 
@@ -215,6 +262,7 @@ extensions/hunyuan3d-mini/manifest.json
 models/hunyuan3d-mini/generate/_hy3dgen/hy3dgen/texgen/hunyuanpaint/pipeline.py
 models/hunyuan3d-mini/generate/_hy3dgen/hy3dgen/texgen/utils/dehighlight_utils.py
 models/hunyuan3d-mini/generate/_hy3dgen/hy3dgen/texgen/utils/multiview_utils.py
+models/hunyuan3d-mini/generate/_hy3dgen/hy3dgen/texgen/differentiable_renderer/mesh_processor.cp311-win_amd64.pyd
 ```
 
 另在 Hunyuan3D Mini extension venv 中安裝 Python 套件，並編譯 `custom_rasterizer` 與 `mesh_processor`。
@@ -228,6 +276,8 @@ models/hunyuan3d-mini/generate/_hy3dgen/hy3dgen/texgen/utils/multiview_utils.py
 * 分辨可忽略的 fallback／scheduler 警告與真正的終止錯誤。
 * 避免把大型權重問題一律處理成整包重抓。
 * 在 8GB VRAM 環境中，以 CPU offload 完成原本無法啟動的材質流程。
+* 以 `module.__file__` 驗證 runtime 的實際匯入路徑，發現已編譯的 `.pyd` 未被套件內相對匯入使用。
+* 將編譯模組放入實際 package 目錄，讓貼圖補洞從 Python／NumPy fallback 切換到 C++ extension。
 * 記錄失敗嘗試與恢復原始 loader 的過程，區分暫時可執行的替代作法與最終採用的修正。
 
 ## Navigation
