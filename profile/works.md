@@ -37,7 +37,8 @@
 
 ### [Media Workflow](../case-notes/media-workflow.md)
 
-整理壹傳子／即時V新聞、長片、靜態新車發表、轉錄、音訊分離與影音上架流程。
+整理壹傳子／即時V新聞、長片、靜態新車發表、轉錄、音源分離與影音上架流程。
+
 ## Public Issue Writing
 
 ### [數發部／網路安全憑證相關整理](https://www.threads.com/@haru_lerrz/post/DFHYKDzTk5O)
