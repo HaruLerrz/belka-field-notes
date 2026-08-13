@@ -6,7 +6,7 @@
 
 ## About
 
-我是 Jack／HaruLerrz，政大哲學系、陽明交大傳播研究所碩士班畢業（入學時以傳播所乙組名義招生，該組為現今傳播與科技學系碩士班的前身），曾任壹傳媒（原毅傳媒）攝影記者，也長期投入社群內容經營、公共議題整理、網站與互動敘事專案、prompt workflow 與小型工具實作。
+我是 Jack／HaruLerrz，政大哲學系畢業、輔系日本語文學系，陽明交大傳播研究所碩士班畢業（入學時以傳播所乙組名義招生，該組為現今傳播與科技學系碩士班的前身），曾任壹傳媒（原毅傳媒）攝影記者，也長期投入社群內容經營、公共議題整理、網站與互動敘事專案、prompt workflow 與小型工具實作。
 
 國際認證與檢定資格方面，我已通過日本語能力試驗（JLPT）N1／N2；另取得 International Organization of Professional Cultivation and Accreditation（IOPCA）核發之 Master of Communication Professional（MCP）專業認證。
 
@@ -50,4 +50,4 @@
 
 ## Keywords
 
-media workflow, civic documentation, social analysis, web projects, AI system prototypes, issue tracing, source verification, interactive narrative, 3D viewer, static hosting, prompt design, AI-assisted prototyping, state management, UI iteration, workflow automation, Node.js, Python utilities, tool-assisted workflow
+media workflow, VTuber production, Live2D, AI voice, civic documentation, social analysis, web projects, AI system prototypes, issue tracing, source verification, interactive narrative, 3D viewer, static hosting, prompt design, AI-assisted prototyping, state management, UI iteration, workflow automation, Node.js, Python utilities, tool-assisted workflow

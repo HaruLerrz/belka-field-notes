@@ -12,13 +12,19 @@
 
 [Jack Sun's Works｜Linktree](https://linktr.ee/jacksunexe)
 
-### Direct Collections
+### 壹傳子｜壹傳媒即時V新聞
+
+2023 年 2 月至 2025 年 11 月期間，主導壹傳媒短影音新聞 VTuber「壹傳子」企劃與製作，將 VTuber 技術導入新聞短影音內容。
+
+壹傳子是專案與角色名稱；即時V新聞是該專案實際產出的短篇新聞內容與既有欄目稱呼。製作流程包含角色立繪生成、Live2D 建模、VTube Studio 動作捕捉、AI 播報語音、新聞素材整理、短篇影片製作與 YouTube 上架。
 
 * [壹傳媒即時V新聞｜影片播放清單](https://www.youtube.com/playlist?list=PLMMW3aKk2vAQe8wA_mcc-QjmktJycoAZV)  
-  以國際、生活、科技與即時議題為主的短篇新聞影片；工作內容包含資料整理、腳本、影片製作與 YouTube 上架。
+  以國際、生活、科技與即時議題為主的短篇新聞影片；工作內容包含資料整理、約一分鐘口播腳本、影片製作與 YouTube 上架。
 
-* [壹傳媒即時V新聞｜文字版彙整](https://yimedia.com.tw/category/breaking-news-2/v%E6%96%B0%E8%81%9E/)  
+* [壹傳媒即時V新聞｜文字版彙整](https://yimedia.com.tw/tag/%e5%a3%b9%e5%82%b3%e5%aa%92%e5%8d%b3%e6%99%82v%e6%96%b0%e8%81%9e/)  
   V新聞網站文字版，保留新聞標題、摘要與署名文章紀錄。
+
+### Other Direct Collections
 
 * [壹傳媒長片新聞作品總覽](https://www.youtube.com/playlist?list=PLQc8ng1xvaKfjHtuywsVO4R8kVTBQJNym)  
   新聞、專題與生活類長片內容，包含現場攝影、素材整理、剪輯與上架支援。
@@ -31,8 +37,7 @@
 
 ### [Media Workflow](../case-notes/media-workflow.md)
 
-整理即時V新聞、長片、靜態新車發表、轉錄、音源分離與影音上架流程。
-
+整理壹傳子／即時V新聞、長片、靜態新車發表、轉錄、音訊分離與影音上架流程。
 ## Public Issue Writing
 
 ### [數發部／網路安全憑證相關整理](https://www.threads.com/@haru_lerrz/post/DFHYKDzTk5O)

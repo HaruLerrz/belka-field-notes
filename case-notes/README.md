@@ -6,7 +6,7 @@
 
 ### [Media Workflow](media-workflow.md)
 
-整理即時V新聞、長片、靜態新車發表、轉錄、音源分離與影音上架流程。
+整理壹傳子／即時V新聞、長片、靜態新車發表、轉錄、音源分離與影音上架流程。
 
 ### [Public Issue Writing](public-issue-writing.md)
 
