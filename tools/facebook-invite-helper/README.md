@@ -125,7 +125,7 @@ Facebook 的 DOM、按鈕文字與限制訊息可能隨時改版；selector 或�
 
 ## Navigation
 
-* [Back to Tools](../README.md)
-* [Selected Works](../../profile/works.md)
-* [Digital Workflow Prototyping](../../case-notes/digital-workflow-prototyping.md)
-* [Root README](../../README.md)
+* [返回 Tools Index](../)
+* [返回 Digital Workflow Prototyping](../../case-notes/digital-workflow-prototyping.md)
+* [返回 Selected Works](../../profile/works.md)
+* [返回根 README](../../README.md)

@@ -135,15 +135,22 @@
 
 ## Open Source Contributions
 
-### [Legacy Notepad Traditional Chinese UI and Word Wrap Persistence](../case-notes/legacy-notepad-upstream-pr.md)
+### [Legacy Notepad Upstream Contributions](../case-notes/legacy-notepad-upstream-pr.md)
 
-首次向既有開源專案提交 pull request。這次貢獻針對 C++ / Win32 輕量文字編輯器，新增正體中文介面支援，並讓自動換行設定能在重新啟動後保留。
+從 Windows 11 Notepad 的輸入焦點問題出發，fork C++ / Win32 輕量文字編輯器 Legacy Notepad，先完成 zh-TW 第三語言與 Word Wrap 保存，後續依長期使用中發現的 RichEdit 與 modeless dialog 行為持續拆出小型 upstream PR。
 
-工作內容包含 fork upstream repo、建立 feature branch、閱讀既有語言與設定模組、補上 zh-TW 第三語言、調整對話框版面與本地化字串、修正 Redo 指令行為，並以 GitHub Desktop / Git / Visual Studio Build Tools 完成編譯測試與 PR 發布。
+工作內容涵蓋 Win32 / RichEdit API、message loop、selection position、clipboard、visual line、dialog focus 與鍵盤操作；每項修改都以 `upstream/main` 建立乾淨 branch，獨立 build、人工測試、檢查 diff 後再送出 PR。PR #40 在測試時補上 selection boundary edge case；PR #41 送出後再次 review，將固定 256 wchar buffer 改成動態長度讀取。
 
-PR：[forloopcodes/legacy-notepad#33](https://github.com/forloopcodes/legacy-notepad/pull/33)  
-狀態：PR opened，等待 upstream review。
+截至 2026-08-13，已提交 6 個 open PR：
 
+* [#33 Add Traditional Chinese UI and persist word wrap](https://github.com/forloopcodes/legacy-notepad/pull/33)
+* [#38 Fix Find selection with RichEdit native search](https://github.com/forloopcodes/legacy-notepad/pull/38)
+* [#39 Paste clipboard content as plain text](https://github.com/forloopcodes/legacy-notepad/pull/39)
+* [#40 Add arrow key boundary navigation](https://github.com/forloopcodes/legacy-notepad/pull/40)
+* [#41 Improve Find and Replace dialog keyboard behavior](https://github.com/forloopcodes/legacy-notepad/pull/41)
+* [#42 Fix Replace selection handling and no-match feedback](https://github.com/forloopcodes/legacy-notepad/pull/42)
+
+狀態：等待 upstream review。
 ## Prompting / Structured Writing
 
 * [Prompting / Structured Writing](../prompting/README.md)  
