@@ -85,4 +85,6 @@ ADB、PyAutoGUI、pywin32 與其他外部元件仍依各自的授權條款使用
 ## Navigation
 
 * [返回 Tools Index](../)
+* [返回 Digital Workflow Prototyping](../../case-notes/digital-workflow-prototyping.md)
+* [返回 Selected Works](../../profile/works.md)
 * [返回根 README](../../README.md)

@@ -150,4 +150,6 @@ Debug 模式會把 `-DebugMode` 傳遞至提升權限後的主程式，保留管
 ## Navigation
 
 * [返回 Tools Index](../)
+* [返回 Digital Workflow Prototyping](../../case-notes/digital-workflow-prototyping.md)
+* [返回 Selected Works](../../profile/works.md)
 * [返回根 README](../../README.md)

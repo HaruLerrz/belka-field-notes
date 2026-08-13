@@ -253,7 +253,7 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 因此實作上將 ADB、Windows GUI automation 與等待條件串在一起，形成可重複執行的工作流程。
 
-#### Gmail 隱藏回報垃圾郵件按鈕
+#### Gmail Hide Report Spam Button
 
 路徑：  
 [`tools/gmail-hide-report-spam-button/`](../tools/gmail-hide-report-spam-button/)
@@ -271,7 +271,7 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 這個案例的程式規模很小，但呈現了從日常操作問題出發，選擇符合需求規模的實作方式，而不必為單一介面調整建立完整瀏覽器擴充套件。
 
-#### Facebook 一鍵邀請助手（保守版）
+#### Facebook Invite Helper
 
 路徑：  
 [`tools/facebook-invite-helper/`](../tools/facebook-invite-helper/)
@@ -307,6 +307,7 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 * 結構 fallback 目前仍等待沒有既有文字規則先命中的野生新卡完成實測，因此文件保留這項驗證狀態。
 
 這個案例的重點逐漸從「補一條 selector 或文案」移到建立可維護的辨識策略：已知案例走明確規則，新案例則在嚴格安全條件下嘗試使用共通 UI 結構，同時保留可觀察的命中原因。
+
 ---
 
 ## AI Use and Manual Validation

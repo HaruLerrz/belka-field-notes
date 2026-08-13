@@ -32,11 +32,11 @@
 
 串接 ADB、Windows Subsystem for Android 與視窗操作，完成動畫瘋 App 的啟動與全螢幕流程。
 
-### [Gmail 隱藏回報垃圾郵件按鈕](gmail-hide-report-spam-button/)
+### [Gmail Hide Report Spam Button](gmail-hide-report-spam-button/)
 
 透過 userscript 與 CSS 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低整理郵件時誤觸的機會。
 
-### [Facebook 一鍵邀請助手（保守版）](facebook-invite-helper/)
+### [Facebook Invite Helper](facebook-invite-helper/)
 
 透過 Tampermonkey userscript 在 Facebook 反應名單中以可調整批次與延遲處理「邀請」按鈕，並提供獨立的「捲到底」名單載入功能；實作保留 dialog 辨識、限制訊息自停、預設縮小 UI 與手動停止流程。
 

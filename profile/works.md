@@ -151,6 +151,7 @@
 * [#42 Fix Replace selection handling and no-match feedback](https://github.com/forloopcodes/legacy-notepad/pull/42)
 
 狀態：等待 upstream review。
+
 ## Prompting / Structured Writing
 
 * [Prompting / Structured Writing](../prompting/README.md)  
@@ -192,10 +193,10 @@
 * [Animad WSA Fullscreen Helper](../tools/animad-wsa-fullscreen/)  
   串接 ADB、WSA 與 Windows 視窗操作，完成動畫瘋 App 的啟動與全螢幕流程。
 
-* [Gmail 隱藏回報垃圾郵件按鈕](../tools/gmail-hide-report-spam-button/)  
+* [Gmail Hide Report Spam Button](../tools/gmail-hide-report-spam-button/)  
   透過 userscript 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低郵件整理過程中的誤觸。
 
-* [Facebook 一鍵邀請助手（保守版）](../tools/facebook-invite-helper/)  
+* [Facebook Invite Helper](../tools/facebook-invite-helper/)  
   透過 Tampermonkey userscript 將 Facebook 反應名單中的重複邀請操作整理成可控制的批次流程，包含多層 dialog 辨識修正、隨機延遲、限制訊息自停、預設縮小 UI，以及與邀請互相獨立的「捲到底」名單載入功能。
 
 * [ChatGPT Promo Cards Hider](../tools/chatgpt-codex-promo-hider/)  

@@ -71,4 +71,6 @@ pip install requests pillow yt-dlp
 ## Navigation
 
 * [返回 Tools Index](../)
+* [返回 Digital Workflow Prototyping](../../case-notes/digital-workflow-prototyping.md)
+* [返回 Selected Works](../../profile/works.md)
 * [返回根 README](../../README.md)

@@ -1,4 +1,4 @@
-# Facebook 一鍵邀請助手（保守版）
+# Facebook Invite Helper
 
 這是一支 Tampermonkey userscript，用來處理 Facebook 貼文反應／按讚名單中的「邀請」操作，並提供獨立的名單「捲到底」功能。
 

@@ -239,4 +239,6 @@ HHD 採 GNU Lesser General Public License v2.1 or later（LGPL-2.1-or-later）�
 ## Navigation
 
 * [返回 Tools Index](../)
+* [返回 Digital Workflow Prototyping](../../case-notes/digital-workflow-prototyping.md)
+* [返回 Selected Works](../../profile/works.md)
 * [返回根 README](../../README.md)

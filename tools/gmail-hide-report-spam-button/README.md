@@ -1,4 +1,4 @@
-# Gmail 隱藏回報垃圾郵件按鈕
+# Gmail Hide Report Spam Button
 
 一個小型 Gmail userscript，透過 CSS 隱藏介面中的「回報垃圾郵件」按鈕，降低整理郵件時誤觸的機會。
 
@@ -120,7 +120,7 @@ userscript 形式較容易：
 
 ## Version History
 
-### v1.1.0-test（實驗版本，未採用）
+### v1.1.0-test
 
 1. 隱藏「回報垃圾郵件」按鈕。
 2. 在封存與刪除按鈕之間加入分隔線；實作上將刪除按鈕移至獨立工具列群組。
@@ -143,4 +143,6 @@ userscript 形式較容易：
 ## Navigation
 
 * [返回 Tools Index](../)
+* [返回 Digital Workflow Prototyping](../../case-notes/digital-workflow-prototyping.md)
+* [返回 Selected Works](../../profile/works.md)
 * [返回根 README](../../README.md)
