@@ -271,24 +271,42 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 這個案例的程式規模很小，但呈現了從日常操作問題出發，選擇符合需求規模的實作方式，而不必為單一介面調整建立完整瀏覽器擴充套件。
 
+#### Facebook 一鍵邀請助手（保守版）
+
+路徑：  
+[`tools/facebook-invite-helper/`](../tools/facebook-invite-helper/)
+
+這個 userscript 源自 Facebook 反應名單中反覆點擊「邀請」的操作需求，採用頁面 DOM 操作，不串接 Facebook 私有 API 或 GraphQL request。
+
+開發與實測包含：
+
+* 以批次上限與隨機延遲控制邀請節奏，並加入手動停止與已知限制訊息自停。
+* 初版以畫面面積選擇主要 dialog，在貼文 modal 與反應名單 modal 同時存在時抓到錯誤容器；後續改成依實際「邀請／已邀請」按鈕數量評分 dialog。
+* 邀請只處理目前已載入的按鈕，本身不自動捲動。
+* UI 預設縮小，展開後可調整批次與延遲；完整停用仍交由 Tampermonkey 控制。
+* 新增獨立「捲到底」功能，持續捲動反應名單並等待 Facebook 載入更多內容；連續多輪沒有新內容後才停止。
+* 邀請與捲動功能互相排斥，避免兩種 DOM 操作同時改變名單狀態。
+
+這個案例保留了「先從保守操作開始，再依真實頁面結構修正容器判斷」的過程。實際 bug 來自對 DOM 層級的錯誤假設，修正方向也因此集中在 dialog 選取，而沒有改動已驗證可用的點擊與節流流程。
+
 #### ChatGPT Promo Cards Hider
 
 路徑：  
 [`tools/chatgpt-codex-promo-hider/`](../tools/chatgpt-codex-promo-hider/)
 
-這個 userscript 用來隱藏 ChatGPT 回覆後動態插入的 Codex、Pro 與外掛程式資訊提示卡。
+這個 userscript 用來處理 ChatGPT 回覆後動態插入的產品與功能提示卡。
 
 開發過程包含：
 
 * 初版依提示卡文字往上尋找容器，曾選到過大的上層元素並造成整頁空白。
 * 加入 `html`、`body`、`main`、輸入區與 contenteditable 等危險容器排除。
 * 改為選取最大的安全候選，解決只隱藏內層內容後留下空白外框的問題。
-* 將 Codex、Pro 與外掛程式資訊卡整理成獨立 `PROMOS` 規則，每組分別設定 anchors、必要文字、輔助文字與最低命中數。
-* 使用容器尺寸與文字長度限制，排除整頁結構及過小的單一文字節點。
-* 加入 `MutationObserver`、interval fallback、緊急停用快捷鍵與 console 驗證標記。
+* 將 Codex、Pro、外掛程式資訊與 ChatGPT Work 整理成獨立 `PROMOS` 規則。
+* v0.6.0 增加 composer-adjacent 結構 fallback，利用提示卡與輸入框的位置、水平重疊、尺寸、關閉控制、行動控制與促銷訊號辨識尚未收錄的新文案。
+* 以 `data-belka-promo-reason` 區分 `text:<rule-name>` 與 `structure:composer-adjacent`，並加入 console debug 記錄協助實機驗證。
+* 結構 fallback 目前仍等待沒有既有文字規則先命中的野生新卡完成實測，因此文件保留這項驗證狀態。
 
-這個案例顯示介面自動化需要持續確認實際 DOM 邊界。提示卡文案改變時，只更新對應規則即可保留原有的安全檢查與隱藏流程。
-
+這個案例的重點逐漸從「補一條 selector 或文案」移到建立可維護的辨識策略：已知案例走明確規則，新案例則在嚴格安全條件下嘗試使用共通 UI 結構，同時保留可觀察的命中原因。
 ---
 
 ## AI Use and Manual Validation

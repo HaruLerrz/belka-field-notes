@@ -36,9 +36,13 @@
 
 透過 userscript 與 CSS 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低整理郵件時誤觸的機會。
 
+### [Facebook 一鍵邀請助手（保守版）](facebook-invite-helper/)
+
+透過 Tampermonkey userscript 在 Facebook 反應名單中以可調整批次與延遲處理「邀請」按鈕，並提供獨立的「捲到底」名單載入功能；實作保留 dialog 辨識、限制訊息自停、預設縮小 UI 與手動停止流程。
+
 ### [ChatGPT Promo Cards Hider](chatgpt-codex-promo-hider/)
 
-透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的 Codex、Pro 與外掛程式資訊提示卡，並以分組文字線索、容器尺寸、安全排除、MutationObserver 與緊急停用機制降低誤藏風險。
+透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的產品與功能提示卡。v0.6.0 結合已知文案規則與輸入框上方卡片結構辨識，並保留危險容器排除、尺寸限制、MutationObserver、命中原因記錄與緊急停用機制。
 
 ## Navigation
 

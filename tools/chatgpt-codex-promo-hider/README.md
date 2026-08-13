@@ -1,16 +1,16 @@
 # ChatGPT Promo Cards Hider
 
-這是一支 Tampermonkey userscript，用來隱藏 ChatGPT 網頁介面中動態插入的 Codex、Pro 與外掛程式資訊提示卡。
+這是一支 Tampermonkey userscript，用來隱藏 ChatGPT 網頁介面中動態插入的產品與功能提示卡。
 
 ## Purpose
 
-ChatGPT 可能在回覆完成後插入產品或功能資訊卡。一般關閉按鈕或頁面元素移除工具不一定能持續處理，提示卡文案與外層結構也可能隨介面更新而改變。
+ChatGPT 可能在回覆完成後插入 Codex、Pro、外掛程式資訊、ChatGPT Work 等提示卡。這些卡片的文案與外層 DOM 結構會隨介面更新而改變，單純逐條比對固定文字容易在新文案出現時失效。
 
-這支腳本會監看動態插入內容，以分組文字線索辨識不同提示卡，再從文字節點往上尋找符合尺寸條件的安全容器。找到後隱藏完整外框，同時避開輸入區、主要對話容器與整頁結構。
+v0.6.0 改成「已知文案規則 + 輸入框上方卡片結構辨識」的混合模式。已收錄的提示卡仍可直接依文字規則處理；遇到尚未收錄的新文案時，腳本會嘗試辨識緊貼輸入框上方、具有關閉控制與行動按鈕的提示卡結構。
 
-## Supported Promos
+## Known Promo Rules
 
-v0.5.2 目前處理三組提示卡：
+v0.6.0 目前保留四組已知文案規則：
 
 1. Codex promo
    * `認識 Codex`
@@ -26,8 +26,32 @@ v0.5.2 目前處理三組提示卡：
    * `外掛程式提供更有幫助的結果`
    * 外掛程式使用對話與記憶資訊的說明
    * 權限管理、了解更多與確認按鈕
+4. ChatGPT Work promo
+   * `在 ChatGPT Work 繼續深入`
+   * `ChatGPT Work`
+   * 文件、簡報、試算表、報告或網站等相關正文
+   * `試用工作`
 
-每組提示卡各自定義 anchors、必要文字、輔助文字與最低命中數，避免只看到單一產品名稱或一般介面用語就隱藏元素。
+已知文案命中後，隱藏原因會記錄成 `text:<rule-name>`，例如 `text:codex` 或 `text:chatgpt-work`。
+
+## Structural Fallback
+
+結構辨識會尋找目前可見的 ChatGPT 輸入區，再檢查附近候選元素是否符合以下條件：
+
+1. 卡片位於輸入框上方的有限距離內。
+2. 卡片與輸入框有足夠的水平重疊。
+3. 卡片寬度與輸入框大致相近。
+4. 卡片存在可辨識的 X／Close／Dismiss 類關閉控制。
+5. 卡片另外包含至少一個可見的行動控制。
+6. 卡片文字或按鈕包含促銷、導覽或功能提示訊號。
+7. 候選元素本身不包含 textarea、contenteditable 或一般文字輸入欄位。
+8. `html`、`body`、`main`、`form`、`#__next` 與 `#root` 等高風險容器一律排除。
+
+結構 fallback 成功時，隱藏原因會記錄成：
+
+```text
+structure:composer-adjacent
+```
 
 ## Files
 
@@ -35,7 +59,7 @@ v0.5.2 目前處理三組提示卡：
 chatgpt-hide-codex-promo-card.user.js
 ```
 
-repo 目前保留最初建立工具時使用的 Codex 路徑與檔名，避免既有內部連結失效；腳本內容與顯示名稱已擴充為多種 ChatGPT 提示卡。
+repo 目前保留最初建立工具時使用的 Codex 路徑與檔名，避免既有內部連結失效；腳本顯示名稱與功能已擴充為一般 ChatGPT Promo Cards Hider。
 
 ## Install
 
@@ -50,14 +74,14 @@ repo 目前保留最初建立工具時使用的 Codex 路徑與檔名，避免�
 腳本會：
 
 1. 只在 `chatgpt.com` 與 `chat.openai.com` 執行。
-2. 使用 `PROMOS` 設定分別保存 Codex、Pro 與外掛程式資訊卡的辨識線索。
-3. 先用 anchors 篩選可能相關的文字節點。
-4. 檢查候選容器是否同時符合必要文字與最低輔助線索數量。
-5. 排除 `html`、`body`、`main`、`form`、`#__next`、`#root`、輸入框與 contenteditable 區域。
-6. 將候選容器限制在指定寬度、高度與文字長度範圍，避免誤藏整頁、主要對話區或單一小型文字節點。
-7. 從安全候選中選取面積最大的容器，避免只隱藏內層文字而留下空白外框。
-8. 對已隱藏元素標記 `data-belka-hidden-chatgpt-promo="true"`。
-9. 使用 `MutationObserver` 監看頁面變化，並保留 1.2 秒 interval fallback。
+2. 先執行已知 `PROMOS` 文字規則。
+3. 再尋找目前可見的 composer editor。
+4. 從輸入框附近的關閉控制往上尋找安全候選容器。
+5. 以尺寸、位置、水平重疊、行動控制與促銷訊號篩選結構 fallback。
+6. 對已隱藏元素標記 `data-belka-hidden-chatgpt-promo="true"`。
+7. 另外以 `data-belka-promo-reason` 記錄實際命中原因。
+8. 使用 `MutationObserver` 監看頁面變化，並保留 1.2 秒 interval fallback。
+9. 成功隱藏時以 `console.debug()` 寫入 `[Belka Promo Hider] hidden: ...`。
 
 ## Emergency Disable
 
@@ -78,13 +102,39 @@ location.reload();
 
 ## Verification
 
-提示卡原本應該出現後，打開瀏覽器 console 執行：
+若要確認目前 DOM 中被腳本標記的卡片與命中原因，可執行：
 
 ```javascript
-document.querySelectorAll('[data-belka-hidden-chatgpt-promo="true"]').length
+[...document.querySelectorAll(
+  '[data-belka-hidden-chatgpt-promo="true"]'
+)].map((el) => el.getAttribute('data-belka-promo-reason'))
 ```
 
-如果結果是 `1` 或更高，代表腳本已找到並隱藏至少一張支援的提示卡。
+可能看到：
+
+```text
+["text:codex"]
+["text:chatgpt-work"]
+["structure:composer-adjacent"]
+```
+
+也可以在 Firefox Console 顯示 Debug／除錯訊息後搜尋：
+
+```text
+[Belka Promo Hider] hidden:
+```
+
+若回傳空陣列，可能代表提示卡當下沒有生成、已被 React 從 DOM 移除，或查詢時機早於提示卡出現。
+
+## Validation Status
+
+v0.6.0 已確認：
+
+1. 腳本本身可正常執行。
+2. 舊的已知文案規則可正常隱藏提示卡。
+3. `data-belka-promo-reason` 與 console debug 記錄可用。
+
+`structure:composer-adjacent` 目前保留為安全 fallback，仍等待沒有既有文字規則可先命中的新提示卡進行實際驗證。這項限制刻意保留在文件中，避免把尚未完成野生案例測試的結構規則寫成已完全驗證。
 
 ## Development Notes
 
@@ -96,9 +146,10 @@ document.querySelectorAll('[data-belka-hidden-chatgpt-promo="true"]').length
 4. v0.4.0 因 Codex promo 文案更新，將辨識拆成標題、正文與操作線索。
 5. v0.5.0 加入 Pro promo，並把多種提示卡整理成 `PROMOS` 設定。
 6. v0.5.1 將停用旗標與隱藏元素標記改用 `belka` 命名。
-7. v0.5.2 加入外掛程式資訊提示卡，並為這類較常見的介面文字設定較高的輔助線索門檻。
+7. v0.5.2 加入外掛程式資訊提示卡。
+8. v0.6.0 加入 ChatGPT Work 規則，並新增 composer-adjacent 結構 fallback、命中原因標記與 debug log，使後續新提示卡不必完全依賴逐條新增文案。
 
-目前版本已確認為 UTF-8 無 BOM，可直接匯入 Tampermonkey。ChatGPT 後續若更新文案、尺寸或 DOM 結構，仍可能需要調整辨識線索與容器範圍。
+目前版本已確認為 UTF-8 無 BOM，可直接匯入 Tampermonkey。ChatGPT 後續若大幅改變 composer、提示卡位置或控制元件結構，仍可能需要調整結構辨識條件。
 
 ## Navigation
 

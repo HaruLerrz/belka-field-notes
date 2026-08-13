@@ -188,8 +188,11 @@ PR：[forloopcodes/legacy-notepad#33](https://github.com/forloopcodes/legacy-not
 * [Gmail 隱藏回報垃圾郵件按鈕](../tools/gmail-hide-report-spam-button/)  
   透過 userscript 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低郵件整理過程中的誤觸。
 
+* [Facebook 一鍵邀請助手（保守版）](../tools/facebook-invite-helper/)  
+  透過 Tampermonkey userscript 將 Facebook 反應名單中的重複邀請操作整理成可控制的批次流程，包含多層 dialog 辨識修正、隨機延遲、限制訊息自停、預設縮小 UI，以及與邀請互相獨立的「捲到底」名單載入功能。
+
 * [ChatGPT Promo Cards Hider](../tools/chatgpt-codex-promo-hider/)  
-  透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的 Codex、Pro 與外掛程式資訊提示卡，並將反覆變動的介面文案整理成可擴充的分組規則，搭配容器尺寸與安全排除條件降低誤藏主要介面的風險。
+  透過 Tampermonkey userscript 處理 ChatGPT 動態提示卡。從早期文字比對誤藏上層容器，逐步加入安全篩選、分組規則，並在 v0.6.0 擴充為「已知文案 + composer-adjacent 結構 fallback」的混合偵測，另保留命中原因與 console 驗證流程。
 
 ## Navigation
 
