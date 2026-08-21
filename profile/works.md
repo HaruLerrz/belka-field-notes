@@ -145,9 +145,9 @@
 
 從 Windows 11 Notepad 的輸入焦點問題出發，fork C++ / Win32 輕量文字編輯器 Legacy Notepad，先完成 zh-TW 第三語言與 Word Wrap 保存，後續依長期使用中發現的 RichEdit 與 modeless dialog 行為持續拆出小型 upstream PR。
 
-工作內容涵蓋 Win32 / RichEdit API、message loop、selection position、clipboard、visual line、dialog focus 與鍵盤操作；每項修改都以 `upstream/main` 建立乾淨 branch，獨立 build、人工測試、檢查 diff 後再送出 PR。PR #40 在測試時補上 selection boundary edge case；PR #41 送出後再次 review，將固定 256 wchar buffer 改成動態長度讀取。
+工作內容涵蓋 Win32 / RichEdit API、message loop、selection position、clipboard、visual line、dialog focus、鍵盤操作與 mouse wheel scrolling；每項修改都以 `upstream/main` 建立乾淨 branch，獨立 build、人工測試、檢查 diff 後再送出 PR。PR #40 在測試時補上 selection boundary edge case；PR #41 送出後再次 review，將固定 256 wchar buffer 改成動態長度讀取。PR #43 則處理 RichEdit 垂直滑鼠滾輪輸入停止後仍延遲捲動的問題，改由程式明確處理 `WM_MOUSEWHEEL`、high-resolution wheel partial delta 與 Windows 捲動列數設定。
 
-截至 2026-08-13，已提交 6 個 open PR：
+截至 2026-08-22，已提交 7 個 open PR：
 
 * [#33 Add Traditional Chinese UI and persist word wrap](https://github.com/forloopcodes/legacy-notepad/pull/33)
 * [#38 Fix Find selection with RichEdit native search](https://github.com/forloopcodes/legacy-notepad/pull/38)
@@ -155,6 +155,7 @@
 * [#40 Add arrow key boundary navigation](https://github.com/forloopcodes/legacy-notepad/pull/40)
 * [#41 Improve Find and Replace dialog keyboard behavior](https://github.com/forloopcodes/legacy-notepad/pull/41)
 * [#42 Fix Replace selection handling and no-match feedback](https://github.com/forloopcodes/legacy-notepad/pull/42)
+* [#43 Fix delayed mouse wheel scrolling](https://github.com/forloopcodes/legacy-notepad/pull/43)
 
 狀態：等待 upstream review。
 

@@ -6,7 +6,7 @@
 
 我因此改用 [Legacy Notepad](https://github.com/forloopcodes/legacy-notepad)。這個專案以 C++17、Win32 API 與 RichEdit 實作，啟動快、功能集中，定位接近傳統純文字編輯器。
 
-最初只是想補上自己需要的正體中文介面與自動換行偏好。實際長期使用後，又陸續發現 Find、Replace、Paste、方向鍵與 modeless dialog 的行為問題，後續整理成多個可獨立 review 的 upstream pull request。
+最初只是想補上自己需要的正體中文介面與自動換行偏好。實際長期使用後，又陸續發現 Find、Replace、Paste、方向鍵、滑鼠滾輪與 modeless dialog 的行為問題，後續整理成多個可獨立 review 的 upstream pull request。
 
 ## From Fork to Upstream Contributions
 
@@ -98,6 +98,17 @@ Replace All 同時補上零命中回饋；找不到任何符合內容時，顯�
 
 這條 PR 刻意不改 Find implementation，後續 Find 行為由 #38 處理。
 
+### PR #43 — Delayed Mouse Wheel Scrolling
+
+PR：  
+[forloopcodes/legacy-notepad#43](https://github.com/forloopcodes/legacy-notepad/pull/43)
+
+Legacy Notepad 的 editor 使用 RichEdit。實測發現垂直滑鼠滾輪輸入停止後，畫面仍可能延遲繼續捲動，影響長文閱讀與定位。
+
+修正後明確處理 `WM_MOUSEWHEEL`，不再把垂直滾輪交給 RichEdit 預設行為；同時累積 high-resolution mouse wheel 的 partial delta，並依 Windows `SPI_GETWHEELSCROLLLINES` 設定送出對應的 `WM_VSCROLL` line 或 page scroll。
+
+這項修改保留原本 Shift + mouse wheel 的水平捲動行為。測試範圍包含一般垂直捲動、停止滾輪輸入、上下方向捲動、Shift + 滾輪水平捲動，以及 Windows page-scroll 設定。
+
 ## Working Method
 
 這一輪 upstream contribution 使用固定流程：
@@ -131,7 +142,7 @@ PR #41 已建立 upstream PR 後，又從 diff 中注意到固定大小 buffer�
 
 ## Status
 
-截至 2026-08-13，已向 `forloopcodes/legacy-notepad` 提交 6 個 open pull requests：
+截至 2026-08-22，已向 `forloopcodes/legacy-notepad` 提交 7 個 open pull requests：
 
 * #33 — Add Traditional Chinese UI and persist word wrap
 * #38 — Fix Find selection with RichEdit native search
@@ -139,6 +150,7 @@ PR #41 已建立 upstream PR 後，又從 diff 中注意到固定大小 buffer�
 * #40 — Add arrow key boundary navigation
 * #41 — Improve Find and Replace dialog keyboard behavior
 * #42 — Fix Replace selection handling and no-match feedback
+* #43 — Fix delayed mouse wheel scrolling
 
 GitHub 目前均標示可合併，等待 upstream maintainer review。
 
@@ -151,6 +163,7 @@ GitHub 目前均標示可合併，等待 upstream maintainer review。
 * 依台灣 Windows 用語完成 zh-TW 本地化。
 * 以 RichEdit 原生 API 修正搜尋、selection 與 paste 行為。
 * 從實機操作找到 wrapped visual line、selection boundary、Ctrl+H / `IsDialogMessageW` 等 Win32 edge cases。
+* 以 `WM_MOUSEWHEEL`、`WM_VSCROLL`、`SPI_GETWHEELSCROLLLINES` 與 high-resolution wheel delta 處理 RichEdit 的捲動行為。
 * 將大 branch 中的修改拆成可獨立 review 的 upstream PR。
 * 以 build、人工測試、diff review 與 follow-up commit 持續修正已送出的貢獻。
 * 使用 AI 協助問題拆解、程式檢查與測試規劃，再以本機 build 與實際操作確認結果。
