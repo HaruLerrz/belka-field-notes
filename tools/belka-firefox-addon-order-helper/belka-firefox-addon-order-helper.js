@@ -1,6 +1,6 @@
 // Name        : Belka Firefox Add-on Order Helper
 // Type        : Firefox about:addons console hack
-// Version     : 0.1.5
+// Version     : 0.1.6
 // Forked from : firefox-v109-change-order-under-extensions-button.js
 // Original    : icpantsparti2/browser-bits
 // Original URL: https://github.com/icpantsparti2/browser-bits/blob/main/javascript/firefox-v109-change-order-under-extensions-button.js
@@ -14,6 +14,7 @@
 //   - move up / move down buttons
 //   - backup / restore helper output in the console and clipboard
 //   - restore backup dialog that accepts the copied backup block
+//   - explicit AddonManager.sys.mjs import to avoid about:addons global name collisions
 //
 // Use with care at your own risk.
 //
@@ -27,11 +28,14 @@
   "use strict";
 
   const APP_NAME = "Belka Firefox Add-on Order Helper";
-  const VERSION = "0.1.5";
+  const VERSION = "0.1.6";
   const PREF_NAME = "browser.uiCustomization.state";
   const AREA_NAME = "unified-extensions-area";
   const ROOT_ID = "bfaoh-root";
   const STYLE_ID = "bfaoh-style";
+
+  let FirefoxServices = null;
+  let FirefoxAddonManager = null;
 
   const I18N = {
     "zh-TW": {
@@ -79,6 +83,7 @@
       statusNoChange: "排序沒有變更，未寫入新的設定。",
       noAddons: "沒有找到可排序的使用者擴充套件。",
       envError: "請在 Firefox 的 about:addons 頁面開啟 Web Console 後執行。",
+      apiError: "無法載入 Firefox 內部 API。可能是 Firefox 版本變更；為了安全起見，未做任何修改。",
       prefError: "無法讀取或解析 browser.uiCustomization.state。為了安全起見，未做任何修改。",
       missingArea: "找不到 unified-extensions-area。為了安全起見，未做任何修改。",
       backupIntro: "備份與復原資訊",
@@ -135,6 +140,7 @@
       statusNoChange: "No ordering changes detected. Preference not written.",
       noAddons: "No user extensions found for ordering.",
       envError: "Please run this in Firefox Web Console on about:addons.",
+      apiError: "Could not load Firefox internal APIs. Firefox may have changed; no changes were made.",
       prefError: "Could not read or parse browser.uiCustomization.state. No changes were made.",
       missingArea: "unified-extensions-area was not found. No changes were made.",
       backupIntro: "Backup and restore information",
@@ -167,13 +173,42 @@
   }
 
   function checkEnvironment() {
-    return !(typeof Services === "undefined" ||
-      typeof AddonManager === "undefined" ||
-      typeof AddonManager.getAddonsByTypes === "undefined");
+    return location.href === "about:addons" &&
+      typeof ChromeUtils !== "undefined" &&
+      typeof ChromeUtils.importESModule === "function";
+  }
+
+  function loadFirefoxApis() {
+    try {
+      if (typeof Services !== "undefined" && Services && Services.prefs) {
+        FirefoxServices = Services;
+      } else {
+        ({ Services: FirefoxServices } = ChromeUtils.importESModule(
+          "resource://gre/modules/Services.sys.mjs"
+        ));
+      }
+
+      ({ AddonManager: FirefoxAddonManager } = ChromeUtils.importESModule(
+        "resource://gre/modules/AddonManager.sys.mjs"
+      ));
+
+      if (!FirefoxServices || !FirefoxServices.prefs ||
+          !FirefoxAddonManager ||
+          typeof FirefoxAddonManager.getAddonsByTypes !== "function") {
+        throw new Error("Required Firefox APIs are unavailable.");
+      }
+
+      return true;
+    } catch (error) {
+      console.error(`[${APP_NAME}] Failed to load Firefox internal APIs.`, error);
+      FirefoxServices = null;
+      FirefoxAddonManager = null;
+      return false;
+    }
   }
 
   function readCustomizationState() {
-    const raw = Services.prefs.getStringPref(PREF_NAME);
+    const raw = FirefoxServices.prefs.getStringPref(PREF_NAME);
     let state;
 
     try {
@@ -195,7 +230,7 @@
 
   function writeCustomizationState(state) {
     const newRaw = JSON.stringify(state);
-    Services.prefs.setStringPref(PREF_NAME, newRaw);
+    FirefoxServices.prefs.setStringPref(PREF_NAME, newRaw);
     return newRaw;
   }
 
@@ -640,12 +675,12 @@
           console.warn(`[${APP_NAME}] No in-session backup is available.`);
           return false;
         }
-        Services.prefs.setStringPref(PREF_NAME, this.lastBackup.oldValue);
+        FirefoxServices.prefs.setStringPref(PREF_NAME, this.lastBackup.oldValue);
         console.log(`[${APP_NAME}] Restored previous ${PREF_NAME}. Restart Firefox to check the result.`);
         return true;
       },
       printCurrentBackup() {
-        const raw = Services.prefs.getStringPref(PREF_NAME);
+        const raw = FirefoxServices.prefs.getStringPref(PREF_NAME);
         return printBackup(t("backupIntro"), raw);
       },
       close() {
@@ -660,6 +695,11 @@
       return;
     }
 
+    if (!loadFirefoxApis()) {
+      fail(t("apiError"));
+      return;
+    }
+
     let readResult;
     try {
       readResult = readCustomizationState();
@@ -668,7 +708,7 @@
       return;
     }
 
-    const addons = (await AddonManager.getAddonsByTypes(["extension"]))
+    const addons = (await FirefoxAddonManager.getAddonsByTypes(["extension"]))
       .filter(isUserExtension)
       .map((addon) => ({
         addon,
@@ -878,9 +918,9 @@
       restoreApplyBtn.addEventListener("click", () => {
         try {
           const restoreRaw = parseRestoreBackupText(textarea.value);
-          const currentRaw = Services.prefs.getStringPref(PREF_NAME);
+          const currentRaw = FirefoxServices.prefs.getStringPref(PREF_NAME);
           const backup = printBackup(t("backupIntro"), currentRaw, restoreRaw);
-          Services.prefs.setStringPref(PREF_NAME, restoreRaw);
+          FirefoxServices.prefs.setStringPref(PREF_NAME, restoreRaw);
           window.BelkaFirefoxAddonOrderHelper.lastBackup = backup;
 
           const { state } = readCustomizationState();
@@ -960,7 +1000,7 @@
     });
 
     backupBtn.addEventListener("click", async () => {
-      const raw = Services.prefs.getStringPref(PREF_NAME);
+      const raw = FirefoxServices.prefs.getStringPref(PREF_NAME);
       const backup = printBackup(t("backupIntro"), raw);
       const copied = await copyTextToClipboard(makeBackupClipboardText(backup));
       if (copied) {
@@ -990,7 +1030,7 @@
           return;
         }
 
-        Services.prefs.setStringPref(PREF_NAME, newRaw);
+        FirefoxServices.prefs.setStringPref(PREF_NAME, newRaw);
         const backup = printBackup(t("backupIntro"), oldRaw, newRaw);
         window.BelkaFirefoxAddonOrderHelper.lastBackup = backup;
         const copied = await copyTextToClipboard(makeBackupClipboardText(backup));
@@ -1009,7 +1049,8 @@
       area: AREA_NAME,
       locale: LOCALE,
       addons: addons.length,
-      api: "window.BelkaFirefoxAddonOrderHelper"
+      api: "window.BelkaFirefoxAddonOrderHelper",
+      addonManagerSource: "resource://gre/modules/AddonManager.sys.mjs"
     });
   }
 
