@@ -219,8 +219,8 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 #### Belka Firefox Add-on Order Helper
 
-路徑：  
-[`tools/belka-firefox-addon-order-helper/`](../tools/belka-firefox-addon-order-helper/)
+獨立 Repo：  
+[HaruLerrz/belka-firefox-addon-order-helper](https://github.com/HaruLerrz/belka-firefox-addon-order-helper)
 
 這是一組直接在 Firefox `about:addons` Web Console 執行的 console hack，用來調整擴充套件拼圖按鈕中的項目順序。
 

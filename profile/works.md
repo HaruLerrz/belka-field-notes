@@ -194,7 +194,7 @@
 * [MSI Claw Mode Switcher](../tools/msi-claw-mode-switcher/)  
   由視窗強制滿版與觸控副作用的實機排查，整理成可讀取狀態、切換登錄覆蓋值與重新啟動 Explorer 的 PowerShell GUI。
 
-* [Belka Firefox Add-on Order Helper](../tools/belka-firefox-addon-order-helper/)  
+* [Belka Firefox Add-on Order Helper](https://github.com/HaruLerrz/belka-firefox-addon-order-helper)  
   調整 Firefox 擴充套件項目順序，並提供備份與還原功能。
 
 * [Animad WSA Fullscreen Helper](../tools/animad-wsa-fullscreen/)  
