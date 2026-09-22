@@ -8,7 +8,7 @@
 
 過去工作內容包含新聞現場拍攝、素材整理、影片剪輯、口白腳本、YouTube 上架與內容包裝；也長期參與粉專經營、社群貼文、迷因內容、公共議題長文與現場短講。
 
-近年另將 AI 工具導入內容流程與個人實作，使用 Whisper、Ultimate Vocal Remover、Stable Diffusion、Modly、GPT-SoVITS 與大型語言模型處理轉錄、音源分離、資料整理、腳本輔助、配音測試、3D 模型與材質測試、prompt workflow，以及小型工具與互動敘事系統的原型開發。2026 年取得 Google AI Professional Certificate。
+近年另將 AI 工具導入內容流程與個人實作，使用 Whisper、Ultimate Vocal Remover、Stable Diffusion、Modly、GPT-SoVITS 與大型語言模型處理轉錄、音源分離、資料整理、腳本輔助、配音測試、3D 模型與材質測試、prompt workflow，以及小型工具與互動敘事系統的原型開發。2026 年取得 Google AI Professional Certificate 與 Generative AI Leader Professional Certificate。
 
 ## Work Experience
 
@@ -61,7 +61,8 @@
 
 ## Certifications
 
-* Google AI Professional Certificate｜2026
+* [Google AI Professional Certificate](https://www.coursera.org/account/accomplishments/professional-cert/1ZW5SSU4IFVH) | Google / Coursera | 2026
+* [Generative AI Leader Professional Certificate](https://www.coursera.org/account/accomplishments/professional-cert/C9TH1OLGNWJQ) | Google Cloud / Coursera | 2026
 * 日本語能力試驗 JLPT N1／N2 合格
 * Master of Communication Professional（MCP）專業認證｜International Organization of Professional Cultivation and Accreditation（IOPCA）
 

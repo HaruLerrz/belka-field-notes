@@ -8,7 +8,7 @@
 
 我是 Jack／HaruLerrz，政大哲學系畢業、輔系日本語文學系，陽明交大傳播研究所碩士班畢業（入學時以傳播所乙組名義招生，該組為現今傳播與科技學系碩士班的前身），曾任壹傳媒（原毅傳媒）攝影記者，也長期投入社群內容經營、公共議題整理、網站與互動敘事專案、prompt workflow 與小型工具實作。
 
-國際認證與檢定資格方面，我已通過日本語能力試驗（JLPT）N1／N2；另取得 Google AI Professional Certificate（2026），以及 International Organization of Professional Cultivation and Accreditation（IOPCA）核發之 Master of Communication Professional（MCP）專業認證。
+國際認證與檢定資格方面，我已通過日本語能力試驗（JLPT）N1／N2；2026 年取得 Google AI Professional Certificate 與 Generative AI Leader Professional Certificate；另取得 International Organization of Professional Cultivation and Accreditation（IOPCA）核發之 Master of Communication Professional（MCP）專業認證。
 
 這個 repo 放的是一些我過去實際做過、用過，或整理到一半覺得值得留下來的東西。  
 有些來自新聞與影音工作，有些來自社群經營與公共議題整理，有些是自己寫來省時間的小工具，也有一些是網站、prompt、語氣結構與互動敘事相關的實驗。
