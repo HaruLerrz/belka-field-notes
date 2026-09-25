@@ -22,7 +22,11 @@
 
 ### [Legacy Notepad Upstream Contributions](legacy-notepad-upstream-pr.md)
 
-整理從 Windows Notepad 使用痛點出發，fork C++ / Win32 開源專案，完成 zh-TW、設定保存、RichEdit 搜尋／貼上／取代與鍵盤操作修正，並拆成多個 upstream PR 的實測流程。
+整理從 Windows Notepad 使用痛點出發，進入 C++ / Win32 開源 codebase，完成 zh-TW、設定保存、RichEdit 搜尋／貼上／取代與鍵盤操作修正，並拆成多個 upstream PR 的實測流程。
+
+### [Microsoft Word 1.1a x64 Compatibility Experiments](word-1-1-x64-compatibility.md)
+
+整理既有 Word 1.1a native x64 port fork 的 build、legacy C / Win32 相容性、字型 rendering／Unicode 排查，以及以 branch／worktree 隔離修正、build 與實機驗證的過程。
 
 ### [Belka 3D Showcase](belka-3d-showcase.md)
 

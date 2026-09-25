@@ -8,7 +8,7 @@
 
 過去工作內容包含新聞現場拍攝、素材整理、影片剪輯、口白腳本、YouTube 上架與內容包裝；也長期參與粉專經營、社群貼文、迷因內容、公共議題長文與現場短講。
 
-近年另將 AI 工具導入內容流程與個人實作，使用 Whisper、Ultimate Vocal Remover、Stable Diffusion、Modly、GPT-SoVITS 與大型語言模型處理轉錄、音源分離、資料整理、腳本輔助、配音測試、3D 模型與材質測試、prompt workflow，以及小型工具與互動敘事系統的原型開發。2026 年取得 Google AI Professional Certificate 與 Generative AI Leader Professional Certificate。
+近年將 AI 工具與大型語言模型導入內容流程與個人實作，並持續製作 AI 應用、互動系統與工作流程原型。實作包含 Node.js / API 串接、prompt packaging、state / context 管理、使用者回饋後的功能調整，以及以 AI 協助程式撰寫、除錯與文件整理；另有既有 C++ / Win32 與 legacy C codebase 的問題定位、相容性排查、build 與實機驗證經驗。2026 年取得 Google AI Professional Certificate 與 Generative AI Leader Professional Certificate。
 
 ## Work Experience
 
@@ -61,8 +61,8 @@
 
 ## Certifications
 
-* [Google AI Professional Certificate](https://www.coursera.org/account/accomplishments/professional-cert/1ZW5SSU4IFVH) | Google / Coursera | 2026
-* [Generative AI Leader Professional Certificate](https://www.coursera.org/account/accomplishments/professional-cert/C9TH1OLGNWJQ) | Google Cloud / Coursera | 2026
+* [Google AI Professional Certificate](https://www.coursera.org/account/accomplishments/professional-cert/1ZW5SSU4IFVH)｜Google / Coursera｜2026
+* [Generative AI Leader Professional Certificate](https://www.coursera.org/account/accomplishments/professional-cert/C9TH1OLGNWJQ)｜Google Cloud / Coursera｜2026
 * 日本語能力試驗 JLPT N1／N2 合格
 * Master of Communication Professional（MCP）專業認證｜International Organization of Professional Cultivation and Accreditation（IOPCA）
 
@@ -85,17 +85,23 @@
 * 公共議題與法政資料整理
 * 現場短講與口語轉譯
 
-### AI-assisted Workflow
+### AI Application / Prototyping
 
-* Whisper 轉錄與內容整理
-* Ultimate Vocal Remover 音源分離、語音抽取與高噪音現場素材清理
-* Stable Diffusion 圖像生成
+* AI 互動敘事系統、狀態管理與 context control 原型
+* Node.js / API 串接、prompt loading / packaging 與模型輸出處理
+* 公共議題查證與來源追蹤流程原型
+* 依實際使用者回饋調整 UI、流程、狀態與模型互動方式
+* prompt workflow 與模組化指令設計
+* AI 輔助程式撰寫、除錯、測試規劃與文件整理
+* Whisper、Ultimate Vocal Remover、Stable Diffusion、GPT-SoVITS 等 AI 工具應用
 * Modly 3D 模型生成、Hunyuan 材質管線啟用與原生擴充元件編譯
-* GPT-SoVITS 語音與配音測試
-* prompt workflow 與模組化指令
-* AI 輔助程式撰寫、除錯與文件整理
-* Node.js、PowerShell、Python 與瀏覽器 console 小型工具
-* 互動敘事系統與狀態管理原型
+
+### Existing Codebase / Compatibility
+
+* 進入既有 C++ / Win32 / RichEdit codebase，依實際使用問題進行定位、修改、build 與人工測試
+* 進行 legacy C / Win32 x64 相容性、字型 rendering、Unicode／encoding 與舊 API 行為排查
+* 使用 Git branch、worktree、cherry-pick 與 diff review 隔離不同修正與實驗方向
+* 依 build、實機測試與 edge case 結果持續修正，並將適合的修改整理為 upstream PR 或保留為可追蹤的實驗 branch
 
 ## Tools
 

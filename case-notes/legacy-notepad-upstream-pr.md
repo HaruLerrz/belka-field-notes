@@ -10,7 +10,7 @@
 
 ## From Fork to Upstream Contributions
 
-第一階段先 fork 專案，閱讀語言、設定、選單、RichEdit editor 與 dialog 相關模組，建立正體中文第三語言與 Word Wrap 持久化。
+第一階段先 fork 專案，進入原先不熟悉的 C++ / Win32 codebase，從語言、設定、選單、RichEdit editor、message loop 與 dialog 相關模組理解程式結構，再建立正體中文第三語言與 Word Wrap 持久化。
 
 之後的修改改採小型 PR 流程。每個主題都重新從 `upstream/main` 建立乾淨 branch，再把已完成的單一修改 cherry-pick 或重新整理進去。每條 branch 獨立 build、人工測試、確認 diff 範圍後再 push 到 fork 並送出 PR。
 
@@ -136,7 +136,7 @@ Git 操作過程也刻意保留 branch、commit、cherry-pick、amend、push 與
 
 這次流程中有兩個重要的「送出前後再次檢查」案例。
 
-PR #40 在人工測試時找到 boundary selection edge case，先修正、重新測試，再 amend 回單一 commit後送出。
+PR #40 在人工測試時找到 boundary selection edge case，先修正、重新測試，再 amend 回單一 commit 後送出。
 
 PR #41 已建立 upstream PR 後，又從 diff 中注意到固定大小 buffer。修改改成動態讀取 control text，再 push 到原 branch，GitHub PR 自動更新。這次經驗也讓 review 從「確認能不能用」延伸到資料長度、API position semantics 與維護風險。
 
@@ -158,8 +158,8 @@ GitHub 目前均標示可合併，等待 upstream maintainer review。
 
 這個案例記錄了：
 
-* 從日常工具的輸入焦點問題找到適合的開源替代專案。
-* 閱讀 C++ / Win32 / RichEdit 程式結構並定位語言、設定、editor、message loop 與 dialog 行為。
+* 進入原先不熟悉的 C++ / Win32 codebase，依實際使用問題找到相關模組與執行路徑。
+* 從 RichEdit、message loop、focus、clipboard、selection semantics 與 scrolling 行為定位問題。
 * 依台灣 Windows 用語完成 zh-TW 本地化。
 * 以 RichEdit 原生 API 修正搜尋、selection 與 paste 行為。
 * 從實機操作找到 wrapped visual line、selection boundary、Ctrl+H / `IsDialogMessageW` 等 Win32 edge cases。

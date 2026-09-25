@@ -2,7 +2,7 @@
 
 本頁整理部分影音、社群、公共議題、現場表達與技術實作內容。
 
-我的實作脈絡大致從新聞、攝影與內容製作出發，延伸至社群經營、公共議題整理與現場表達；後續再依工作流程、互動專案與日常使用需求，逐步發展出網站與互動敘事系統、prompt workflow 與小型工具。
+我的實作脈絡從新聞、攝影與內容製作延伸到 AI 應用、網站與互動系統、prompt workflow 與小型工具；近年的實作也包含既有開源與 legacy codebase 的問題定位、相容性排查、build、測試與修正。
 
 ## Media / News
 
@@ -139,11 +139,13 @@
 
 完整案例：[Belka 3D Showcase](../case-notes/belka-3d-showcase.md)
 
-## Open Source Contributions
+## Engineering / Existing Codebases
+
+這一區整理我進入既有 codebase 後進行問題定位、相容性排查、修改、build 與驗證的案例。重點放在理解原有系統、縮小問題範圍、隔離修改、實機測試與 diff review；這些經驗用來補充 AI application / product prototyping 之外的工程實作能力。
 
 ### [Legacy Notepad Upstream Contributions](../case-notes/legacy-notepad-upstream-pr.md)
 
-從 Windows 11 Notepad 的輸入焦點問題出發，fork C++ / Win32 輕量文字編輯器 Legacy Notepad，先完成 zh-TW 第三語言與 Word Wrap 保存，後續依長期使用中發現的 RichEdit 與 modeless dialog 行為持續拆出小型 upstream PR。
+從 Windows 11 Notepad 的輸入焦點問題出發，進入原先不熟悉的 C++ / Win32 輕量文字編輯器 codebase。先完成 zh-TW 第三語言與 Word Wrap 保存，後續依長期使用中發現的 RichEdit 與 modeless dialog 行為持續拆出小型 upstream PR。
 
 工作內容涵蓋 Win32 / RichEdit API、message loop、selection position、clipboard、visual line、dialog focus、鍵盤操作與 mouse wheel scrolling；每項修改都以 `upstream/main` 建立乾淨 branch，獨立 build、人工測試、檢查 diff 後再送出 PR。PR #40 在測試時補上 selection boundary edge case；PR #41 送出後再次 review，將固定 256 wchar buffer 改成動態長度讀取。PR #43 則處理 RichEdit 垂直滑鼠滾輪輸入停止後仍延遲捲動的問題，改由程式明確處理 `WM_MOUSEWHEEL`、high-resolution wheel partial delta 與 Windows 捲動列數設定。
 
@@ -158,6 +160,14 @@
 * [#43 Fix delayed mouse wheel scrolling](https://github.com/forloopcodes/legacy-notepad/pull/43)
 
 狀態：等待 upstream review。
+
+### [Microsoft Word 1.1a x64 Compatibility Experiments](../case-notes/word-1-1-x64-compatibility.md)
+
+以既有的 Microsoft Word for Windows 1.1a native x64 port 為基礎，在自己的 fork 中進行 build、相容性排查與修正實驗；這個案例不把原專案的 x64 port 工作歸為自己的成果。
+
+實作重點包含 legacy C / Win16 假設與現代 Win32 x64 環境之間的相容性、舊字型資料結構在現代 Windows 大量字型下的限制、Unicode 字型名稱與 ANSI / wide API 邊界，以及格式工具列的顯示與 backend mapping。不同修正方向以 branch / worktree 隔離，經 build、人工操作與 diff 檢查後，再決定保留、cherry-pick 或撤回。
+
+* [開啟 msword fork](https://github.com/HaruLerrz/msword)
 
 ## Prompting / Structured Writing
 
