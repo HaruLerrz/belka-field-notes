@@ -44,6 +44,10 @@
 
 透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的產品與功能提示卡。v0.6.0 結合已知文案規則與輸入框上方卡片結構辨識，並保留危險容器排除、尺寸限制、MutationObserver、命中原因記錄與緊急停用機制。
 
+### [Coursera Google Cloud Course Text Copier](coursera-google-cloud-course-text-copier/)
+
+為改善跨語言學習時的教材閱讀與翻譯流程，製作可一鍵擷取 Google Cloud HTML5 互動教材已載入 DOM 文字的 Tampermonkey Userscript，減少逐張切換字卡、複製與整理的操作。包含 iframe 訊息通訊、來源驗證與剪貼簿整合；目前完成初版及一次真實教材頁面測試。
+
 ## Navigation
 
 * [返回 Selected Works](../profile/works.md)

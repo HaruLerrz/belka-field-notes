@@ -308,6 +308,26 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 這個案例的重點逐漸從「補一條 selector 或文案」移到建立可維護的辨識策略：已知案例走明確規則，新案例則在嚴格安全條件下嘗試使用共通 UI 結構，同時保留可觀察的命中原因。
 
+#### Coursera Google Cloud Course Text Copier
+
+路徑：  
+[`tools/coursera-google-cloud-course-text-copier/`](../tools/coursera-google-cloud-course-text-copier/)
+
+這個 Userscript 源自跨語言學習時的閱讀可及性需求：使用者需要將 Coursera 內嵌的 Google Cloud 英文教材交給翻譯工具理解，但文字分散於必須手動切換的字卡、輪播與摺疊內容中，難以一次取得完整文字，也打斷連續閱讀的節奏。
+
+開發與排查過程包含：
+
+* 區分 Firefox Browser Console、網頁 DevTools 與 iframe 的 JavaScript 執行環境。
+* 確認未展開的教材卡片文字已預先載入 DOM。
+* 使用 JavaScript DOM traversal 擷取文字並整理基本換行。
+* 使用 `postMessage` 設計跨來源 iframe 的請求與結果傳遞。
+* 加入訊息來源、request ID、複製狀態與逾時處理。
+* 在真實教材頁面確認五項轉型驅動因素、六項 Google Cloud 優勢及逐字稿均被擷取。
+
+目前已完成可用初版與第一次真實教材頁面測試；Coursera 外層頁面的跨來源流程、其他課程頁型及延遲載入內容仍待驗證。
+
+這個案例記錄了從翻譯與閱讀需求、瀏覽器環境排查、技術方案選擇，到 AI 輔助實作與人工驗證的過程。
+
 ---
 
 ## AI Use and Manual Validation

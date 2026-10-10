@@ -219,6 +219,9 @@
 * [ChatGPT Promo Cards Hider](../tools/chatgpt-codex-promo-hider/)  
   透過 Tampermonkey userscript 處理 ChatGPT 動態提示卡。從早期文字比對誤藏上層容器，逐步加入安全篩選、分組規則，並在 v0.6.0 擴充為「已知文案 + composer-adjacent 結構 fallback」的混合偵測，另保留命中原因與 console 驗證流程。
 
+* [Coursera Google Cloud Course Text Copier](../tools/coursera-google-cloud-course-text-copier/)  
+  從跨語言學習的閱讀可及性需求出發，改善 Coursera 互動教材中需逐張切換字卡、導致翻譯工具難以連續處理文字的問題。逐步排查 Firefox Console、外層 DOM 與跨來源 iframe 結構，製作 JavaScript Userscript 擷取已載入文字並複製至剪貼簿。已用一個真實教材頁面確認擷取內容，其他頁型與跨來源整合仍待測試。
+
 ## Navigation
 
 * [返回根 README](../README.md)
