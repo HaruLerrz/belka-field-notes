@@ -222,6 +222,9 @@
 * [Coursera Google Cloud Course Text Copier](../tools/coursera-google-cloud-course-text-copier/)  
   從跨語言學習的閱讀可及性需求出發，改善 Coursera 互動教材中需逐張切換字卡、導致翻譯工具難以連續處理文字的問題。逐步排查 Firefox Console、外層 DOM 與跨來源 iframe 結構，製作 JavaScript Userscript 擷取已載入文字並複製至剪貼簿。已用一個真實教材頁面確認擷取內容，其他頁型與跨來源整合仍待測試。
 
+* [Google Search Result Count Restorer](../tools/google-search-result-count-restorer/)  
+  為恢復 Google 搜尋結果數量而製作的 Firefox Userscript。經多輪實際測試，調整有無 AI 摘要時的顯示位置，並透過 DevTools 定位工具選單中的 DOM 與 CSS 問題，完成 v1.7 修正。
+
 ## Navigation
 
 * [返回根 README](../README.md)

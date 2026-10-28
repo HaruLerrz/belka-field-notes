@@ -48,6 +48,10 @@
 
 為改善跨語言學習時的教材閱讀與翻譯流程，製作可一鍵擷取 Google Cloud HTML5 互動教材已載入 DOM 文字的 Tampermonkey Userscript，減少逐張切換字卡、複製與整理的操作。包含 iframe 訊息通訊、來源驗證與剪貼簿整合；目前完成初版及一次真實教材頁面測試。
 
+### [Google Search Result Count Restorer](google-search-result-count-restorer/)
+
+透過 Firefox／Tampermonkey，將 Google「工具」選單中的搜尋結果預估數量顯示於主要搜尋結果上方。腳本讀取頁面既有資料，並處理重複顯示、版面間距與選單殘留空白。
+
 ## Navigation
 
 * [返回 Selected Works](../profile/works.md)

@@ -328,6 +328,17 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 這個案例記錄了從翻譯與閱讀需求、瀏覽器環境排查、技術方案選擇，到 AI 輔助實作與人工驗證的過程。
 
+#### Google Search Result Count Restorer
+
+路徑：  
+[`tools/google-search-result-count-restorer/`](../tools/google-search-result-count-restorer/)
+
+Google 將搜尋結果預估數量移入「工具」選單後，日常查詢需要額外展開選單才能查看。我希望將這項資訊恢復到搜尋結果上方，因此使用 AI 協助製作 Firefox／Tampermonkey Userscript，並在實際搜尋頁面反覆測試。
+
+開發過程先處理結果數量重複顯示、顯示位置，以及有無 AI 摘要時的版面差異。後續發現工具選單仍殘留水平線與空白，便透過 Firefox DevTools 檢查 `#result-stats` 周邊 DOM，找到相鄰分隔元素的 `margin` 與 `border-top` 樣式。實際取消這兩項樣式後確認問題解決，再將修正整合至 v1.7。
+
+這個案例呈現了從使用需求、AI 輔助撰寫程式，到透過實際 DOM 與 CSS 檢查定位問題的過程。使用者負責功能需求、實機測試及結果判斷，AI 協助分析與修改程式。
+
 ---
 
 ## AI Use and Manual Validation
