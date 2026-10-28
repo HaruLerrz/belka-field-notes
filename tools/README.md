@@ -52,6 +52,10 @@
 
 透過 Firefox／Tampermonkey，將 Google「工具」選單中的搜尋結果預估數量顯示於主要搜尋結果上方。腳本讀取頁面既有資料，並處理重複顯示、版面間距與選單殘留空白。
 
+### [Threads Follow Guard](threads-follow-guard/)
+
+透過 Firefox／Tampermonkey 為 Threads「追蹤」操作增加二次點擊確認，並提供隱藏追蹤控制與停用保護模式。v0.2.0 改為放行第二次實體點擊，修正初版在動態河道確認後無法追蹤的問題。
+
 ## Navigation
 
 * [返回 Selected Works](../profile/works.md)

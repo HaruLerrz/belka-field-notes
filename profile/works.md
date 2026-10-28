@@ -225,6 +225,9 @@
 * [Google Search Result Count Restorer](../tools/google-search-result-count-restorer/)  
   為恢復 Google 搜尋結果數量而製作的 Firefox Userscript。經多輪實際測試，調整有無 AI 摘要時的顯示位置，並透過 DevTools 定位工具選單中的 DOM 與 CSS 問題，完成 v1.7 修正。
 
+* [Threads Follow Guard](../tools/threads-follow-guard/)  
+  為降低 Threads 動態河道誤觸追蹤而製作的 Userscript。實測發現初版模擬點擊在個人頁面與動態河道表現不同，v0.2.0 改用第二次實體點擊確認，並保留取消、逾時及模式切換功能。
+
 ## Navigation
 
 * [返回根 README](../README.md)
