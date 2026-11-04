@@ -5,9 +5,6 @@
 **日期：** 2025-04-17  
 **公開狀態：** 完整公開
 
-[返回 Prompting / Structured Writing](../README.md)  
-[前一專案：GPT 語言去魅對照表](../gpt-deenchantment-guide/)
-
 ## Overview
 
 《語氣結構辨識與依附風險提示模組》由《GPT 語言去魅對照表》衍生而來。
@@ -342,3 +339,9 @@ v2.5.7.9a 補強容易被判定為無害的讚美式語氣，包括：
 ## Keywords
 
 prompt workflow, LLM self-monitoring, tone analysis, dependency risk, modular prompting, instruction hierarchy, output constraints, prompt patching, simulated empathy, conversational transparency
+
+## Navigation
+
+* [返回 Prompting / Structured Writing](../README.md)
+* [查看 GPT 語言去魅對照表](../gpt-deenchantment-guide/)
+* [返回 Selected Works](../../profile/works.md)

@@ -6,8 +6,6 @@
 **公開範圍：** 輸出示範；完整 prompt、句式庫與判斷規則保留  
 **案例狀態：** 一般留言者均已匿名化；第二案原文依截圖整理
 
-[返回 Retained Prompt Modules](../README.md)
-
 ## Demo Purpose
 
 這份 demo 用來呈現低溫剝皮語氣模組在長文與多輪對話中的實際用途。
@@ -510,3 +508,9 @@
 ## Keywords
 
 long-form dialogue analysis, strawman detection, context drift, moving goalposts, conversational projection, scope control, rhetorical decomposition, retained prompt module, structured rebuttal
+
+## Navigation
+
+* [返回 Retained Modules](../README.md)
+* [查看京都腔語氣示範](kyoto-tone-demo.md)
+* [返回 Prompting / Structured Writing](../../README.md)

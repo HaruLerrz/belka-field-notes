@@ -4,8 +4,6 @@
 **日期：** 2025-04-16  
 **公開狀態：** 完整公開
 
-[返回 Prompting / Structured Writing](../README.md)
-
 ## Overview
 
 《GPT 語言去魅對照表》用來整理大型語言模型常見的語氣模擬機制。
@@ -143,3 +141,9 @@ v1.2 整理的語氣類型包含：
 ## Keywords
 
 LLM tone analysis, language demystification, dependency risk, simulated empathy, tone mirroring, emotional closure, AI literacy, conversational design
+
+## Navigation
+
+* [返回 Prompting / Structured Writing](../README.md)
+* [查看語氣結構辨識與依附風險提示模組](../tone-dependency-risk-module/)
+* [返回 Selected Works](../../profile/works.md)

@@ -1,7 +1,5 @@
 # Retained Prompt Modules
 
-[返回 Prompting / Structured Writing](../README.md)
-
 本頁整理兩組未公開完整 prompt 的語氣模組。
 
 這兩個模組都源自前期對語氣結構、對話節奏與模型行為的整理，但用途不同：
@@ -222,3 +220,9 @@ GPT 語言去魅對照表
 ## Keywords
 
 retained prompt modules, tone control, rhetorical inversion, dialogue analysis, strawman detection, context drift, conversational projection, prompt versioning
+
+## Navigation
+
+* [返回 Prompting / Structured Writing](../README.md)
+* [返回 Selected Works](../../profile/works.md)
+* [返回根 README](../../README.md)

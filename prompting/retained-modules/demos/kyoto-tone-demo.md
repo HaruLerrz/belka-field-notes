@@ -6,8 +6,6 @@
 **公開範圍：** 輸出示範；完整 prompt 保留  
 **案例狀態：** 已匿名化一般留言者帳號，並刪除與示範無關的對話內容
 
-[返回 Retained Prompt Modules](../README.md)
-
 ## Demo Purpose
 
 這份 demo 用來呈現京都腔語氣模組在實際社群情境中的輸出方式。
@@ -241,3 +239,9 @@
 ## Keywords
 
 Kyoto-style rhetoric, polite irony, rhetorical inversion, public issue response, context filtering, social media writing, retained prompt module, structured rebuttal
+
+## Navigation
+
+* [返回 Retained Modules](../README.md)
+* [查看低溫剝皮語氣示範](low-temperature-peeling-demo.md)
+* [返回 Prompting / Structured Writing](../../README.md)
