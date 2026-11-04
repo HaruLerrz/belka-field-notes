@@ -228,6 +228,9 @@
 * [Threads Follow Guard](../tools/threads-follow-guard/)  
   為降低 Threads 動態河道誤觸追蹤而製作的 Userscript。實測發現初版模擬點擊在個人頁面與動態河道表現不同，v0.2.0 改用第二次實體點擊確認，並保留取消、逾時及模式切換功能。
 
+* [ChatGPT Usage Analytics Exporter](../tools/chatgpt-usage-analytics-exporter/)  
+  為 ChatGPT Usage Analytics 製作的 Firefox／Tampermonkey 匯出工具，可將每日用量、Token 與分類統計存成 JSON／CSV，方便本機整理與分析。
+
 ## Navigation
 
 * [返回根 README](../README.md)

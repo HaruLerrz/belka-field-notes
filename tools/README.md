@@ -56,6 +56,10 @@
 
 透過 Firefox／Tampermonkey 為 Threads「追蹤」操作增加二次點擊確認，並提供隱藏追蹤控制與停用保護模式。v0.2.0 改為放行第二次實體點擊，修正初版在動態河道確認後無法追蹤的問題。
 
+### [ChatGPT Usage Analytics Exporter](chatgpt-usage-analytics-exporter/)
+
+使用 Firefox／Tampermonkey 匯出 ChatGPT Usage Analytics 的每日用量、Token、分類統計與當前額度窗口，產生 JSON 或 CSV。v1.1.0 已實測成功，並保留資料來源與計量單位的驗證紀錄。
+
 ## Navigation
 
 * [返回 Selected Works](../profile/works.md)
