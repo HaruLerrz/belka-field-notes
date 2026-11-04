@@ -135,7 +135,7 @@
 
 ### [3D Model Showcase](https://3d.haruz.art/)
 
-可直接在瀏覽器旋轉、縮放與切換顯示方式的 3D 作品站。repo 內公開的 [Belka 3D Showcase Manager](../tools/belka-3d-showcase-manager/) 可用來架設同類型的簡易展示站，並透過 Windows 圖形化介面管理作品、預覽網站，以及輸出更新 ZIP 或完整網站部署包。
+可直接在瀏覽器旋轉、縮放與切換顯示方式的 3D 作品站。獨立開源的 [Belka 3D Showcase Manager](https://github.com/HaruLerrz/belka-3d-showcase-manager) 可用來架設同類型的簡易展示站，並透過 Windows 圖形化介面管理作品、預覽網站，以及輸出更新 ZIP 或完整網站部署包。
 
 完整案例：[Belka 3D Showcase](../case-notes/belka-3d-showcase.md)
 
@@ -231,7 +231,7 @@
 
 ### Media & Publishing
 
-* [Belka 3D Showcase Manager](../tools/belka-3d-showcase-manager/)  
+* [Belka 3D Showcase Manager](https://github.com/HaruLerrz/belka-3d-showcase-manager)  
   整合靜態 3D 展示站、Windows 圖形化管理介面、本機預覽、更新 ZIP 與完整網站部署流程。
 
 * [YouTube Thumbnail Cropper](../tools/youtube-thumbnail-cropper/)  

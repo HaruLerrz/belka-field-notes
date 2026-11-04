@@ -157,8 +157,8 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 #### Belka 3D Showcase Manager
 
-路徑：  
-[`tools/belka-3d-showcase-manager/`](../tools/belka-3d-showcase-manager/)
+獨立 Repo：  
+[HaruLerrz/belka-3d-showcase-manager](https://github.com/HaruLerrz/belka-3d-showcase-manager)
 
 這個工具承接 Belka 3D Showcase 的本機內容管理與發布流程，將原本需要手動處理的資料夾、作品清單與 ZIP 打包步驟集中到 Windows 圖形化介面。
 

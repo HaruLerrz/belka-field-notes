@@ -58,7 +58,7 @@
 
 ### Media & Publishing
 
-#### [Belka 3D Showcase Manager](belka-3d-showcase-manager/)
+#### [Belka 3D Showcase Manager](https://github.com/HaruLerrz/belka-3d-showcase-manager)
 
 一套可轉發的靜態 3D 作品站與 Windows 圖形化管理工具，可在本機新增或更新作品、預覽網站，並產生增量更新 ZIP 或完整網站部署包。
 

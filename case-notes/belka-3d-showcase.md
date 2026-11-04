@@ -3,7 +3,7 @@
 這個案例包含一個公開的 3D 作品展示站，以及一套可在 Windows 本機管理作品與產生部署 ZIP 的圖形化工具。
 
 * 公開網站：[3D Model Showcase](https://3d.haruz.art/)
-* 可下載工具：[Belka 3D Showcase Manager](../tools/belka-3d-showcase-manager/)
+* 可下載工具：[Belka 3D Showcase Manager](https://github.com/HaruLerrz/belka-3d-showcase-manager)
 
 ## Result
 
