@@ -97,7 +97,7 @@
 
 網站由首頁、`works.json` 作品清單、共用 3D 檢視器，以及各作品的模型與原圖資料夾組成。訪客點進作品頁後才下載對應模型；旋轉、縮放、材質切換、輪廓與模型資訊都由瀏覽器處理，因此一般靜態網站主機就能部署，不需要 Node.js 背景程序、API 或資料庫。
 
-作品數量增加後，原本的手動發布步驟另外整理成 Belka 3D Showcase Manager。管理工具在下方的 Small Tools and Workflow Helpers 另行說明；完整 Case Note 則保留網站架構、部署、載入調整與錯誤排查的整體脈絡。
+作品數量增加後，原本的手動發布步驟另外整理成 Belka 3D Showcase Manager。管理工具在下方的 Media & Publishing 章節另行說明；完整 Case Note 則保留網站架構、部署、載入調整與錯誤排查的整體脈絡。
 
 #### Enabling Hunyuan Texture Generation in Modly
 
@@ -137,46 +137,145 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 相關文件主要記錄任務邊界、載入順序、觸發條件、固定輸出格式、版本差異與實測後補丁。
 
-### Small Tools and Workflow Helpers
+### Web & Browser
 
-#### YouTube Thumbnail Cropper
+#### ChatGPT Usage Analytics Exporter
 
 路徑：  
-[`tools/youtube-thumbnail-cropper/`](../tools/youtube-thumbnail-cropper/)
+[`tools/chatgpt-usage-analytics-exporter/`](../tools/chatgpt-usage-analytics-exporter/)
 
-這個工具用來處理影音工作中的重複性素材整理。
+這個 Firefox／Tampermonkey Userscript 起於 AI 協作期間的用量管理需求，希望把 ChatGPT Usage Analytics 的每日計量、Token、分類統計與目前額度窗口匯出成 JSON 或 CSV，方便在本機保存與分析。
 
-原始需求包含：
+開發與驗證過程包含：
 
-* 依 YouTube 連結抓取縮圖
-* 使用影片標題命名
-* 裁切成固定尺寸
-* 減少手動另存、重新命名與裁圖的步驟
+* 由使用者主動點擊後，透過已登入的 ChatGPT 網頁向同源 API 取得用量與分類資訊。
+* 整合多個端點的回傳資料，輸出結構化 JSON 與長格式 CSV。
+* 在 Firefox／Tampermonkey 實測匯出，離線交叉核對 JSON 與 CSV 共 1,414 筆分類資料。
+* 記錄部分 API 回傳 HTTP 400 時的端點診斷，保留其餘成功取得的資料。
+* 區分每日絕對 Credits 與 `units=percent` 分類圖表的相對數值，避免不同計量單位混用。
+* 確認目前的資料尚無法可靠拆分 High／Ultra 推理強度，並記錄日期邊界及模型 Token 細項的限制。
 
-這類工作單次操作並不困難，但在新聞與影音製作中反覆出現時，容易累積大量機械性時間。程式負責抓取、命名與裁切等固定步驟，剪輯與編輯判斷仍留在原有工作流程中。
+這個案例呈現非公開 API 的資料擷取、跨格式核對與資料語意驗證流程。需求設定、Firefox 實測與結果判斷由我負責；AI 協助程式撰寫、資料結構排查與修正。詳細實測紀錄見 [VALIDATION.md](../tools/chatgpt-usage-analytics-exporter/VALIDATION.md)。
 
-#### Belka 3D Showcase Manager
+#### ChatGPT Promo Cards Hider
+
+路徑：  
+[`tools/chatgpt-codex-promo-hider/`](../tools/chatgpt-codex-promo-hider/)
+
+這個 userscript 用來處理 ChatGPT 回覆後動態插入的產品與功能提示卡。
+
+開發過程包含：
+
+* 初版依提示卡文字往上尋找容器，曾選到過大的上層元素並造成整頁空白。
+* 加入 `html`、`body`、`main`、輸入區與 contenteditable 等危險容器排除。
+* 改為選取最大的安全候選，解決只隱藏內層內容後留下空白外框的問題。
+* 將 Codex、Pro、外掛程式資訊與 ChatGPT Work 整理成獨立 `PROMOS` 規則。
+* v0.6.0 增加 composer-adjacent 結構 fallback，利用提示卡與輸入框的位置、水平重疊、尺寸、關閉控制、行動控制與促銷訊號辨識尚未收錄的新文案。
+* 以 `data-belka-promo-reason` 區分 `text:<rule-name>` 與 `structure:composer-adjacent`，並加入 console debug 記錄協助實機驗證。
+* 結構 fallback 目前仍等待沒有既有文字規則先命中的野生新卡完成實測，因此文件保留這項驗證狀態。
+
+這個案例的重點逐漸從「補一條 selector 或文案」移到建立可維護的辨識策略：已知案例走明確規則，新案例則在嚴格安全條件下嘗試使用共通 UI 結構，同時保留可觀察的命中原因。
+
+#### Google Search Result Count Restorer
+
+路徑：  
+[`tools/google-search-result-count-restorer/`](../tools/google-search-result-count-restorer/)
+
+Google 將搜尋結果預估數量移入「工具」選單後，日常查詢需要額外展開選單才能查看。我希望將這項資訊恢復到搜尋結果上方，因此使用 AI 協助製作 Firefox／Tampermonkey Userscript，並在實際搜尋頁面反覆測試。
+
+開發過程先處理結果數量重複顯示、顯示位置，以及有無 AI 摘要時的版面差異。後續發現工具選單仍殘留水平線與空白，便透過 Firefox DevTools 檢查 `#result-stats` 周邊 DOM，找到相鄰分隔元素的 `margin` 與 `border-top` 樣式。實際取消這兩項樣式後確認問題解決，再將修正整合至 v1.7。
+
+這個案例呈現了從使用需求、AI 輔助撰寫程式，到透過實際 DOM 與 CSS 檢查定位問題的過程。使用者負責功能需求、實機測試及結果判斷，AI 協助分析與修改程式。
+
+#### Coursera Google Cloud Course Text Copier
+
+路徑：  
+[`tools/coursera-google-cloud-course-text-copier/`](../tools/coursera-google-cloud-course-text-copier/)
+
+這個 Userscript 源自跨語言學習時的閱讀可及性需求：使用者需要將 Coursera 內嵌的 Google Cloud 英文教材交給翻譯工具理解，但文字分散於必須手動切換的字卡、輪播與摺疊內容中，難以一次取得完整文字，也打斷連續閱讀的節奏。
+
+開發與排查過程包含：
+
+* 區分 Firefox Browser Console、網頁 DevTools 與 iframe 的 JavaScript 執行環境。
+* 確認未展開的教材卡片文字已預先載入 DOM。
+* 使用 JavaScript DOM traversal 擷取文字並整理基本換行。
+* 使用 `postMessage` 設計跨來源 iframe 的請求與結果傳遞。
+* 加入訊息來源、request ID、複製狀態與逾時處理。
+* 在真實教材頁面確認五項轉型驅動因素、六項 Google Cloud 優勢及逐字稿均被擷取。
+
+目前已完成可用初版與第一次真實教材頁面測試；Coursera 外層頁面的跨來源流程、其他課程頁型及延遲載入內容仍待驗證。
+
+這個案例記錄了從翻譯與閱讀需求、瀏覽器環境排查、技術方案選擇，到 AI 輔助實作與人工驗證的過程。
+
+#### Gmail Hide Report Spam Button
+
+路徑：  
+[`tools/gmail-hide-report-spam-button/`](../tools/gmail-hide-report-spam-button/)
+
+這個 userscript 源自 Gmail 郵件整理過程中的誤觸問題。對於很少使用「回報垃圾郵件」功能的操作情境，工具會透過 CSS 隱藏對應按鈕，降低誤按後改變郵件分類的風險。
+
+實作內容包含：
+
+* 使用 userscript 管理工具載入程式
+* 透過 `GM_addStyle` 注入 CSS
+* 使用 Gmail 現行 DOM 屬性定位按鈕
+* 限定 selector 只處理具有 `role="button"` 與 `act="9"` 的元素
+* 保留停用 script 後恢復原始介面的方式
+* 記錄 Gmail 改版可能造成 selector 失效的限制
+
+這個案例的程式規模很小，但呈現了從日常操作問題出發，選擇符合需求規模的實作方式，而不必為單一介面調整建立完整瀏覽器擴充套件。
+
+#### Threads Follow Guard
+
+路徑：  
+[`tools/threads-follow-guard/`](../tools/threads-follow-guard/)
+
+這個 Userscript 源自 Threads 動態河道容易誤觸「追蹤」按鈕的問題，目標是為追蹤操作增加一道確認程序。
+
+v0.1.0 採取攔截第一次點擊、顯示確認介面，再由 JavaScript 模擬點擊的設計。實際測試發現個人頁面可以正常追蹤，但動態河道在確認後未完成追蹤。
+
+v0.2.0 改成保留第二次真實使用者操作：第一次攔截追蹤，確認間隔達 0.5 秒且未逾 8 秒時，將同一按鈕的第二次實體點擊交由 Threads 原本的事件處理流程。腳本另提供 Esc、點擊其他位置或逾時取消，以及隱藏控制和停用保護模式。
+
+開發期間以模擬測試檢查事件攔截、連點、鍵盤、取消、逾時及模式切換。使用者於 Threads 實際操作 v0.2.0 後，回報目前未發現問題。這個案例記錄了依實機回饋修正事件處理假設的過程；需求、實測與結果判斷由我負責，AI 協助分析與修改程式。
+
+#### Facebook Invite Helper
+
+路徑：  
+[`tools/facebook-invite-helper/`](../tools/facebook-invite-helper/)
+
+這個 userscript 源自 Facebook 反應名單中反覆點擊「邀請」的操作需求，採用頁面 DOM 操作，不串接 Facebook 私有 API 或 GraphQL request。
+
+開發與實測包含：
+
+* 以批次上限與隨機延遲控制邀請節奏，並加入手動停止與已知限制訊息自停。
+* 初版以畫面面積選擇主要 dialog，在貼文 modal 與反應名單 modal 同時存在時抓到錯誤容器；後續改成依實際「邀請／已邀請」按鈕數量評分 dialog。
+* 邀請只處理目前已載入的按鈕，本身不自動捲動。
+* UI 預設縮小，展開後可調整批次與延遲；完整停用仍交由 Tampermonkey 控制。
+* 新增獨立「捲到底」功能，持續捲動反應名單並等待 Facebook 載入更多內容；連續多輪沒有新內容後才停止。
+* 邀請與捲動功能互相排斥，避免兩種 DOM 操作同時改變名單狀態。
+
+這個案例保留了「先從保守操作開始，再依真實頁面結構修正容器判斷」的過程。實際 bug 來自對 DOM 層級的錯誤假設，修正方向也因此集中在 dialog 選取，而沒有改動已驗證可用的點擊與節流流程。
+
+#### Belka Firefox Add-on Order Helper
 
 獨立 Repo：  
-[HaruLerrz/belka-3d-showcase-manager](https://github.com/HaruLerrz/belka-3d-showcase-manager)
+[HaruLerrz/belka-firefox-addon-order-helper](https://github.com/HaruLerrz/belka-firefox-addon-order-helper)
 
-這個工具承接 Belka 3D Showcase 的本機內容管理與發布流程，將原本需要手動處理的資料夾、作品清單與 ZIP 打包步驟集中到 Windows 圖形化介面。
+這是一組直接在 Firefox `about:addons` Web Console 執行的 console hack，用來調整擴充套件拼圖按鈕中的項目順序。
 
-主要功能包含：
+開發過程包含：
 
-* 新增、更新與重新命名作品
-* 更換模型與原始參考圖
-* 上架、下架、刪除與本機封存
-* 從公開網站同步 `works.json`
-* 產生增量更新 ZIP
-* 產生完整網站部署包
-* 啟動本機預覽
-* 修復舊 ZIP 的 Windows 路徑格式
+* 讀取既有 DOM 結構
+* 尋找可重新排序的節點
+* 將原始腳本改成繁體中文介面
+* 增加拖曳／排序輔助
+* 加入備份輸出
+* 加入可貼入備份內容的還原介面
+* 保留可直接在 console 執行的形式
 
-介面以 PowerShell WinForms 製作，一般使用者透過 CMD 啟動即可。工具同時保留 Viewer 可讀原始碼、固定套件版本與第三方授權文件，方便重建及公開散布。
+此工具最後保留 console hack 形式，未包裝成完整擴充套件；需求只發生在特定頁面與操作情境中，較輕量的形式也較容易維護。
 
-完整的網站與工具演進請見：  
-[Belka 3D Showcase](belka-3d-showcase.md)
+### Windows & Devices
 
 #### MSI Claw RGB Slot GUI
 
@@ -217,25 +316,6 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 這個案例保留兩種模式與各自副作用，重點在於將系統層問題拆成可驗證步驟，並把一次性的登錄操作整理成可逆、可讀取狀態的工具。
 
-#### Belka Firefox Add-on Order Helper
-
-獨立 Repo：  
-[HaruLerrz/belka-firefox-addon-order-helper](https://github.com/HaruLerrz/belka-firefox-addon-order-helper)
-
-這是一組直接在 Firefox `about:addons` Web Console 執行的 console hack，用來調整擴充套件拼圖按鈕中的項目順序。
-
-開發過程包含：
-
-* 讀取既有 DOM 結構
-* 尋找可重新排序的節點
-* 將原始腳本改成繁體中文介面
-* 增加拖曳／排序輔助
-* 加入備份輸出
-* 加入可貼入備份內容的還原介面
-* 保留可直接在 console 執行的形式
-
-此工具最後保留 console hack 形式，未包裝成完整擴充套件；需求只發生在特定頁面與操作情境中，較輕量的形式也較容易維護。
-
 #### Animad WSA Fullscreen Helper
 
 路徑：  
@@ -253,104 +333,46 @@ Prompting 相關實作同樣使用版本與補丁方式整理。
 
 因此實作上將 ADB、Windows GUI automation 與等待條件串在一起，形成可重複執行的工作流程。
 
-#### Gmail Hide Report Spam Button
+### Media & Publishing
+
+#### Belka 3D Showcase Manager
+
+獨立 Repo：  
+[HaruLerrz/belka-3d-showcase-manager](https://github.com/HaruLerrz/belka-3d-showcase-manager)
+
+這個工具承接 Belka 3D Showcase 的本機內容管理與發布流程，將原本需要手動處理的資料夾、作品清單與 ZIP 打包步驟集中到 Windows 圖形化介面。
+
+主要功能包含：
+
+* 新增、更新與重新命名作品
+* 更換模型與原始參考圖
+* 上架、下架、刪除與本機封存
+* 從公開網站同步 `works.json`
+* 產生增量更新 ZIP
+* 產生完整網站部署包
+* 啟動本機預覽
+* 修復舊 ZIP 的 Windows 路徑格式
+
+介面以 PowerShell WinForms 製作，一般使用者透過 CMD 啟動即可。工具同時保留 Viewer 可讀原始碼、固定套件版本與第三方授權文件，方便重建及公開散布。
+
+完整的網站與工具演進請見：  
+[Belka 3D Showcase](belka-3d-showcase.md)
+
+#### YouTube Thumbnail Cropper
 
 路徑：  
-[`tools/gmail-hide-report-spam-button/`](../tools/gmail-hide-report-spam-button/)
+[`tools/youtube-thumbnail-cropper/`](../tools/youtube-thumbnail-cropper/)
 
-這個 userscript 源自 Gmail 郵件整理過程中的誤觸問題。對於很少使用「回報垃圾郵件」功能的操作情境，工具會透過 CSS 隱藏對應按鈕，降低誤按後改變郵件分類的風險。
+這個工具用來處理影音工作中的重複性素材整理。
 
-實作內容包含：
+原始需求包含：
 
-* 使用 userscript 管理工具載入程式
-* 透過 `GM_addStyle` 注入 CSS
-* 使用 Gmail 現行 DOM 屬性定位按鈕
-* 限定 selector 只處理具有 `role="button"` 與 `act="9"` 的元素
-* 保留停用 script 後恢復原始介面的方式
-* 記錄 Gmail 改版可能造成 selector 失效的限制
+* 依 YouTube 連結抓取縮圖
+* 使用影片標題命名
+* 裁切成固定尺寸
+* 減少手動另存、重新命名與裁圖的步驟
 
-這個案例的程式規模很小，但呈現了從日常操作問題出發，選擇符合需求規模的實作方式，而不必為單一介面調整建立完整瀏覽器擴充套件。
-
-#### Facebook Invite Helper
-
-路徑：  
-[`tools/facebook-invite-helper/`](../tools/facebook-invite-helper/)
-
-這個 userscript 源自 Facebook 反應名單中反覆點擊「邀請」的操作需求，採用頁面 DOM 操作，不串接 Facebook 私有 API 或 GraphQL request。
-
-開發與實測包含：
-
-* 以批次上限與隨機延遲控制邀請節奏，並加入手動停止與已知限制訊息自停。
-* 初版以畫面面積選擇主要 dialog，在貼文 modal 與反應名單 modal 同時存在時抓到錯誤容器；後續改成依實際「邀請／已邀請」按鈕數量評分 dialog。
-* 邀請只處理目前已載入的按鈕，本身不自動捲動。
-* UI 預設縮小，展開後可調整批次與延遲；完整停用仍交由 Tampermonkey 控制。
-* 新增獨立「捲到底」功能，持續捲動反應名單並等待 Facebook 載入更多內容；連續多輪沒有新內容後才停止。
-* 邀請與捲動功能互相排斥，避免兩種 DOM 操作同時改變名單狀態。
-
-這個案例保留了「先從保守操作開始，再依真實頁面結構修正容器判斷」的過程。實際 bug 來自對 DOM 層級的錯誤假設，修正方向也因此集中在 dialog 選取，而沒有改動已驗證可用的點擊與節流流程。
-
-#### ChatGPT Promo Cards Hider
-
-路徑：  
-[`tools/chatgpt-codex-promo-hider/`](../tools/chatgpt-codex-promo-hider/)
-
-這個 userscript 用來處理 ChatGPT 回覆後動態插入的產品與功能提示卡。
-
-開發過程包含：
-
-* 初版依提示卡文字往上尋找容器，曾選到過大的上層元素並造成整頁空白。
-* 加入 `html`、`body`、`main`、輸入區與 contenteditable 等危險容器排除。
-* 改為選取最大的安全候選，解決只隱藏內層內容後留下空白外框的問題。
-* 將 Codex、Pro、外掛程式資訊與 ChatGPT Work 整理成獨立 `PROMOS` 規則。
-* v0.6.0 增加 composer-adjacent 結構 fallback，利用提示卡與輸入框的位置、水平重疊、尺寸、關閉控制、行動控制與促銷訊號辨識尚未收錄的新文案。
-* 以 `data-belka-promo-reason` 區分 `text:<rule-name>` 與 `structure:composer-adjacent`，並加入 console debug 記錄協助實機驗證。
-* 結構 fallback 目前仍等待沒有既有文字規則先命中的野生新卡完成實測，因此文件保留這項驗證狀態。
-
-這個案例的重點逐漸從「補一條 selector 或文案」移到建立可維護的辨識策略：已知案例走明確規則，新案例則在嚴格安全條件下嘗試使用共通 UI 結構，同時保留可觀察的命中原因。
-
-#### Coursera Google Cloud Course Text Copier
-
-路徑：  
-[`tools/coursera-google-cloud-course-text-copier/`](../tools/coursera-google-cloud-course-text-copier/)
-
-這個 Userscript 源自跨語言學習時的閱讀可及性需求：使用者需要將 Coursera 內嵌的 Google Cloud 英文教材交給翻譯工具理解，但文字分散於必須手動切換的字卡、輪播與摺疊內容中，難以一次取得完整文字，也打斷連續閱讀的節奏。
-
-開發與排查過程包含：
-
-* 區分 Firefox Browser Console、網頁 DevTools 與 iframe 的 JavaScript 執行環境。
-* 確認未展開的教材卡片文字已預先載入 DOM。
-* 使用 JavaScript DOM traversal 擷取文字並整理基本換行。
-* 使用 `postMessage` 設計跨來源 iframe 的請求與結果傳遞。
-* 加入訊息來源、request ID、複製狀態與逾時處理。
-* 在真實教材頁面確認五項轉型驅動因素、六項 Google Cloud 優勢及逐字稿均被擷取。
-
-目前已完成可用初版與第一次真實教材頁面測試；Coursera 外層頁面的跨來源流程、其他課程頁型及延遲載入內容仍待驗證。
-
-這個案例記錄了從翻譯與閱讀需求、瀏覽器環境排查、技術方案選擇，到 AI 輔助實作與人工驗證的過程。
-
-#### Google Search Result Count Restorer
-
-路徑：  
-[`tools/google-search-result-count-restorer/`](../tools/google-search-result-count-restorer/)
-
-Google 將搜尋結果預估數量移入「工具」選單後，日常查詢需要額外展開選單才能查看。我希望將這項資訊恢復到搜尋結果上方，因此使用 AI 協助製作 Firefox／Tampermonkey Userscript，並在實際搜尋頁面反覆測試。
-
-開發過程先處理結果數量重複顯示、顯示位置，以及有無 AI 摘要時的版面差異。後續發現工具選單仍殘留水平線與空白，便透過 Firefox DevTools 檢查 `#result-stats` 周邊 DOM，找到相鄰分隔元素的 `margin` 與 `border-top` 樣式。實際取消這兩項樣式後確認問題解決，再將修正整合至 v1.7。
-
-這個案例呈現了從使用需求、AI 輔助撰寫程式，到透過實際 DOM 與 CSS 檢查定位問題的過程。使用者負責功能需求、實機測試及結果判斷，AI 協助分析與修改程式。
-
-#### Threads Follow Guard
-
-路徑：  
-[`tools/threads-follow-guard/`](../tools/threads-follow-guard/)
-
-這個 Userscript 源自 Threads 動態河道容易誤觸「追蹤」按鈕的問題，目標是為追蹤操作增加一道確認程序。
-
-v0.1.0 採取攔截第一次點擊、顯示確認介面，再由 JavaScript 模擬點擊的設計。實際測試發現個人頁面可以正常追蹤，但動態河道在確認後未完成追蹤。
-
-v0.2.0 改成保留第二次真實使用者操作：第一次攔截追蹤，確認間隔達 0.5 秒且未逾 8 秒時，將同一按鈕的第二次實體點擊交由 Threads 原本的事件處理流程。腳本另提供 Esc、點擊其他位置或逾時取消，以及隱藏控制和停用保護模式。
-
-開發期間以模擬測試檢查事件攔截、連點、鍵盤、取消、逾時及模式切換。使用者於 Threads 實際操作 v0.2.0 後，回報目前未發現問題。這個案例記錄了依實機回饋修正事件處理假設的過程；需求、實測與結果判斷由我負責，AI 協助分析與修改程式。
+這類工作單次操作並不困難，但在新聞與影音製作中反覆出現時，容易累積大量機械性時間。程式負責抓取、命名與裁切等固定步驟，剪輯與編輯判斷仍留在原有工作流程中。
 
 ---
 
