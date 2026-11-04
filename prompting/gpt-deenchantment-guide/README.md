@@ -145,5 +145,4 @@ LLM tone analysis, language demystification, dependency risk, simulated empathy,
 ## Navigation
 
 * [返回 Prompting / Structured Writing](../README.md)
-* [查看語氣結構辨識與依附風險提示模組](../tone-dependency-risk-module/)
 * [返回 Selected Works](../../profile/works.md)

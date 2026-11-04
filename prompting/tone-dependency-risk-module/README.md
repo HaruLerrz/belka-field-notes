@@ -343,5 +343,4 @@ prompt workflow, LLM self-monitoring, tone analysis, dependency risk, modular pr
 ## Navigation
 
 * [返回 Prompting / Structured Writing](../README.md)
-* [查看 GPT 語言去魅對照表](../gpt-deenchantment-guide/)
 * [返回 Selected Works](../../profile/works.md)

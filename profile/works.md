@@ -192,11 +192,33 @@
 * [Digital Workflow Prototyping](../case-notes/digital-workflow-prototyping.md)  
   整理問題拆解、AI 輔助原型、實機測試、錯誤修正與文件化的共同流程。
 
-* [YouTube Thumbnail Cropper](../tools/youtube-thumbnail-cropper/)  
-  抓取 YouTube 縮圖、依影片標題命名並裁切成固定尺寸。
+### Web & Browser
 
-* [Belka 3D Showcase Manager](../tools/belka-3d-showcase-manager/)  
-  整合靜態 3D 展示站、Windows 圖形化管理介面、本機預覽、更新 ZIP 與完整網站部署流程。
+* [ChatGPT Usage Analytics Exporter](../tools/chatgpt-usage-analytics-exporter/)  
+  為 ChatGPT Usage Analytics 製作的 Firefox／Tampermonkey 匯出工具，可將每日用量、Token 與分類統計存成 JSON／CSV，方便本機整理與分析。
+
+* [ChatGPT Promo Cards Hider](../tools/chatgpt-codex-promo-hider/)  
+  透過 Tampermonkey userscript 處理 ChatGPT 動態提示卡。從早期文字比對誤藏上層容器，逐步加入安全篩選、分組規則，並在 v0.6.0 擴充為「已知文案 + composer-adjacent 結構 fallback」的混合偵測，另保留命中原因與 console 驗證流程。
+
+* [Google Search Result Count Restorer](../tools/google-search-result-count-restorer/)  
+  為恢復 Google 搜尋結果數量而製作的 Firefox Userscript。經多輪實際測試，調整有無 AI 摘要時的顯示位置，並透過 DevTools 定位工具選單中的 DOM 與 CSS 問題，完成 v1.7 修正。
+
+* [Coursera Google Cloud Course Text Copier](../tools/coursera-google-cloud-course-text-copier/)  
+  從跨語言學習的閱讀可及性需求出發，改善 Coursera 互動教材中需逐張切換字卡、導致翻譯工具難以連續處理文字的問題。逐步排查 Firefox Console、外層 DOM 與跨來源 iframe 結構，製作 JavaScript Userscript 擷取已載入文字並複製至剪貼簿。已用一個真實教材頁面確認擷取內容，其他頁型與跨來源整合仍待測試。
+
+* [Gmail Hide Report Spam Button](../tools/gmail-hide-report-spam-button/)  
+  透過 userscript 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低郵件整理過程中的誤觸。
+
+* [Threads Follow Guard](../tools/threads-follow-guard/)  
+  為降低 Threads 動態河道誤觸追蹤而製作的 Userscript。實測發現初版模擬點擊在個人頁面與動態河道表現不同，v0.2.0 改用第二次實體點擊確認，並保留取消、逾時及模式切換功能。
+
+* [Facebook Invite Helper](../tools/facebook-invite-helper/)  
+  透過 Tampermonkey userscript 將 Facebook 反應名單中的重複邀請操作整理成可控制的批次流程，包含多層 dialog 辨識修正、隨機延遲、限制訊息自停、預設縮小 UI，以及與邀請互相獨立的「捲到底」名單載入功能。
+
+* [Belka Firefox Add-on Order Helper](https://github.com/HaruLerrz/belka-firefox-addon-order-helper)  
+  調整 Firefox 擴充套件項目順序，並提供備份與還原功能。
+
+### Windows & Devices
 
 * [MSI Claw RGB Slot GUI](../tools/msi-claw-rgb-slot-gui/)  
   從 HID payload 測試、slot 對應與色彩通道確認，整理成 PowerShell GUI 與可重現的依賴安裝流程。
@@ -204,32 +226,16 @@
 * [MSI Claw Mode Switcher](../tools/msi-claw-mode-switcher/)  
   由視窗強制滿版與觸控副作用的實機排查，整理成可讀取狀態、切換登錄覆蓋值與重新啟動 Explorer 的 PowerShell GUI。
 
-* [Belka Firefox Add-on Order Helper](https://github.com/HaruLerrz/belka-firefox-addon-order-helper)  
-  調整 Firefox 擴充套件項目順序，並提供備份與還原功能。
-
 * [Animad WSA Fullscreen Helper](../tools/animad-wsa-fullscreen/)  
   串接 ADB、WSA 與 Windows 視窗操作，完成動畫瘋 App 的啟動與全螢幕流程。
 
-* [Gmail Hide Report Spam Button](../tools/gmail-hide-report-spam-button/)  
-  透過 userscript 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低郵件整理過程中的誤觸。
+### Media & Publishing
 
-* [Facebook Invite Helper](../tools/facebook-invite-helper/)  
-  透過 Tampermonkey userscript 將 Facebook 反應名單中的重複邀請操作整理成可控制的批次流程，包含多層 dialog 辨識修正、隨機延遲、限制訊息自停、預設縮小 UI，以及與邀請互相獨立的「捲到底」名單載入功能。
+* [Belka 3D Showcase Manager](../tools/belka-3d-showcase-manager/)  
+  整合靜態 3D 展示站、Windows 圖形化管理介面、本機預覽、更新 ZIP 與完整網站部署流程。
 
-* [ChatGPT Promo Cards Hider](../tools/chatgpt-codex-promo-hider/)  
-  透過 Tampermonkey userscript 處理 ChatGPT 動態提示卡。從早期文字比對誤藏上層容器，逐步加入安全篩選、分組規則，並在 v0.6.0 擴充為「已知文案 + composer-adjacent 結構 fallback」的混合偵測，另保留命中原因與 console 驗證流程。
-
-* [Coursera Google Cloud Course Text Copier](../tools/coursera-google-cloud-course-text-copier/)  
-  從跨語言學習的閱讀可及性需求出發，改善 Coursera 互動教材中需逐張切換字卡、導致翻譯工具難以連續處理文字的問題。逐步排查 Firefox Console、外層 DOM 與跨來源 iframe 結構，製作 JavaScript Userscript 擷取已載入文字並複製至剪貼簿。已用一個真實教材頁面確認擷取內容，其他頁型與跨來源整合仍待測試。
-
-* [Google Search Result Count Restorer](../tools/google-search-result-count-restorer/)  
-  為恢復 Google 搜尋結果數量而製作的 Firefox Userscript。經多輪實際測試，調整有無 AI 摘要時的顯示位置，並透過 DevTools 定位工具選單中的 DOM 與 CSS 問題，完成 v1.7 修正。
-
-* [Threads Follow Guard](../tools/threads-follow-guard/)  
-  為降低 Threads 動態河道誤觸追蹤而製作的 Userscript。實測發現初版模擬點擊在個人頁面與動態河道表現不同，v0.2.0 改用第二次實體點擊確認，並保留取消、逾時及模式切換功能。
-
-* [ChatGPT Usage Analytics Exporter](../tools/chatgpt-usage-analytics-exporter/)  
-  為 ChatGPT Usage Analytics 製作的 Firefox／Tampermonkey 匯出工具，可將每日用量、Token 與分類統計存成 JSON／CSV，方便本機整理與分析。
+* [YouTube Thumbnail Cropper](../tools/youtube-thumbnail-cropper/)  
+  抓取 YouTube 縮圖、依影片標題命名並裁切成固定尺寸。
 
 ## Navigation
 

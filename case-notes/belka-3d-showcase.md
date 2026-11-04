@@ -216,8 +216,6 @@ works/sample/index.html
 
 ## Navigation
 
-* [開啟 3D Model Showcase](https://3d.haruz.art/)
-* [查看 Belka 3D Showcase Manager](../tools/belka-3d-showcase-manager/)
 * [返回 Digital Workflow Prototyping](digital-workflow-prototyping.md)
 * [返回 Case Notes](README.md)
 * [返回 Selected Works](../profile/works.md)

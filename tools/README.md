@@ -8,57 +8,63 @@
 
 ## Tool Index
 
-### [YouTube Thumbnail Cropper](youtube-thumbnail-cropper/)
+### Web & Browser
 
-抓取 YouTube 縮圖、依影片標題命名，並裁切成固定尺寸。這項工具直接源自影音新聞與 YouTube 作品整理流程中的重複操作。
+#### [ChatGPT Usage Analytics Exporter](chatgpt-usage-analytics-exporter/)
 
-### [Belka 3D Showcase Manager](belka-3d-showcase-manager/)
+使用 Firefox／Tampermonkey 匯出 ChatGPT Usage Analytics 的每日用量、Token、分類統計與當前額度窗口，產生 JSON 或 CSV。v1.1.0 已實測成功，並保留資料來源與計量單位的驗證紀錄。
 
-一套可轉發的靜態 3D 作品站與 Windows 圖形化管理工具，可在本機新增或更新作品、預覽網站，並產生增量更新 ZIP 或完整網站部署包。
-
-### [MSI Claw RGB Slot GUI](msi-claw-rgb-slot-gui/)
-
-透過 HID payload 控制 MSI Claw A1M 的按鍵與燈環顏色，並整理成 PowerShell GUI、依賴安裝與 preset 流程。
-
-### [MSI Claw Mode Switcher](msi-claw-mode-switcher/)
-
-切換 Windows 的 `ConvertibilityEnabled` 覆蓋值，用於處理傳統小視窗被強制撐滿，並在需要時恢復原廠裝置姿態與觸控行為的自動判定。
-
-### [Belka Firefox Add-on Order Helper](https://github.com/HaruLerrz/belka-firefox-addon-order-helper)
-
-在 Firefox `about:addons` Web Console 中調整擴充套件項目順序，並提供備份與還原介面。
-
-### [Animad WSA Fullscreen Helper](animad-wsa-fullscreen/)
-
-串接 ADB、Windows Subsystem for Android 與視窗操作，完成動畫瘋 App 的啟動與全螢幕流程。
-
-### [Gmail Hide Report Spam Button](gmail-hide-report-spam-button/)
-
-透過 userscript 與 CSS 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低整理郵件時誤觸的機會。
-
-### [Facebook Invite Helper](facebook-invite-helper/)
-
-透過 Tampermonkey userscript 在 Facebook 反應名單中以可調整批次與延遲處理「邀請」按鈕，並提供獨立的「捲到底」名單載入功能；實作保留 dialog 辨識、限制訊息自停、預設縮小 UI 與手動停止流程。
-
-### [ChatGPT Promo Cards Hider](chatgpt-codex-promo-hider/)
+#### [ChatGPT Promo Cards Hider](chatgpt-codex-promo-hider/)
 
 透過 Tampermonkey userscript 隱藏 ChatGPT 網頁中動態插入的產品與功能提示卡。v0.6.0 結合已知文案規則與輸入框上方卡片結構辨識，並保留危險容器排除、尺寸限制、MutationObserver、命中原因記錄與緊急停用機制。
 
-### [Coursera Google Cloud Course Text Copier](coursera-google-cloud-course-text-copier/)
-
-為改善跨語言學習時的教材閱讀與翻譯流程，製作可一鍵擷取 Google Cloud HTML5 互動教材已載入 DOM 文字的 Tampermonkey Userscript，減少逐張切換字卡、複製與整理的操作。包含 iframe 訊息通訊、來源驗證與剪貼簿整合；目前完成初版及一次真實教材頁面測試。
-
-### [Google Search Result Count Restorer](google-search-result-count-restorer/)
+#### [Google Search Result Count Restorer](google-search-result-count-restorer/)
 
 透過 Firefox／Tampermonkey，將 Google「工具」選單中的搜尋結果預估數量顯示於主要搜尋結果上方。腳本讀取頁面既有資料，並處理重複顯示、版面間距與選單殘留空白。
 
-### [Threads Follow Guard](threads-follow-guard/)
+#### [Coursera Google Cloud Course Text Copier](coursera-google-cloud-course-text-copier/)
+
+為改善跨語言學習時的教材閱讀與翻譯流程，製作可一鍵擷取 Google Cloud HTML5 互動教材已載入 DOM 文字的 Tampermonkey Userscript，減少逐張切換字卡、複製與整理的操作。包含 iframe 訊息通訊、來源驗證與剪貼簿整合；目前完成初版及一次真實教材頁面測試。
+
+#### [Gmail Hide Report Spam Button](gmail-hide-report-spam-button/)
+
+透過 userscript 與 CSS 隱藏 Gmail 的「回報垃圾郵件」按鈕，降低整理郵件時誤觸的機會。
+
+#### [Threads Follow Guard](threads-follow-guard/)
 
 透過 Firefox／Tampermonkey 為 Threads「追蹤」操作增加二次點擊確認，並提供隱藏追蹤控制與停用保護模式。v0.2.0 改為放行第二次實體點擊，修正初版在動態河道確認後無法追蹤的問題。
 
-### [ChatGPT Usage Analytics Exporter](chatgpt-usage-analytics-exporter/)
+#### [Facebook Invite Helper](facebook-invite-helper/)
 
-使用 Firefox／Tampermonkey 匯出 ChatGPT Usage Analytics 的每日用量、Token、分類統計與當前額度窗口，產生 JSON 或 CSV。v1.1.0 已實測成功，並保留資料來源與計量單位的驗證紀錄。
+透過 Tampermonkey userscript 在 Facebook 反應名單中以可調整批次與延遲處理「邀請」按鈕，並提供獨立的「捲到底」名單載入功能；實作保留 dialog 辨識、限制訊息自停、預設縮小 UI 與手動停止流程。
+
+#### [Belka Firefox Add-on Order Helper](https://github.com/HaruLerrz/belka-firefox-addon-order-helper)
+
+在 Firefox `about:addons` Web Console 中調整擴充套件項目順序，並提供備份與還原介面。
+
+### Windows & Devices
+
+#### [MSI Claw RGB Slot GUI](msi-claw-rgb-slot-gui/)
+
+透過 HID payload 控制 MSI Claw A1M 的按鍵與燈環顏色，並整理成 PowerShell GUI、依賴安裝與 preset 流程。
+
+#### [MSI Claw Mode Switcher](msi-claw-mode-switcher/)
+
+切換 Windows 的 `ConvertibilityEnabled` 覆蓋值，用於處理傳統小視窗被強制撐滿，並在需要時恢復原廠裝置姿態與觸控行為的自動判定。
+
+#### [Animad WSA Fullscreen Helper](animad-wsa-fullscreen/)
+
+串接 ADB、Windows Subsystem for Android 與視窗操作，完成動畫瘋 App 的啟動與全螢幕流程。
+
+### Media & Publishing
+
+#### [Belka 3D Showcase Manager](belka-3d-showcase-manager/)
+
+一套可轉發的靜態 3D 作品站與 Windows 圖形化管理工具，可在本機新增或更新作品、預覽網站，並產生增量更新 ZIP 或完整網站部署包。
+
+#### [YouTube Thumbnail Cropper](youtube-thumbnail-cropper/)
+
+抓取 YouTube 縮圖、依影片標題命名，並裁切成固定尺寸。這項工具直接源自影音新聞與 YouTube 作品整理流程中的重複操作。
 
 ## Navigation
 
