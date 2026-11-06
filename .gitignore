@@ -6,3 +6,4 @@ Thumbs.db
 *.log
 tools/msi-claw-rgb-slot-gui/claw-rgb-preset.json
 tools/msi-claw-rgb-slot-gui/vendor/hidapitester.exe
+/tools/animad-wsa-fullscreen/logs/Animad_focus_trace_*.txt
