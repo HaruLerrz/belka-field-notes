@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google 搜尋結果數量還原
 // @namespace    https://haruz.art/
-// @version      1.7.0
+// @version      1.8.0
 // @description  將 Google「工具」中的搜尋結果預估數量顯示回搜尋結果上方。
 // @match        https://www.google.com/search*
 // @match        https://www.google.com.tw/search*
@@ -16,7 +16,9 @@
   const STYLE_ID = 'haruz-search-result-count-style';
   const ACTIVE_CLASS = 'haruz-search-count-active';
   const RESULT_SELECTOR = '#result-stats';
-  const NEAR_NAV_CLASS = 'haruz-result-count-near-nav';
+  const MIN_NAV_GAP_PX = 8;
+  const BASE_MARGIN_PX = -24;
+  const NEAR_NAV_MARGIN_PX = -31;
 
   let trackedURL = '';
   let cachedResultText = '';
@@ -51,15 +53,11 @@
         font-size: 13px;
         font-weight: 400;
         line-height: 20px;
-        /* 以 AI 內容區塊後方為基準；靠近導覽列時另做小幅修正。 */
+        /* 保留 v1.7 已確認的緊湊排版。上邊距由 JS 校正，避免壓到搜尋導覽列。 */
         margin: -24px 0 12px;
         padding: 0;
         max-width: 100%;
         overflow-wrap: anywhere;
-      }
-      /* 一般搜尋沒有 AI 區塊，校正導覽列與數字間的額外留白。 */
-      #${BANNER_ID}.${NEAR_NAV_CLASS} {
-        margin-top: -31px;
       }
       /* 原生數字本體仍隱藏，避免重複顯示。 */
       html.${ACTIVE_CLASS} #result-stats {
@@ -146,18 +144,61 @@
     }
   }
 
+  function findNavigationBottom(toolsButton) {
+    if (!toolsButton || !toolsButton.isConnected) return null;
+    const buttonRect = toolsButton.getBoundingClientRect();
+    // 若導覽列已被捲動到畫面上方，不額外推動結果數量。
+    if (buttonRect.bottom <= 0 || buttonRect.height === 0) return null;
+
+    // 按鈕下緣通常高於導航區的底線，不能直接用按鈕當安全界線。
+    // 優先讀取導覽列容器；限制容器與按鈕的落差，避免誤抓到整個搜尋頁。
+    let bottom = buttonRect.bottom + 10;
+    const container = toolsButton.closest('#hdtb, #appbar, [role="navigation"]');
+    if (container) {
+      const rect = container.getBoundingClientRect();
+      if (rect.bottom >= buttonRect.bottom && rect.bottom - buttonRect.bottom <= 50) {
+        bottom = Math.max(bottom, rect.bottom);
+      }
+    }
+    const toolbar = document.getElementById('hdtb');
+    if (toolbar && toolbar !== container && toolbar.contains(toolsButton)) {
+      const rect = toolbar.getBoundingClientRect();
+      if (rect.bottom >= buttonRect.bottom && rect.bottom - buttonRect.bottom <= 50) {
+        bottom = Math.max(bottom, rect.bottom);
+      }
+    }
+    return bottom;
+  }
+
   function syncBannerSpacing(banner) {
-    const toolsButton = findToolsButton();
-    if (!toolsButton) {
-      banner.classList.remove(NEAR_NAV_CLASS);
+    const navBottom = findNavigationBottom(findToolsButton());
+    if (navBottom === null) {
+      // 恢復 CSS 基準值；不用讓先前的臨時補正殘留到不同版面。
+      if (banner.style.getPropertyValue('margin-top')) {
+        banner.style.removeProperty('margin-top');
+      }
       return;
     }
-    const navBottom = toolsButton.getBoundingClientRect().bottom;
-    const bannerTop = banner.getBoundingClientRect().top;
-    // 無 AI 區塊時，數字緊鄰搜尋導覽列；有 AI 區塊時距離大得多。
-    // 以當前實際位置判斷，避免依賴 AI 摘要的文字或頻繁改動的 class。
-    const nearNavigation = navBottom > 0 && (bannerTop - navBottom) < 65;
-    banner.classList.toggle(NEAR_NAV_CLASS, nearNavigation);
+
+    // 用「目前位置 - 目前 margin」還原穩定參考座標，
+    // 避免依據已套用的負邊距反覆切換、造成版面震盪。
+    const currentTop = banner.getBoundingClientRect().top;
+    const currentMargin = parseFloat(window.getComputedStyle(banner).marginTop);
+    if (!Number.isFinite(currentMargin)) return;
+    const zeroMarginTop = currentTop - currentMargin;
+    const standardTop = zeroMarginTop + BASE_MARGIN_PX;
+    const nearNav = standardTop - navBottom < 65;
+    const preferredMargin = nearNav ? NEAR_NAV_MARGIN_PX : BASE_MARGIN_PX;
+
+    // 原本的偏好值可以沿用，但結果數量至少必須離開導覽列下緣 8px。
+    const safeMargin = Math.max(
+      preferredMargin,
+      Math.ceil(navBottom + MIN_NAV_GAP_PX - zeroMarginTop)
+    );
+    const nextValue = `${safeMargin}px`;
+    if (banner.style.getPropertyValue('margin-top') !== nextValue) {
+      banner.style.setProperty('margin-top', nextValue);
+    }
   }
 
   function findNativeContainer(source) {
@@ -341,4 +382,5 @@
   });
   window.addEventListener('popstate', scheduleScan);
   window.addEventListener('pageshow', scheduleScan);
+  window.addEventListener('resize', scheduleScan);
 })();

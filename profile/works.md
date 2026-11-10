@@ -201,7 +201,7 @@
   透過 Tampermonkey userscript 處理 ChatGPT 動態提示卡。從早期文字比對誤藏上層容器，逐步加入安全篩選、分組規則，並在 v0.6.0 擴充為「已知文案 + composer-adjacent 結構 fallback」的混合偵測，另保留命中原因與 console 驗證流程。
 
 * [Google Search Result Count Restorer](../tools/google-search-result-count-restorer/)  
-  為恢復 Google 搜尋結果數量而製作的 Firefox Userscript。經多輪實際測試，調整有無 AI 摘要時的顯示位置，並透過 DevTools 定位工具選單中的 DOM 與 CSS 問題，完成 v1.7 修正。
+  為恢復 Google 搜尋結果數量而製作的 Firefox Userscript。先透過 DevTools 修正工具選單的分隔線與多餘空白；v1.8.0 再以搜尋導覽列實際下緣和安全間距校正結果數量的位置，處理動態版面下的重疊問題。已於 Firefox 初步實測正常，其他頁型仍須持續觀察。
 
 * [Coursera Google Cloud Course Text Copier](../tools/coursera-google-cloud-course-text-copier/)  
   從跨語言學習的閱讀可及性需求出發，改善 Coursera 互動教材中需逐張切換字卡、導致翻譯工具難以連續處理文字的問題。逐步排查 Firefox Console、外層 DOM 與跨來源 iframe 結構，製作 JavaScript Userscript 擷取已載入文字並複製至剪貼簿。已用一個真實教材頁面確認擷取內容，其他頁型與跨來源整合仍待測試。
